@@ -15,11 +15,11 @@ npm run dev
 
 Perintah yang tersedia:
 
-| Perintah | Fungsi |
-| --- | --- |
-| `npm run dev` | Menjalankan development server Vite |
-| `npm run build` | Membuat hasil build production ke folder `dist/` |
-| `npm run preview` | Menjalankan preview dari hasil build |
+| Perintah          | Fungsi                                           |
+| ----------------- | ------------------------------------------------ |
+| `npm run dev`     | Menjalankan development server Vite              |
+| `npm run build`   | Membuat hasil build production ke folder `dist/` |
+| `npm run preview` | Menjalankan preview dari hasil build             |
 
 ## Struktur Folder
 
@@ -371,13 +371,13 @@ Aturan:
 
 Gunakan aturan berikut agar codebase mudah dibaca:
 
-| Jenis File | Format | Contoh |
-| --- | --- | --- |
-| Komponen React | PascalCase | `Hero.jsx`, `DestinationCard.jsx` |
-| Custom hook | camelCase diawali `use` | `useWindowSize.js` |
-| Data constants | camelCase atau deskriptif | `destinationData.js` |
-| Helper lib | camelCase | `formatText.js` |
-| Gambar dan ikon | kebab-case atau nama resmi | `mesjid-raya.jpg`, `search.svg` |
+| Jenis File      | Format                     | Contoh                            |
+| --------------- | -------------------------- | --------------------------------- |
+| Komponen React  | PascalCase                 | `Hero.jsx`, `DestinationCard.jsx` |
+| Custom hook     | camelCase diawali `use`    | `useWindowSize.js`                |
+| Data constants  | camelCase atau deskriptif  | `destinationData.js`              |
+| Helper lib      | camelCase                  | `formatText.js`                   |
+| Gambar dan ikon | kebab-case atau nama resmi | `mesjid-raya.jpg`, `search.svg`   |
 
 ## Aturan Import
 

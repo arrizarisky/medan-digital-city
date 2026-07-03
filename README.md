@@ -445,3 +445,5 @@ Sebelum membuat commit atau pull request, pastikan:
 - Jangan mengubah file build otomatis seperti `dist/`
 - Diskusikan dulu jika ingin menambah dependency baru
 - Prioritaskan konsistensi codebase dibanding gaya pribadi
+
+`Ketua`

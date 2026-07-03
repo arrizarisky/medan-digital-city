@@ -5,6 +5,7 @@ import QuickFacts from "@/components/sections/QuickFacts";
 import Destination from "@/components/sections/Destination";
 import Potential from "@/components/sections/Potential";
 import Explore from "@/components/sections/Explore";
+import CTA from "@/components/sections/Cta";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <Destination />
       <Potential />
       <Explore />
+      <CTA />
       <Footer />
     </main>
   );

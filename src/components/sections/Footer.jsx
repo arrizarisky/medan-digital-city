@@ -4,7 +4,7 @@ export default function Footer() {
   const footerItems = navConfig.items;
 
   return (
-    <footer className="w-full bg-neutral-950 border-t border-[#C5C8B9] px-4 py-12 text-green-400">
+    <footer className="w-full bg-[#FFFFFF] border-t border-[#C5C8B9] px-4 py-12 text-[#50652D]">
       <div className="mx-auto max-w-6xl">
         {/* LOGO & LINK NAVIGASI */}
         <div className="relative flex w-full flex-col items-center justify-center text-center">

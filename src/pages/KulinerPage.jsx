@@ -3,6 +3,7 @@ import KulinerSection from "@/components/sections/kuliner/Culinary";
 import LegendarySpots from "@/components/sections/kuliner/LegendarySpots";
 import CulinaryGuide from "@/components/sections/kuliner/CulinaryGuide";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export default function Kuliner() {
   return (
@@ -12,6 +13,7 @@ export default function Kuliner() {
       <LegendarySpots />
       <KulinerSection />
       <CulinaryGuide />
+      <Footer />
     </main>
   );
 }

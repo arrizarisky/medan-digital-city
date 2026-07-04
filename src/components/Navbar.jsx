@@ -72,7 +72,7 @@ export default function Navbar() {
               <a
                 key={item.id}
                 href={item.path}
-                className="text-xl font-medium transition-colors hover:border-b-2 hover:border-[#50652D]/70 hover:text-[#50652D]/90"
+                className="text-lg font-medium transition-colors hover:border-b-2 hover:border-[#50652D]/70 hover:text-[#50652D]/90"
               >
                 {item.label}
               </a>

@@ -1,21 +1,24 @@
+/* 1. Ambil semua font yang dibutuhkan dari Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@400;700&display=swap");
+
 @import "tailwindcss";
 
+/* 2. Daftarkan ke dalam sistem utility Tailwind v4 */
+@theme {
+  --font-inter: "Inter", sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-anton: "Anton", sans-serif;
+  --font-playfair: "Playfair Display", serif;
+}
+
 :root {
-  /* Menggabungkan sistem font kawanmu dan font Inter/Anton milikmu */
-  font-family:
-    "Anton",
-    "Inter",
-    "Montserrat",
-    "Playfair Display",
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+  /* Mengatur Inter sebagai font default aplikasi */
+  font-family: var(--font-inter);
   color-scheme: light;
 }
 
 body {
   margin: 0;
+  /* Menjamin body mengikuti font default */
+  font-family: var(--font-inter);
 }

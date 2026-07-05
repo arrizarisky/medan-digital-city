@@ -37,7 +37,6 @@ export default function Navbar({ lang = "id", setLang }) {
               className="inline-flex size-10 items-center justify-center rounded-full border border-[#C5C8B9] hover:bg-[#50652D]/10 md:hidden"
             >
               {isMenuOpen ? (
-                // Ikon Silang (X) saat menu terbuka
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -53,7 +52,6 @@ export default function Navbar({ lang = "id", setLang }) {
                   <path d="M6 6l12 12"></path>
                 </svg>
               ) : (
-                // Ikon Hamburger saat menu tertutup
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -73,11 +71,11 @@ export default function Navbar({ lang = "id", setLang }) {
             </button>
           </div>
 
-          {/* Navbar */}
+          {/* Navbar Menu Desktop */}
           <nav className="hidden items-center gap-6 md:flex">
-            {navItems.map((item, index) => (
+            {navItems.map((item) => (
               <Link
-                key={index}
+                key={item.id || item.path}
                 to={item.path}
                 className="text-xl font-medium transition-colors hover:border-b-2 hover:border-[#50652D]/70 hover:text-[#50652D]/90"
               >
@@ -111,19 +109,19 @@ export default function Navbar({ lang = "id", setLang }) {
             </div>
           </div>
         </div>
+
         {/* BAGIAN 4: MOBILE DROPDOWN MENU */}
         {isMenuOpen && (
           <div className="border-t border-[#C5C8B9]/50 py-3 md:hidden">
             <nav className="grid gap-1">
-              {navItems.map((item, index) => (
+              {navItems.map((item) => (
                 <Link
-                  key={index}
+                  key={item.id || item.path}
                   to={item.path}
                   onClick={() => setIsMenuOpen(false)}
                   className="flex items-center justify-between rounded-md px-3 py-2 text-sm font-medium hover:bg-[#50652D]/10 transition-colors"
                 >
                   <span>{item.label}</span>
-                  {/* Ikon panah kanan (Chevron Right) */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -148,7 +146,7 @@ export default function Navbar({ lang = "id", setLang }) {
                     <img
                       src={search}
                       alt="Search Icon"
-                      className="w-5 h-5 opacity-8xl"
+                      className="w-5 h-5"
                     />
                   </button>
                   <button
@@ -159,7 +157,7 @@ export default function Navbar({ lang = "id", setLang }) {
                     <img
                       src={globe}
                       alt="Globe Icon"
-                      className="w-5 h-5 opacity-8xl"
+                      className="w-5 h-5"
                     />
                     <span className="text-xs font-semibold uppercase">
                       {lang}

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { sejarahContent, landmark3DData } from '@/constants/sejarahData';
-import Navbar from '@/components/sections/Navbar';
-import Footer from '@/components/sections/Footer';
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import {
   SejarahHero,
   SejarahTimeline,

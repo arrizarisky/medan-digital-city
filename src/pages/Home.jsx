@@ -6,10 +6,10 @@ import Destination from "@/components/sections/Destination";
 import Potential from "@/components/sections/Potential";
 import Explore from "@/components/sections/Explore";
 
-export default function Home() {
+export default function Home({ lang, setLang }) {
   return (
     <main>
-      <Navbar />
+      <Navbar lang={lang} setLang={setLang} />
       <Hero />
       <QuickFacts />
       <Destination />

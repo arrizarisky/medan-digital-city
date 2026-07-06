@@ -5,8 +5,8 @@ export default function App() {
   return (
     <main className="">
       <section className="">
-        {/* <Home /> */}
-        <Inovation />
+        <Home />
+        {/* <Inovation /> */}
         {/* <Kuliner /> */}
       </section>
     </main>

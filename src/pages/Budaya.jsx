@@ -10,6 +10,7 @@ import {
   SorotanBudaya
 } from '@/components/sections/budaya';
 import bgPattern from '@/assets/images/heroImage.svg';
+import bgPortrait from '@/assets/images/bg-potrait.webp';
 
 function useScrollReveal(options = {}) {
   const ref = useRef(null);
@@ -49,9 +50,22 @@ export default function Budaya({ lang = 'id', setLang }) {
         }
       `}</style>
 
-      {/* Global Subtle Batik/Lace Pattern Background */}
-      <div 
-        className="fixed inset-0 pointer-events-none z-0 opacity-[0.03]"
+      {/* Layer 1 — bg-potrait.webp: fixed parallax, sangat samar */}
+      <div
+        className="fixed inset-0 pointer-events-none z-0"
+        style={{
+          backgroundImage: `url(${bgPortrait})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
+          backgroundRepeat: 'no-repeat',
+          opacity: 0.07,
+        }}
+      />
+
+      {/* Layer 2 — Batik/Lace Pattern: di atas foto, lebih tipis */}
+      <div
+        className="fixed inset-0 pointer-events-none z-0 opacity-[0.025]"
         style={{ backgroundImage: `url(${bgPattern})`, backgroundSize: '400px', backgroundRepeat: 'repeat' }}
       />
 

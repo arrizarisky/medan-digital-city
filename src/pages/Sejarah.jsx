@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { sejarahContent, landmark3DData } from '@/constants/sejarahData';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import bgPortrait from '@/assets/images/bg-potrait.webp';
 import {
   SejarahHero,
   SejarahTimeline,
@@ -114,6 +115,22 @@ export default function Sejarah({ lang = 'id', setLang }) {
           animation: fadeInUpModal 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
       `}</style>
+
+      {/* Layer 1 — bg-potrait.webp: fixed parallax */}
+      <div
+        className="fixed inset-0 pointer-events-none z-0"
+        style={{
+          backgroundImage: `url(${bgPortrait})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
+          backgroundRepeat: 'no-repeat',
+          opacity: 0.12,
+        }}
+      />
+
+      {/* Layer 2 — Overlay putih ringan: menjaga kontras teks */}
+      <div className="fixed inset-0 pointer-events-none z-0 bg-[#FDFDFC]/15" />
 
       {/* Global Navbar with Language Toggle */}
       <Navbar lang={lang} setLang={setLang} />

@@ -3,7 +3,7 @@ export const navConfig = {
     { label: "Home", path: "/" },
     { label: "History", path: "/sejarah" },
     { label: "Culture", path: "/layanan" },
-    { label: "Tourism", path: "/tentang" },
+    { label: "Tourism", path: "/wisata" },
     { label: "News", path: "/news" },
     { label: "Tech", path: "/tech" },
   ],

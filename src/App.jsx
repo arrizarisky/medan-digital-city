@@ -3,8 +3,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Sejarah from "./pages/Sejarah";
 import Budaya from "./pages/Budaya";
+import Wisata from "@/pages/Wisata";
 import Kuliner from "@/pages/KulinerPage";
-import Inovation from "@/pages/Inovation"; 
+import Inovation from "@/pages/Inovation";
 
 export default function App() {
   const [lang, setLang] = useState("id");
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/layanan" element={<Budaya lang={lang} setLang={setLang} />} />
         <Route path="/tentang" element={<Sejarah lang={lang} setLang={setLang} />} />
 
+        <Route path="/wisata" element={<Wisata lang={lang} setLang={setLang} />} />
         <Route path="/kuliner" element={<Kuliner />} />
         <Route path="/inovasi" element={<Inovation />} />
       </Routes>

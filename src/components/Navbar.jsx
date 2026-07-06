@@ -8,13 +8,15 @@ export default function Navbar() {
   const navItems = navConfig.items;
 
   return (
-    <header className="sticky top-0 w-full border-b border-[#C5C8B9] bg-[#FFFFFF] text-[#50652D] z-50">
-      <div className="mx-auto max-w-6xl px-4">
-        <div className="flex h-16 items-center justify-between gap-4">
-          {/* BAGIAN 1: LOGO & TOMBOL MENU MOBILE */}
+    <header className="fixed top-4 left-0 right-0 z-50 px-4 md:px-8 lg:px-16 w-full">
+      <div
+        className={`mx-auto max-w-6xl transition-all duration-300 bg-white/60 backdrop-blur-md border border-white/40 shadow-lg text-[#50652D] ${
+          isMenuOpen ? "rounded-3xl" : "rounded-full"
+        }`}
+      >
+        <div className="flex h-16 items-center justify-between gap-4 px-4 md:px-6">
           <div className="flex w-full items-center justify-between gap-3 md:w-auto">
             <a href="/" className="flex items-center gap-2 text-xl font-bold">
-              {/* Anda bisa menambahkan tag <img> logo di sini jika ada */}
               <img
                 src={Logo}
                 alt="Logo Kota Medan"
@@ -23,14 +25,12 @@ export default function Navbar() {
               <span>Medan</span>
             </a>
 
-            {/* Tombol Hamburger (Hanya muncul di HP/Mobile) */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
-              className="inline-flex size-10 items-center justify-center rounded-full border border-[#C5C8B9] hover:bg-[#50652D]/10 md:hidden"
+              className="inline-flex size-10 items-center justify-center rounded-full border border-white/50 bg-white/30 hover:bg-white/50 md:hidden transition-colors"
             >
               {isMenuOpen ? (
-                // Ikon Silang (X) saat menu terbuka
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -46,7 +46,6 @@ export default function Navbar() {
                   <path d="M6 6l12 12"></path>
                 </svg>
               ) : (
-                // Ikon Hamburger saat menu tertutup
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -66,13 +65,12 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Navbar */}
-          <nav className="hidden items-center gap-6 md:flex">
+          <nav className="hidden items-center gap-8 md:flex">
             {navItems.map((item) => (
               <a
                 key={item.id}
                 href={item.path}
-                className="text-lg font-medium transition-colors hover:border-b-2 hover:border-[#50652D]/70 hover:text-[#50652D]/90"
+                className="text-[15px] font-semibold tracking-wide transition-colors hover:text-[#50652D]/60"
               >
                 {item.label}
               </a>
@@ -80,31 +78,33 @@ export default function Navbar() {
           </nav>
 
           <div className="hidden items-center gap-4 md:flex">
-            {/* Fitur Search (Hanya muncul di layar LG/Besar ke atas) */}
             <div className="relative hidden lg:block">
               <div className="flex justify-center items-center gap-5">
-                <img src={search} alt="Search Icon" />
+                <img
+                  src={search}
+                  alt="Search Icon"
+                  className="cursor-pointer hover:opacity-70 transition-opacity"
+                />
                 <img
                   src={globe}
                   alt="Globe Icon"
-                  className="px-6 py-2 border border-[#C5C8B9]/30 rounded-full hover:bg-[#50652D]/10 transition-colors"
+                  className="px-6 py-2 border border-[#C5C8B9]/30 rounded-full hover:bg-white/50 transition-colors cursor-pointer"
                 />
               </div>
             </div>
           </div>
         </div>
-        {/* BAGIAN 4: MOBILE DROPDOWN MENU */}
+
         {isMenuOpen && (
-          <div className="border-t border-[#C5C8B9]/50 py-3 md:hidden">
-            <nav className="grid gap-1">
+          <div className="border-t border-[#C5C8B9]/30 py-4 px-2 md:hidden">
+            <nav className="grid gap-1.5">
               {navItems.map((item) => (
                 <a
                   key={item.id}
                   href={item.path}
-                  className="flex items-center justify-between rounded-md px-3 py-2 text-sm font-medium hover:bg-[#50652D]/10 transition-colors"
+                  className="flex items-center justify-between rounded-xl px-4 py-2.5 text-sm font-medium hover:bg-white/50 transition-colors"
                 >
                   <span>{item.label}</span>
-                  {/* Ikon panah kanan (Chevron Right) */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -122,20 +122,17 @@ export default function Navbar() {
                 </a>
               ))}
 
-              {/* Aksesoris Tambahan di Bawah Menu Mobile */}
-              <div className="flex items-center justify-between gap-2 px-3 pt-4 border-t border-[#C5C8B9]/30 mt-2">
-                <div className="flex gap-4">
-                  <img
-                    src={search}
-                    alt="Search Icon"
-                    className="w-5 h-5 opacity-8xl"
-                  />
-                  <img
-                    src={globe}
-                    alt="Globe Icon"
-                    className="w-5 h-5 opacity-8xl"
-                  />
-                </div>
+              <div className="flex items-center justify-start gap-6 px-4 pt-4 border-t border-[#C5C8B9]/30 mt-2">
+                <img
+                  src={search}
+                  alt="Search Icon"
+                  className="w-5 h-5 cursor-pointer hover:opacity-70 transition-opacity"
+                />
+                <img
+                  src={globe}
+                  alt="Globe Icon"
+                  className="w-5 h-5 cursor-pointer hover:opacity-70 transition-opacity"
+                />
               </div>
             </nav>
           </div>

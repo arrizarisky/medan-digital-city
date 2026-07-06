@@ -1,35 +1,35 @@
-import KulinerHero from "../../../assets/images/HeroInovation.svg";
+import InovasiHero from "../../../assets/images/HeroInovation.png";
 
 export default function Hero() {
   return (
-    <div className="relative">
+    <div className="relative w-full h-[778px]">
       <img
         src={InovasiHero}
         alt="Inovasi Hero"
-        className="w-full h-[778px] object-cover"
+        className="w-full h-full object-cover object-right"
       />
-      <div className="bg-linear-to-t from-black/80 to-black/0 absolute inset-0"></div>
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="size- px-4 inline-flex flex-col justify-start items-center gap-4">
-          <div className="size- px-4 py-1 bg-yellow-800 rounded-full inline-flex justify-center items-start">
-            <div className="text-center justify-center text-white text-sm font-semibold font-inter leading-5 tracking-wide">
-              EKSPLORASI RASA
-            </div>
+
+      <div className="bg-gradient-to-r from-white via-white/70 to-transparent absolute inset-0 w-full md:w-4/5 lg:w-2/3"></div>
+
+      <div className="absolute inset-0 flex items-center justify-start px-6 md:px-12 lg:px-20 xl:px-32">
+        <div className="flex flex-col justify-start items-start gap-6 max-w-2xl">
+          <div className="px-4 py-1.5 bg-[#A3B18A] rounded-full inline-flex justify-center items-center shadow-sm">
+            <span className="text-center text-[#2A3B19] text-xs font-bold font-inter tracking-widest uppercase">
+              INOVASI KOTA 2026
+            </span>
           </div>
-          <div className="w-full max-w-[896px] pb-2 shadow-[0px_10px_8px_0px_rgba(0,0,0,0.04)] shadow-[0px_4px_3px_0px_rgba(0,0,0,0.10)] flex flex-col justify-start items-center">
-            <div className="text-center justify-center text-white text-5xl font-bold font-montserrat leading-[56px]">
-              Surga Kuliner Nusantara di Jantung
-              <br />
-              Kota Medan
-            </div>
-          </div>
-          <div className="w-[630px] max-w-[672px] shadow-[0px_4px_3px_0px_rgba(0,0,0,0.07)] shadow-[0px_2px_2px_0px_rgba(0,0,0,0.06)] flex flex-col justify-start items-center">
-            <div className="self-stretch text-center justify-center text-white/90 text-lg font-medium font-['Inter'] leading-7">
-              Menjelajahi keanekaragaman cita rasa autentik legendaris yang
-              menyatukan tradisi kuliner Nusantara di setiap sudut Kota Medan.
-            </div>
-          </div>
-          <div className="self-stretch h-16 pt-4" />
+
+          <h1 className="text-left text-[#50652D] text-4xl md:text-5xl lg:text-[56px] font-bold font-montserrat leading-[1.15] tracking-tight">
+            Medan Masa Depan:
+            <br />
+            Transformasi & Inovasi
+          </h1>
+
+          <p className="text-left text-neutral-600 text-base md:text-lg font-medium font-inter leading-relaxed max-w-xl text-balance">
+            Menuju kota modern yang menghargai masa lalu dan menyambut masa
+            depan, di mana ragam budaya luhur berpadu selaras dengan inovasi
+            teknologi yang memudahkan hidup warganya.
+          </p>
         </div>
       </div>
     </div>

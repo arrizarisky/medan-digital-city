@@ -1,3 +1,9 @@
+import smartCityCenterImg from "../assets/images/Teknologi-Modern/smart-city1.png";
+import BandaraImg from "../assets/images/Teknologi-Modern/bandara.png";
+import JalanTolImg from "../assets/images/Teknologi-Modern/jalan-tol.png";
+import smartCityCenterImg2 from "../assets/images/Teknologi-Modern/smart-city2.png";
+
+
 export const potentialConfig = {
   features: [
     {
@@ -23,9 +29,9 @@ export const potentialConfig = {
     },
   ],
   images: {
-    smartCityCenter: "/images/tech-center.jpg",
-    kualanamuAirport: "/images/airport.jpg",
-    binjaiTollGate: "/images/toll-gate.jpg",
-    trafficControl: "/images/traffic-control.jpg",
+    smartCityCenter: smartCityCenterImg,
+    kualanamuAirport: BandaraImg,
+    binjaiTollGate: JalanTolImg,
+    trafficControl: smartCityCenterImg2,
   },
 };

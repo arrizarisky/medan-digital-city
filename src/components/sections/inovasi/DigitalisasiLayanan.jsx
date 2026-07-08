@@ -41,7 +41,6 @@ export default function DigitalisasiLayanan() {
 
           <div className="lg:col-span-7 mt-8 lg:mt-0 flex items-center justify-center rounded-2xl">
             <div className="relative flex flex-col items-center w-full max-w-lg">
-              {/* Area Gambar */}
               <div className="relative z-0 w-full flex justify-center">
                 <img
                   src={banner.image}

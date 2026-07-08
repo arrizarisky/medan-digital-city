@@ -1,6 +1,4 @@
-// src/components/sections/QuickFacts.jsx
 
-// 1. Data konseptual untuk Bento Grid
 const factsData = [
   {
     id: "populasi",
@@ -83,7 +81,7 @@ const factsData = [
     className:
       "col-span-12 bg-[#EFEFE9] text-neutral-800 flex flex-col md:flex-row items-start md:items-center justify-between gap-6",
     hasImage: true,
-    icon: null, // Ikon absen karena diganti visual gambar pelabuhan/logistik
+    icon: null,
   },
 ];
 
@@ -91,7 +89,6 @@ export default function QuickFacts() {
   return (
     <section className="w-full bg-[#FAFAF4] py-16 px-4 md:px-8 lg:px-16 text-[#50652D]">
       <div className="mx-auto max-w-6xl">
-        {/* HEADER SECTION */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
           <div className="max-w-xl">
             <span className="text-xs font-bold tracking-widest uppercase text-[#B28A32] block mb-2">
@@ -109,14 +106,12 @@ export default function QuickFacts() {
           </div>
         </div>
 
-        {/* BENTO GRID LAYOUT */}
         <div className="grid grid-cols-12 gap-4">
           {factsData.map((fact) => (
             <div
               key={fact.id}
               className={`rounded-2xl border border-[#C5C8B9]/30 p-6 shadow-sm hover:shadow-md transition-all duration-300 ${fact.className}`}
             >
-              {/* Jika baris data bukan merupakan baris ber-gambar (3 box atas) */}
               {!fact.hasImage ? (
                 <div className="flex flex-col h-full justify-between min-h-[160px]">
                   <div className="mb-4">
@@ -132,7 +127,6 @@ export default function QuickFacts() {
                   </div>
                 </div>
               ) : (
-                /* Jika baris data panjang di bawah (Gerbang Ekonomi) */
                 <>
                   <div className="flex-1 max-w-2xl">
                     <h3 className="text-xl font-bold text-[#50652D] mb-3">
@@ -144,7 +138,7 @@ export default function QuickFacts() {
                   </div>
                   <div className="w-full md:w-[280px] lg:w-[340px] shrink-0">
                     <img
-                      src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=600&auto=format&fit=crop" // Menggunakan aset ilustrasi pelabuhan kargo logistik global
+                      src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=600&auto=format&fit=crop"
                       alt="Medan Logistics Port Gateway"
                       className="w-full h-44 object-cover rounded-xl shadow-inner"
                     />

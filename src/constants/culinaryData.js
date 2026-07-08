@@ -1,4 +1,3 @@
-// src/constants/culinaryData.js
 
 import LontongMedanImg from "../assets/images/kuliner/lontong-medan.png";
 import BikaAmbonImg from "../assets/images/kuliner/bika-ambon.png";
@@ -21,7 +20,7 @@ export const culinaryConfig = {
       tag: "Makanan Berat",
       isMustTry: true,
       desc: "Perpaduan unik lontong, sayur gulai tauco yang sedap, serta taburan teri kacang dan kerupuk merah yang menciptakan cita rasa gurih-pedas autentik khas Medan.",
-      imageUrl: LontongMedanImg, // Taruh di folder public/images/
+      imageUrl: LontongMedanImg,
       gridClass:
         "col-span-12 lg:col-span-7 aspect-[4/3] lg:aspect-auto lg:h-full",
     },

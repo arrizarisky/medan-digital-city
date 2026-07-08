@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { navConfig } from "@/constants/navData";
+import { Link, NavLink } from "react-router-dom";
+import { navConfig } from "@/constants/NavData";
 import { globe, search } from "@/assets/icons";
 import Logo from "@/assets/logo/Logo_Kota_Medan.webp";
 
@@ -16,14 +17,14 @@ export default function Navbar() {
       >
         <div className="flex h-16 items-center justify-between gap-4 px-4 md:px-6">
           <div className="flex w-full items-center justify-between gap-3 md:w-auto">
-            <a href="/" className="flex items-center gap-2 text-xl font-bold">
+            <Link to="/" className="flex items-center gap-2 text-xl font-bold">
               <img
                 src={Logo}
                 alt="Logo Kota Medan"
                 className="h-10 w-10 object-contain"
               />
               <span>Medan</span>
-            </a>
+            </Link>
 
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -65,15 +66,19 @@ export default function Navbar() {
             </button>
           </div>
 
-          <nav className="hidden items-center gap-8 md:flex">
+          <nav className="hidden items-center gap-8 md:flex ">
             {navItems.map((item) => (
-              <a
+              <NavLink
                 key={item.id}
-                href={item.path}
-                className="text-[15px] font-semibold tracking-wide transition-colors hover:text-[#50652D]/60"
+                to={item.path}
+                className={({ isActive }) =>
+                  `text-[15px] font-semibold tracking-wide transition-colors hover:text-[#50652D]/60 hover:border-[#50652D]/60 hover:border-b-2 ${
+                    isActive ? "text-[#B28A32]" : ""
+                  }`
+                }
               >
                 {item.label}
-              </a>
+              </NavLink>
             ))}
           </nav>
 
@@ -99,10 +104,15 @@ export default function Navbar() {
           <div className="border-t border-[#C5C8B9]/30 py-4 px-2 md:hidden">
             <nav className="grid gap-1.5">
               {navItems.map((item) => (
-                <a
+                <NavLink
                   key={item.id}
-                  href={item.path}
-                  className="flex items-center justify-between rounded-xl px-4 py-2.5 text-sm font-medium hover:bg-white/50 transition-colors"
+                  to={item.path}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={({ isActive }) =>
+                    `flex items-center justify-between rounded-xl px-4 py-2.5 text-sm font-medium hover:bg-white/50 transition-colors ${
+                      isActive ? "bg-white/50 text-[#B28A32]" : ""
+                    }`
+                  }
                 >
                   <span>{item.label}</span>
                   <svg
@@ -119,7 +129,7 @@ export default function Navbar() {
                   >
                     <path d="M9 6l6 6l-6 6"></path>
                   </svg>
-                </a>
+                </NavLink>
               ))}
 
               <div className="flex items-center justify-start gap-6 px-4 pt-4 border-t border-[#C5C8B9]/30 mt-2">

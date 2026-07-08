@@ -15,13 +15,13 @@ export const economyConfig = {
       id: 1,
       title: "Podomoro City Deli",
       desc: "Kawasan bisnis dan pusat gaya hidup modern terpadu di jantung Kota Medan.",
-      image: PodomoroImage, // Sesuaikan dengan path gambar gedung
+      image: PodomoroImage,
     },
     {
       id: 2,
       title: "Pusat Industri KIM",
       desc: "Pusat produksi dan pergudangan modern berbasis teknologi cerdas.",
-      image: KimImage, // Sesuaikan dengan path gambar kawasan industri
+      image: KimImage,
     },
   ],
 };

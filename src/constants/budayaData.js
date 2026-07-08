@@ -1,6 +1,12 @@
-import imgIstana from '@/assets/images/istanamaimun.png';
-import imgMesjid from '@/assets/images/mesjid-raya.jpg';
-import imgTjongAfie from '@/assets/images/tjong-afie-mansion.png';
+import imgIstana from '../assets/images/istanamaimun.png';
+import imgMelayu from "../assets/images/Budaya-Tradisi/Melayu-deli.png"
+import imgBatak from "../assets/images/Budaya-Tradisi/batak-toba.png"
+import imgTionghoa from '../assets/images/tjong-afie-mansion.png';
+import imgIndia from '../assets/images/bangunan-bersejarah/kuil.jpg';
+import imgJawa from '../assets/images/Budaya-Tradisi/jawa.jpg';
+import imgMinang from '../assets/images/Budaya-Tradisi/minangkabau.jpg';
+
+
 
 const imgHero = imgIstana;
 const imgMelayu = imgIstana;

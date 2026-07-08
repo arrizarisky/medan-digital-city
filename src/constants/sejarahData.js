@@ -1,10 +1,13 @@
 import istanamaimun from "../assets/istanamaimun.png";
-import is3dImg from "../assets/is3d.png";
-import mjdImg from "../assets/mjd.png";
-import tirImg from "../assets/tir.png";
+import is3dImg from "../assets/images/3d/is3d.png";
+import mjdImg from "../assets/images/3d/mjd.png";
+import tirImg from "../assets/images/3d/tir.png";
 
-// Removed external TOONHUB URLs - using only local assets
-// 3D carousel logic now implemented in SejarahLandmarks.jsx
+import MelayuImg from "../assets/images/Budaya-Tradisi/Melayu-deli.png"
+import TariTorTorImg from "../assets/images/Budaya-Tradisi/tari-tor-tor-batak.png"
+import BarongsaiImg from "../assets/images/Budaya-Tradisi/barongsai.png"
+import ThaipusamImg from "../assets/images/Budaya-Tradisi/thaipusam-india.png"
+
 
 export const sejarahContent = {
   id: {
@@ -61,26 +64,24 @@ export const sejarahContent = {
           title: "Kerajaan Melayu",
           desc: "Fondasi budaya Medan, ditandai dengan seni, musik, dan motif kuning ikonik Kesultanan Deli yang anggun.",
           image:
-            "https://images.unsplash.com/photo-1549474776-609ee36412e6?q=80&w=2070&auto=format&fit=crop",
+          MelayuImg
         },
         {
           title: "Tradisi Batak",
           desc: "Berani dan ekspresif, pengaruh Batak terlihat pada tenunan Ulos yang rumit dan tradisi musik Gondang yang bertenaga.",
           image:
-            "https://images.unsplash.com/photo-1531234799389-dcb7651eb0a2?q=80&w=2070&auto=format&fit=crop",
+          TariTorTorImg        
         },
         {
           title: "Warisan Tionghoa",
           desc: "Kesawan yang megah, Tahun Baru Imlek yang meriah, dan warisan kuliner yang lezat—budaya Tionghoa menjadi bagian integral dari identitas Medan.",
           image:
-            "https://images.unsplash.com/photo-1559599545-80a4c36970cc?q=80&w=2070&auto=format&fit=crop",
-        },
+          BarongsaiImg        },
         {
           title: "Tradisi India",
           desc: "Kampung Madras yang berwarna-warni, Festival Cahaya Deepavali, dan warisan rempah-rempah yang aromatik—budaya India menghiasi kehidupan kota Medan.",
           image:
-            "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?q=80&w=2070&auto=format&fit=crop",
-        },
+          ThaipusamImg        },
       ],
     },
     calendar: {

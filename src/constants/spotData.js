@@ -10,7 +10,7 @@ export const spotConfig = {
     "Tempat-tempat makan yang telah berdiri puluhan tahun dan menjadi identitas kuliner Kota Medan.",
   viewAllText: "Lihat Semua Lokasi",
   viewAllPath: "/semua-lokasi",
-  bgPattern: BgLandscapeImg, // Taruh file ornamen Melayu/Batak di folder public/images/
+  bgPattern: BgLandscapeImg,
   items: [
     {
       id: 1,
@@ -19,7 +19,7 @@ export const spotConfig = {
       address: "Jl. K.H. Wahid Hasyim No.30-32",
       desc: "Kuliner legendaris Medan yang buka 24 jam, menyajikan durian segar berkualitas dengan rasa yang otentik.",
       status: "Buka • 24 jam",
-      imageUrl: UcokDurianImg, // Aset gambar warung Ucok Durian
+      imageUrl: UcokDurianImg,
       mapPath: "/maps/ucok",
     },
     {
@@ -29,7 +29,7 @@ export const spotConfig = {
       address: "Jl. T. Amir Hamzah, Sei Agul, Kec. Medan Barat",
       desc: "Kuliner legendaris Medan dengan potongan daging besar dan empuk, disiram kuah kacang atau kuah padang yang tebal dan kaya rempah.",
       status: "Buka • 16:00 - 00:00",
-      imageUrl: SateMemengImg, // Aset gambar Sate Memeng
+      imageUrl: SateMemengImg,
       mapPath: "/maps/memeng",
     },
     {
@@ -39,7 +39,7 @@ export const spotConfig = {
       address: "No.2D/1, Jl. Sei Deli No.2D/1",
       desc: "Tempat soto paling ikonik di Medan. Kuah santan kental yang gurih menjadi favorit warga lokal dan turis.",
       status: "Buka • 07:00 - 15:30",
-      imageUrl: RmSinarPagiImg, // Aset gambar RM Sinar Pagi
+      imageUrl: RmSinarPagiImg,
       mapPath: "/maps/sinarpagi",
     },
   ],

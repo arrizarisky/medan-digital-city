@@ -1,3 +1,4 @@
+import Bag from "../assets/icons/bag.svg";
 export const guideConfig = {
   title: "Tips & Panduan Kuliner",
   subtitle:
@@ -16,7 +17,7 @@ export const guideConfig = {
       actionPath: "/oleh-oleh",
       cardClass: "bg-[#EFEFE9] text-[#50652D]",
       btnClass: "text-[#50652D] hover:opacity-80",
-      icon: "bag",
+      icon: Bag,
     },
     {
       id: 2,

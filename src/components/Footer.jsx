@@ -1,4 +1,5 @@
-import { navConfig } from "@/constants/navData";
+import { Link } from "react-router-dom";
+import { navConfig } from "@/constants/NavData";
 
 export default function Footer() {
   const footerItems = navConfig.items;
@@ -6,33 +7,29 @@ export default function Footer() {
   return (
     <footer className="w-full bg-[#FFFFFF] border-t border-[#C5C8B9] px-4 py-12 text-[#50652D]">
       <div className="mx-auto max-w-6xl">
-        {/* LOGO & LINK NAVIGASI */}
         <div className="relative flex w-full flex-col items-center justify-center text-center">
-          {/* Logo Brand */}
           <div className="mb-6 flex items-center justify-center">
-            <a
-              href="/"
+            <Link
+              to="/"
               className="flex items-center space-x-2 text-xl font-bold tracking-wide"
             >
               <span>Medan Digital City</span>
-            </a>
+            </Link>
           </div>
 
-          {/* Menu Link Dinamis */}
           <ul className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-medium">
             {footerItems.map((item) => (
               <li key={item.id}>
-                <a
-                  href={item.path}
+                <Link
+                  to={item.path}
                   className="transition-colors hover:text-black"
                 >
                   {item.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
 
-          {/* Garis Pembatas Putus-putus Estetik khas Aceternity */}
           <div
             className="mx-auto mt-8 w-full max-w-6xl h-[1px]"
             style={{
@@ -43,17 +40,13 @@ export default function Footer() {
           />
         </div>
 
-        {/*  HAK CIPTA & SOSIAL MEDIA */}
         <div className="mt-8 flex w-full flex-col items-center justify-between gap-4 text-sm sm:flex-row">
-          {/* Copyright text */}
           <p className="text-[#50652D]/80 order-2 sm:order-1">
             © {new Date().getFullYear()} Medan Digital City. All rights
             reserved.
           </p>
 
-          {/* Ikon Sosial Media (SVG Teroptimasi) */}
           <div className="flex gap-5 order-1 sm:order-2">
-            {/* Twitter / X */}
             <a
               href="#"
               className="text-[#50652D] hover:text-black transition-colors"
@@ -74,7 +67,6 @@ export default function Footer() {
               </svg>
             </a>
 
-            {/* LinkedIn */}
             <a
               href="#"
               className="text-[#50652D] hover:text-black transition-colors"
@@ -99,7 +91,6 @@ export default function Footer() {
               </svg>
             </a>
 
-            {/* GitHub */}
             <a
               href="#"
               className="text-[#50652D] hover:text-black transition-colors"
@@ -120,7 +111,6 @@ export default function Footer() {
               </svg>
             </a>
 
-            {/* Instagram */}
             <a
               href="#"
               className="text-[#50652D] hover:text-black transition-colors"

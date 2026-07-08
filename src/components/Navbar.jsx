@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { navConfig } from "@/constants/navData";
+import { Link, NavLink } from "react-router-dom";
+import { navConfig } from "@/constants/NavData"; // Mengikuti penulisan kapital kawanmu
 import { globe, search } from "@/assets/icons";
 import Logo from "@/assets/logo/Logo_Kota_Medan.webp";
 
@@ -8,7 +8,7 @@ export default function Navbar({ lang = "id", setLang }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navItems = navConfig.items;
 
-  // Language toggle handler
+  // Language toggle handler (Tetap dipertahankan)
   const toggleLanguage = () => {
     if (setLang) {
       setLang((prev) => (prev === "en" ? "id" : "en"));
@@ -16,10 +16,13 @@ export default function Navbar({ lang = "id", setLang }) {
   };
 
   return (
-    <header className="sticky top-0 w-full border-b border-[#C5C8B9] bg-[#FFFFFF] text-[#50652D] z-50">
-      <div className="mx-auto max-w-6xl px-4">
-        <div className="flex h-16 items-center justify-between gap-4">
-          {/* BAGIAN 1: LOGO & TOMBOL MENU MOBILE */}
+    <header className="fixed top-4 left-0 right-0 z-50 px-4 md:px-8 lg:px-16 w-full">
+      <div
+        className={`mx-auto max-w-6xl transition-all duration-300 bg-white/60 backdrop-blur-md border border-white/40 shadow-lg text-[#50652D] ${
+          isMenuOpen ? "rounded-3xl" : "rounded-full"
+        }`}
+      >
+        <div className="flex h-16 items-center justify-between gap-4 px-4 md:px-6">
           <div className="flex w-full items-center justify-between gap-3 md:w-auto">
             <Link to="/" className="flex items-center gap-2 text-xl font-bold">
               <img
@@ -30,11 +33,10 @@ export default function Navbar({ lang = "id", setLang }) {
               <span>Medan</span>
             </Link>
 
-            {/* Tombol Hamburger (Hanya muncul di HP/Mobile) */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
-              className="inline-flex size-10 items-center justify-center rounded-full border border-[#C5C8B9] hover:bg-[#50652D]/10 md:hidden"
+              className="inline-flex size-10 items-center justify-center rounded-full border border-white/50 bg-white/30 hover:bg-white/50 md:hidden transition-colors"
             >
               {isMenuOpen ? (
                 <svg
@@ -71,21 +73,25 @@ export default function Navbar({ lang = "id", setLang }) {
             </button>
           </div>
 
-          {/* Navbar Menu Desktop */}
-          <nav className="hidden items-center gap-6 md:flex">
+          {/* Navbar Menu Desktop (Menggunakan NavLink interaktif milik kawanmu) */}
+          <nav className="hidden items-center gap-8 md:flex">
             {navItems.map((item) => (
-              <Link
+              <NavLink
                 key={item.id || item.path}
                 to={item.path}
-                className="text-xl font-medium transition-colors hover:border-b-2 hover:border-[#50652D]/70 hover:text-[#50652D]/90"
+                className={({ isActive }) =>
+                  `text-[15px] font-semibold tracking-wide transition-colors hover:text-[#50652D]/60 hover:border-[#50652D]/60 hover:border-b-2 ${
+                    isActive ? "text-[#B28A32]" : ""
+                  }`
+                }
               >
                 {item.label}
-              </Link>
+              </NavLink>
             ))}
           </nav>
 
+          {/* Fitur Search & Language Toggle Desktop (Gabungan fungsionalitas & styling) */}
           <div className="hidden items-center gap-4 md:flex">
-            {/* Fitur Search & Language Toggle (Desktop) */}
             <div className="relative hidden lg:block">
               <div className="flex justify-center items-center gap-5">
                 <button
@@ -110,16 +116,20 @@ export default function Navbar({ lang = "id", setLang }) {
           </div>
         </div>
 
-        {/* BAGIAN 4: MOBILE DROPDOWN MENU */}
+        {/* MOBILE DROPDOWN MENU */}
         {isMenuOpen && (
-          <div className="border-t border-[#C5C8B9]/50 py-3 md:hidden">
-            <nav className="grid gap-1">
+          <div className="border-t border-[#C5C8B9]/30 py-4 px-2 md:hidden">
+            <nav className="grid gap-1.5">
               {navItems.map((item) => (
-                <Link
+                <NavLink
                   key={item.id || item.path}
                   to={item.path}
                   onClick={() => setIsMenuOpen(false)}
-                  className="flex items-center justify-between rounded-md px-3 py-2 text-sm font-medium hover:bg-[#50652D]/10 transition-colors"
+                  className={({ isActive }) =>
+                    `flex items-center justify-between rounded-xl px-4 py-2.5 text-sm font-medium hover:bg-[#50652D]/10 transition-colors ${
+                      isActive ? "bg-[#50652D]/10 text-[#B28A32]" : ""
+                    }`
+                  }
                 >
                   <span>{item.label}</span>
                   <svg
@@ -136,13 +146,13 @@ export default function Navbar({ lang = "id", setLang }) {
                   >
                     <path d="M9 6l6 6l-6 6"></path>
                   </svg>
-                </Link>
+                </NavLink>
               ))}
 
               {/* Aksesoris Tambahan di Bawah Menu Mobile */}
               <div className="flex items-center justify-between gap-2 px-3 pt-4 border-t border-[#C5C8B9]/30 mt-2">
                 <div className="flex gap-4">
-                  <button className="hover:opacity-70 transition-opacity">
+                  <button className="hover:opacity-70 transition-opacity" aria-label="Search">
                     <img
                       src={search}
                       alt="Search Icon"

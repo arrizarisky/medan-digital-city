@@ -10,7 +10,7 @@ export const destinationConfig = {
       tag: "Bersejarah",
       tagClass: "bg-[#B28A32] text-white",
       desc: "Kemegahan arsitektur Maroko, Spanyol, dan Renaissance yang dibangun dalam satu mahakarya abadi.",
-      imageUrl: masjidRayaImg, // Ganti dengan path lokal jika ada
+      imageUrl: masjidRayaImg,
     },
     {
       id: 2,

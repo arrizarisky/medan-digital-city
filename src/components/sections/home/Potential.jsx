@@ -1,4 +1,5 @@
 import { potentialConfig } from "@/constants/potentialData";
+import { Link } from "react-router-dom";
 
 export default function Potential() {
   const { features, images } = potentialConfig;
@@ -7,7 +8,6 @@ export default function Potential() {
     <section className="w-full bg-[#FFFF] py-20 px-4 md:px-8 lg:px-16 text-[#50652D]">
       <div className="mx-auto max-w-6xl">
         <div className="grid grid-cols-12 gap-8 lg:gap-12 items-center">
-          {/* KOLOM KIRI: TEKS & DAFTAR FITUR (7 Kolom dari 12) */}
           <div className="col-span-12 lg:col-span-7 flex flex-col justify-center">
             <span className="text-xs font-bold tracking-widest uppercase text-[#B28A32] mb-3 block">
               Transformasi Digital
@@ -22,15 +22,13 @@ export default function Potential() {
               cerdas yang sesungguhnya.
             </p>
 
-            {/* DAFTAR SPESIFIKASI FITUR */}
             <div className="space-y-6 mb-10 max-w-xl">
               {features.map((feature) => (
                 <div key={feature.id} className="flex gap-4 items-start">
-                  {/* Lingkaran Wadah Ikon */}
                   <div
                     className={`shrink-0 flex size-9 items-center justify-center rounded-xl ${feature.iconColor}`}
                   >
-                    {feature.icon}
+                    <img src={feature.iconType} alt={feature.title} />
                   </div>
                   <div>
                     <h3 className="text-sm font-bold text-neutral-800 mb-1">
@@ -44,10 +42,9 @@ export default function Potential() {
               ))}
             </div>
 
-            {/* TOMBOL AKSI UTAMA */}
             <div>
-              <a
-                href="/tech"
+              <Link
+                to="/tech"
                 className="inline-flex items-center gap-2 rounded-full bg-[#50652D] px-6 py-3 text-sm font-bold text-white shadow-sm hover:bg-[#3e4f1f] transition-colors group"
               >
                 <span>Jelajahi Layanan Teknologi</span>
@@ -65,13 +62,11 @@ export default function Potential() {
                 >
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
-              </a>
+              </Link>
             </div>
           </div>
 
-          {/* KOLOM KANAN: ASYMMETRIC MASONRY GALLERY (5 Kolom dari 12) */}
           <div className="col-span-12 lg:col-span-5 flex gap-4 mt-8 lg:mt-0">
-            {/* Sub-Kolom Kiri Galeri */}
             <div className="flex flex-col gap-4 flex-1 justify-center">
               <div className="overflow-hidden rounded-2xl shadow-sm border border-[#C5C8B9]/20 aspect-[4/5]">
                 <img
@@ -89,7 +84,6 @@ export default function Potential() {
               </div>
             </div>
 
-            {/* Sub-Kolom Kanan Galeri */}
             <div className="flex flex-col gap-4 flex-1">
               <div className="overflow-hidden rounded-2xl shadow-sm border border-[#C5C8B9]/20 aspect-video">
                 <img

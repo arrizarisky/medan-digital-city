@@ -1,4 +1,3 @@
-// src/components/sections/Destination.jsx
 import { useRef } from "react";
 import { destinationConfig } from "@/constants/destinationData";
 
@@ -6,7 +5,6 @@ export default function Destination() {
   const destinations = destinationConfig.items;
   const carouselRef = useRef(null);
 
-  // Fungsi navigasi tombol panah kanan-kiri
   const scroll = (direction) => {
     if (carouselRef.current) {
       const { scrollLeft, clientWidth } = carouselRef.current;
@@ -22,13 +20,11 @@ export default function Destination() {
   return (
     <section className="w-full bg-[#FAFAF4] py-16 px-4 md:px-8 lg:px-16 text-[#50652D]">
       <div className="mx-auto max-w-6xl">
-        {/* HEADER SECTION & NAVIGASI PANAH */}
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
             Destinasi Unggulan
           </h2>
 
-          {/* Tombol Kontrol Kanan & Kiri */}
           <div className="flex gap-2">
             <button
               onClick={() => scroll("left")}
@@ -71,28 +67,24 @@ export default function Destination() {
           </div>
         </div>
 
-        {/* CONTAINER CAROUSEL */}
         <div
           ref={carouselRef}
           className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-6 scrollbar-none"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }} // Menyembunyikan scrollbar bawaan browser
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {destinations.map((item) => (
             <div
               key={item.id}
               className="relative w-[290px] sm:w-[340px] aspect-[4/5] shrink-0 snap-start overflow-hidden rounded-3xl shadow-sm group hover:shadow-md transition-all duration-300"
             >
-              {/* Gambar Utama */}
               <img
                 src={item.imageUrl}
                 alt={item.title}
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
 
-              {/* Lapisan Gradient Gelap (Aman untuk Keterbacaan Teks Putih) */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-              {/* Konten Teks di Atas Gambar */}
               <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
                 <div>
                   <span

@@ -1,10 +1,10 @@
 export const navConfig = {
   items: [
-    { label: "Home", path: "/" },
-    { label: "History", path: "/sejarah" },
-    { label: "Culture", path: "/layanan" },
-    { label: "Tourism", path: "/wisata" },
-    { label: "News", path: "/news" },
-    { label: "Tech", path: "/tech" },
+    { id: 1, label: "Home", path: "/" },
+    { id: 2, label: "History", path: "/sejarah" },
+    { id: 3, label: "Culture & Traditions", path: "/budaya" },
+    { id: 4, label: "Culinary", path: "/kuliner" },
+    { id: 5, label: "Tour", path: "/wisata" },
+    { id: 6, label: "Tech", path: "/tech" },
   ],
 };

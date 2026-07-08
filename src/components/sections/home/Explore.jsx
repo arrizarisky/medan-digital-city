@@ -25,8 +25,12 @@ export default function Explore() {
                 />
               </div>
 
-              <div className="relative z-10 -mt-5 flex size-10 items-center justify-center rounded-full bg-[#50652D] text-white border-4 border-white shadow-sm">
-                {card.icon}
+              <div className="relative z-10 -mt-5 flex size-10 items-center justify-center rounded-full bg-[#829E65] text-white border-4 border-white shadow-sm">
+                <img
+                  src={card.icon}
+                  alt={card.title}
+                  className="flex item-center justify-center w-5 h-5"
+                />
               </div>
 
               <div className="flex-1 flex flex-col items-center justify-center mt-4 px-2">

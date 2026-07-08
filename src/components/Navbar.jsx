@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { navConfig } from "@/constants/NavData";
 import { globe, search } from "@/assets/icons";
@@ -6,14 +6,26 @@ import Logo from "@/assets/logo/Logo_Kota_Medan.webp";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navItems = navConfig.items;
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 0);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="fixed top-4 left-0 right-0 z-50 px-4 md:px-8 lg:px-16 w-full">
+    <header
+      className={`fixed top-0 transition-all duration-300 left-0 right-0 z-50 px-4 md:px-8 lg:px-16 w-full ${scrolled ? "py-4" : "na"}`}
+    >
       <div
-        className={`mx-auto max-w-6xl transition-all duration-300 bg-white/60 backdrop-blur-md border border-white/40 shadow-lg text-[#50652D] ${
-          isMenuOpen ? "rounded-3xl" : "rounded-full"
-        }`}
+        className={`mx-auto max-w-6xl transition-all duration-300 text-[#50652D] ${
+          scrolled
+            ? "bg-white/60 backdrop-blur-md border border-white/40 shadow-lg"
+            : "bg-transparent border border-transparent shadow-none"
+        } ${isMenuOpen ? "rounded-3xl" : "rounded-full"}`}
       >
         <div className="flex h-16 items-center justify-between gap-4 px-4 md:px-6">
           <div className="flex w-full items-center justify-between gap-3 md:w-auto">
@@ -23,7 +35,26 @@ export default function Navbar() {
                 alt="Logo Kota Medan"
                 className="h-10 w-10 object-contain"
               />
-              <span>Medan</span>
+              <img
+                src="https://medantourism.medan.go.id/assets/images/medan_untuk_semua.png"
+                alt="Medan Untuk Semua"
+                className="h-18 w-18 object-contain"
+              />
+              <img
+                src="https://medantourism.medan.go.id/assets/images/logo_colorful_medan.png"
+                alt="Colorful Medan"
+                className="h-18 w-18 object-contain"
+              />
+              <img
+                src="https://medantourism.medan.go.id/assets/images/medan_bangga.png"
+                alt="Medan Bangga"
+                className="h-18 w-18 object-contain"
+              />
+              <img
+                src="https://medantourism.medan.go.id/assets/images/logo_wonderful.png"
+                alt="Wonderful Indonesia"
+                className="h-18 w-18 object-contain"
+              />
             </Link>
 
             <button
@@ -67,7 +98,7 @@ export default function Navbar() {
           </div>
 
           <nav className="hidden items-center gap-8 md:flex ">
-            {navItems.map((item) => (
+            {navConfig.items.map((item) => (
               <NavLink
                 key={item.id}
                 to={item.path}
@@ -103,7 +134,7 @@ export default function Navbar() {
         {isMenuOpen && (
           <div className="border-t border-[#C5C8B9]/30 py-4 px-2 md:hidden">
             <nav className="grid gap-1.5">
-              {navItems.map((item) => (
+              {navConfig.items.map((item) => (
                 <NavLink
                   key={item.id}
                   to={item.path}

@@ -1,4 +1,5 @@
 import BusImage from "../assets/images/Teknologi-Modern/bus-listrik.jpg";
+import RuteImage from "../assets/images/Teknologi-Modern/rute.jpg";
 export const infraConfig = {
   header: "INFRASTRUKTUR & MOBILITAS",
   title: "Konektivitas Tanpa Batas",
@@ -13,6 +14,6 @@ export const infraConfig = {
   },
   mapCard: {
     title: "Rute Terintegrasi",
-    image: "/images/rute-map.jpg",
+    image: RuteImage,
   },
 };

@@ -4,6 +4,60 @@ import { navConfig } from "@/constants/NavData";
 import { globe, search } from "@/assets/icons";
 import Logo from "@/assets/logo/Logo_Kota_Medan.webp";
 
+const MergedShape = ({
+  fill = "#ffffff",
+  children,
+  style: containerStyle,
+  className = "",
+  ...props
+}) => (
+  <div
+    className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ${className}`}
+    style={{
+      position: "absolute",
+      width: 90,
+      height: 38,
+      ...containerStyle,
+    }}
+    {...props}
+  >
+    <div
+      style={{
+        position: "absolute",
+        left: 30,
+        top: 3,
+        width: 30,
+        height: 35,
+        backgroundColor: fill,
+        borderRadius: "18px",
+      }}
+    />
+    <div
+      style={{
+        position: "absolute",
+        left: 0,
+        top: 0,
+        width: 45,
+        height: 30,
+        backgroundColor: fill,
+        borderRadius: "18px 0 0 18px",
+      }}
+    />
+    <div
+      style={{
+        position: "absolute",
+        left: 45,
+        top: 0,
+        width: 45,
+        height: 30,
+        backgroundColor: fill,
+        borderRadius: "0 18px 18px 0",
+      }}
+    />
+    {children}
+  </div>
+);
+
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -18,7 +72,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 transition-all duration-300 left-0 right-0 z-50 px-4 md:px-8 lg:px-16 w-full ${scrolled ? "py-4" : "na"}`}
+      className={`fixed top-0 transition-all duration-300 left-0 right-0 z-50 px-4 md:px-8 lg:px-16 w-full ${scrolled ? "py-4" : "py-6"}`}
     >
       <div
         className={`mx-auto max-w-6xl transition-all duration-300 text-[#50652D] ${
@@ -103,12 +157,22 @@ export default function Navbar() {
                 key={item.id}
                 to={item.path}
                 className={({ isActive }) =>
-                  `text-[15px] font-semibold tracking-wide transition-colors hover:text-[#50652D]/60 hover:border-[#50652D]/60 hover:border-b-2 ${
-                    isActive ? "text-[#B28A32]" : ""
+                  `group relative isolate px-3 py-3 text-[15px] font-semibold tracking-normal transition-all duration-300 hover:text-white ${
+                    isActive ? "text-white" : ""
                   }`
                 }
               >
-                {item.label}
+                {({ isActive }) => (
+                  <>
+                    <MergedShape
+                      fill={isActive ? "#000000" : "#50652D"}
+                      className={`scale-75 opacity-0 transition-all duration-300 group-hover:scale-80 group-hover:opacity-100 top-[25px] ${
+                        isActive ? "opacity-30 " : ""
+                      }`}
+                    />
+                    <span className="relative z-10">{item.label}</span>
+                  </>
+                )}
               </NavLink>
             ))}
           </nav>

@@ -8,6 +8,8 @@ import imgMinangkabau from '../assets/images/Budaya-Tradisi/minangkabau.jpg';
 
 
 
+
+
 const imgHero = imgIstana;
 const imgMelayu = imgMelayudeli;
 const imgBatak = imgBatakToba;
@@ -16,12 +18,12 @@ const imgIndia = imgKuil;
 const imgJawa = imgRumahJawa;
 const imgMinang = imgMinangkabau;
 const imgTortor = imgTjongAfie;
-const imgMengalunkan = imgMesjid;
-const imgImlek = imgBarongsai;
-const imgRamadan = imgRamadanFair;
-const imgDeepavali = imgPerayaanDeevapali;
-const imgLoom = imgIstana;
-const imgUlos = imgKainUlos;
+const imgMengalunkan = imgKuil;
+const imgImlek = imgKuil;
+const imgRamadan = imgKuil;
+const imgDeepavali = imgKuil;
+const imgLoom = imgKuil;
+const imgUlos = imgKuil;
 
 export const budayaContent = {
   id: {

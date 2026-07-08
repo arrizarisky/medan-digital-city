@@ -21,7 +21,7 @@ export default function SejarahCulinary({ content, sectionRef }) {
           <p className="text-white/80 text-[16px] mb-10 leading-relaxed max-w-[500px]">
             {content.culinary.desc}
           </p>
-          <button className="self-start relative overflow-hidden px-8 py-4 bg-[#89A071] text-white font-bold text-[15px] rounded-xl transition-all duration-300 shadow-[0_10px_20px_-10px_rgba(137,160,113,0.6)] hover:shadow-[0_15px_30px_-10px_rgba(137,160,113,0.8)] hover:-translate-y-1 group/btn">
+          <button className="self-start relative overflow-hidden px-8 py-4 bg-[#50652D] text-white font-bold text-[15px] rounded-xl transition-all duration-300 shadow-[0_10px_20px_-10px_rgba(80,101,45,0.6)] hover:shadow-[0_15px_30px_-10px_rgba(80,101,45,0.8)] hover:-translate-y-1 group/btn">
             <span className="relative z-10 flex items-center gap-2">
               {content.culinary.button}
               <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />

@@ -4,7 +4,7 @@ import istanaMaimunImg from "../assets/images/istanamaimun.png";
 import TjongAfie2Img from "../assets/images/Bangunan-bersejarah/tjong-afie-mansion-2.png";
 import KulinerImg from "../assets/images/kuliner-hero.png";
 import masjidRayaImg from "../assets/images/mesjid-raya.jpg";
-import JalanTolImg from "../assets/Teknologi-Modern/jalan-tol.png";
+import JalanTolImg from "../assets/images/Teknologi-Modern/jalan-tol.png";
 
 export const exploreConfig = {
   items: [

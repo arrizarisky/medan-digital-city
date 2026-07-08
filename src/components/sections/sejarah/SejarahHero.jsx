@@ -22,10 +22,7 @@ export default function SejarahHero({ lang = "id", sectionRef }) {
           <div className="absolute bottom-0 left-0 p-6 md:p-10">
             <div className="max-w-2xl space-y-3">
               {/* Title */}
-              <h1
-                className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight"
-                style={{ fontFamily: "'Anton', sans-serif" }}
-              >
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight font-playfair">
                 {content.title}
               </h1>
 

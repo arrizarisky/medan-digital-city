@@ -5,6 +5,13 @@ import imgTjongAfie from '../assets/images/tjong-afie-mansion.png';
 import imgKuil from '../assets/images/bangunan-bersejarah/kuil.jpg';
 import imgRumahJawa from '../assets/images/Budaya-Tradisi/jawa.jpg';
 import imgMinangkabau from '../assets/images/Budaya-Tradisi/minangkabau.jpg';
+import imgTor from '../assets/images/Budaya-Tradisi/tari-tor-tor-batak.png';
+import imgMangalahat from '../assets/images/Budaya-Tradisi/manghalat-horbo.jpg'; 
+import imgCina from '../assets/images/Budaya-Tradisi/barongsai.png'; 
+import imgFair from '../assets/images/Budaya-Tradisi/ramadhan-fair.jpg'; 
+import imgIndie from '../assets/images/Budaya-Tradisi/devapali-festival-medan.png'; 
+import imgUlos1 from '../assets/images/Budaya-Tradisi/ulos-weaving-landscape.png'; 
+import imgUlos2 from '../assets/images/Budaya-Tradisi/ulos-couple-portrait.png'; 
 
 
 
@@ -15,13 +22,13 @@ const imgTionghoa = imgTjongAfie;
 const imgIndia = imgKuil;
 const imgJawa = imgRumahJawa;
 const imgMinang = imgMinangkabau;
-const imgTortor = imgTjongAfie;
-const imgMengalunkan = imgMesjid;
-const imgImlek = imgBarongsai;
-const imgRamadan = imgRamadanFair;
-const imgDeepavali = imgPerayaanDeevapali;
-const imgLoom = imgIstana;
-const imgUlos = imgKainUlos;
+const imgTortor = imgTor;
+const imgMengalunkan = imgMangalahat;
+const imgImlek = imgCina;
+const imgRamadan = imgFair;
+const imgDeepavali = imgIndie;
+const imgLoom = imgUlos1;
+const imgUlos = imgUlos2;
 
 export const budayaContent = {
   id: {

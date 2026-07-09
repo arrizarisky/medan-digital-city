@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { navConfig } from "@/constants/NavData";
+import { navConfig } from "@/constants/NavData"; // Mengikuti penulisan kapital kawanmu
 import { globe, search } from "@/assets/icons";
 import Logo from "@/assets/logo/Logo_Kota_Medan.webp";
 
@@ -69,6 +69,13 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Language toggle handler (Tetap dipertahankan)
+  const toggleLanguage = () => {
+    if (setLang) {
+      setLang((prev) => (prev === "en" ? "id" : "en"));
+    }
+  };
 
   return (
     <header
@@ -154,7 +161,7 @@ export default function Navbar() {
           <nav className="hidden items-center gap-8 md:flex ">
             {navConfig.items.map((item) => (
               <NavLink
-                key={item.id}
+                key={item.id || item.path}
                 to={item.path}
                 className={({ isActive }) =>
                   `group relative isolate px-3 py-3 text-[15px] font-semibold tracking-normal transition-all duration-300 hover:text-white ${
@@ -177,35 +184,44 @@ export default function Navbar() {
             ))}
           </nav>
 
+          {/* Fitur Search & Language Toggle Desktop (Gabungan fungsionalitas & styling) */}
           <div className="hidden items-center gap-4 md:flex">
             <div className="relative hidden lg:block">
               <div className="flex justify-center items-center gap-5">
-                <img
-                  src={search}
-                  alt="Search Icon"
-                  className="cursor-pointer hover:opacity-70 transition-opacity"
-                />
-                <img
-                  src={globe}
-                  alt="Globe Icon"
-                  className="px-6 py-2 border border-[#C5C8B9]/30 rounded-full hover:bg-white/50 transition-colors cursor-pointer"
-                />
+                <button
+                  className="hover:opacity-70 transition-opacity"
+                  aria-label="Search"
+                >
+                  <img src={search} alt="Search Icon" />
+                </button>
+                <button
+                  onClick={toggleLanguage}
+                  className="px-6 py-2 border border-[#C5C8B9]/30 rounded-full hover:bg-[#50652D]/10 transition-colors flex items-center gap-2"
+                  aria-label="Toggle Language"
+                  title={`Switch to ${lang === "id" ? "English" : "Indonesian"}`}
+                >
+                  <img src={globe} alt="Globe Icon" className="w-4 h-4" />
+                  <span className="text-sm font-semibold uppercase">
+                    {lang}
+                  </span>
+                </button>
               </div>
             </div>
           </div>
         </div>
 
+        {/* MOBILE DROPDOWN MENU */}
         {isMenuOpen && (
           <div className="border-t border-[#C5C8B9]/30 py-4 px-2 md:hidden">
             <nav className="grid gap-1.5">
               {navConfig.items.map((item) => (
                 <NavLink
-                  key={item.id}
+                  key={item.id || item.path}
                   to={item.path}
                   onClick={() => setIsMenuOpen(false)}
                   className={({ isActive }) =>
-                    `flex items-center justify-between rounded-xl px-4 py-2.5 text-sm font-medium hover:bg-white/50 transition-colors ${
-                      isActive ? "bg-white/50 text-[#B28A32]" : ""
+                    `flex items-center justify-between rounded-xl px-4 py-2.5 text-sm font-medium hover:bg-[#50652D]/10 transition-colors ${
+                      isActive ? "bg-[#50652D]/10 text-[#B28A32]" : ""
                     }`
                   }
                 >
@@ -227,17 +243,31 @@ export default function Navbar() {
                 </NavLink>
               ))}
 
-              <div className="flex items-center justify-start gap-6 px-4 pt-4 border-t border-[#C5C8B9]/30 mt-2">
-                <img
-                  src={search}
-                  alt="Search Icon"
-                  className="w-5 h-5 cursor-pointer hover:opacity-70 transition-opacity"
-                />
-                <img
-                  src={globe}
-                  alt="Globe Icon"
-                  className="w-5 h-5 cursor-pointer hover:opacity-70 transition-opacity"
-                />
+              {/* Aksesoris Tambahan di Bawah Menu Mobile */}
+              <div className="flex items-center justify-between gap-2 px-3 pt-4 border-t border-[#C5C8B9]/30 mt-2">
+                <div className="flex gap-4">
+                  <button className="hover:opacity-70 transition-opacity" aria-label="Search">
+                    <img
+                      src={search}
+                      alt="Search Icon"
+                      className="w-5 h-5"
+                    />
+                  </button>
+                  <button
+                    onClick={toggleLanguage}
+                    className="hover:opacity-70 transition-opacity flex items-center gap-1"
+                    aria-label="Toggle Language"
+                  >
+                    <img
+                      src={globe}
+                      alt="Globe Icon"
+                      className="w-5 h-5"
+                    />
+                    <span className="text-xs font-semibold uppercase">
+                      {lang}
+                    </span>
+                  </button>
+                </div>
               </div>
             </nav>
           </div>

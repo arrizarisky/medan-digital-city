@@ -1,14 +1,42 @@
+import { useState } from "react";
+import { Routes, Route, Navigate } from "react-router-dom"; // Impor sudah lengkap & benar
 import Home from "@/pages/Home";
-import Inovation from "@/pages/Inovation";
+import Sejarah from "@/pages/Sejarah";
+import Budaya from "@/pages/Budaya";
+import Wisata from "@/pages/Wisata";
 import Kuliner from "@/pages/KulinerPage";
-import { Navigate, Route, Routes } from "react-router-dom";
+import Inovation from "@/pages/Inovation";
 
 export default function AppRoutes() {
+  const [lang, setLang] = useState("id");
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Home lang={lang} setLang={setLang} />} />
+      <Route
+        path="/sejarah"
+        element={<Sejarah lang={lang} setLang={setLang} />}
+      />
+      <Route
+        path="/budaya"
+        element={<Budaya lang={lang} setLang={setLang} />}
+      />
+      <Route
+        path="/layanan"
+        element={<Budaya lang={lang} setLang={setLang} />}
+      />
+      <Route
+        path="/tentang"
+        element={<Sejarah lang={lang} setLang={setLang} />}
+      />
+      <Route
+        path="/wisata"
+        element={<Wisata lang={lang} setLang={setLang} />}
+      />
+
       <Route path="/kuliner" element={<Kuliner />} />
+      <Route path="/inovasi" element={<Inovation />} />
       <Route path="/tech" element={<Inovation />} />
+
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

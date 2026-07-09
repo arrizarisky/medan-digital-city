@@ -254,25 +254,25 @@ export const sejarahContent = {
           title: "The Malay Royalty",
           desc: "The bedrock of Medan's culture, characterized by the Deli Sultanate's refined arts, music, and the iconic yellow motifs.",
           image:
-            "https://images.unsplash.com/photo-1549474776-609ee36412e6?q=80&w=2070&auto=format&fit=crop",
+          MelayuImg
         },
         {
           title: "Batak Traditions",
           desc: "Bold and expressive, the Batak influence is seen in the intricate Ulos weaving and powerful Gondang music traditions.",
           image:
-            "https://images.unsplash.com/photo-1531234799389-dcb7651eb0a2?q=80&w=2070&auto=format&fit=crop",
+          TariTorTorImg
         },
         {
           title: "Chinese Heritage",
           desc: "Magnificent Kesawan, vibrant Chinese New Year, and delicious culinary heritage—Chinese culture is an integral part of Medan's identity.",
           image:
-            "https://images.unsplash.com/photo-1559599545-80a4c36970cc?q=80&w=2070&auto=format&fit=crop",
+            BarongsaiImg
         },
         {
           title: "Indian Traditions",
           desc: "Colorful Kampung Madras, Deepavali Festival of Lights, and aromatic spice heritage—Indian culture adorns Medan's city life.",
           image:
-            "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?q=80&w=2070&auto=format&fit=crop",
+          ThaipusamImg
         },
       ],
     },

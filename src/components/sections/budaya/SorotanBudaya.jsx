@@ -26,13 +26,13 @@ export default function SorotanBudaya({ lang = "id" }) {
               <img
                 src={content.images[0]}
                 alt="Ulos weaving process"
-                className="absolute top-0 right-0 w-[86%] h-[82%] object-cover rounded-[1.5rem] shadow-2xl z-10"
+                className="absolute top-0 right-0 w-[85%] aspect-[16/9] object-cover rounded-[1.5rem] shadow-2xl z-10"
               />
 
               <img
                 src={content.images[1]}
                 alt="Traditional Ulos attire"
-                className="absolute bottom-0 left-[4%] w-[34%] h-[42%] object-cover rounded-[1.25rem] shadow-2xl ring-[10px] ring-[#4B6431] z-20"
+                className="absolute bottom-[-5%] left-[4%] w-[35%] aspect-[2/3] object-cover rounded-[1.25rem] shadow-2xl ring-[10px] ring-[#4B6431] z-20"
               />
             </div>
           </div>

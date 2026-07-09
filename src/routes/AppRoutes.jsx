@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom"; // Impor sudah lengkap & benar
 import Home from "@/pages/Home";
 import Sejarah from "@/pages/Sejarah";
@@ -7,8 +6,7 @@ import Wisata from "@/pages/Wisata";
 import Kuliner from "@/pages/KulinerPage";
 import Inovation from "@/pages/Inovation";
 
-export default function AppRoutes() {
-  const [lang, setLang] = useState("id");
+export default function AppRoutes({ lang, setLang }) {
   return (
     <Routes>
       <Route path="/" element={<Home lang={lang} setLang={setLang} />} />

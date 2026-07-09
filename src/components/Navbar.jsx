@@ -58,7 +58,7 @@ const MergedShape = ({
   </div>
 );
 
-export default function Navbar() {
+export default function Navbar({ lang = "id", setLang }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -70,11 +70,8 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Language toggle handler
   const toggleLanguage = () => {
-    if (setLang) {
-      setLang((prev) => (prev === "en" ? "id" : "en"));
-    }
+    setLang?.((prev) => (prev === "en" ? "id" : "en"));
   };
 
   return (

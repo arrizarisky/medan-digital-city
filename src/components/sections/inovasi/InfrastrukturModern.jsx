@@ -1,4 +1,5 @@
 import { infraConfig } from "@/constants/infraData";
+import { Link } from "react-router-dom";
 
 export default function InfrastrukturModern() {
   const { header, title, mainCard, statsCard, mapCard } = infraConfig;
@@ -16,7 +17,10 @@ export default function InfrastrukturModern() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:h-[560px]">
-          <div className="lg:col-span-8 relative rounded-[32px] overflow-hidden group min-h-[400px] lg:min-h-0 shadow-lg">
+          <Link
+            to={`/inovasi/${mainCard.slug}`}
+            className="lg:col-span-8 relative rounded-[32px] overflow-hidden group min-h-[400px] lg:min-h-0 shadow-lg"
+          >
             <img
               src={mainCard.image}
               alt={mainCard.title}
@@ -31,11 +35,17 @@ export default function InfrastrukturModern() {
               <p className="text-sm md:text-base text-white/80 font-inter leading-relaxed max-w-2xl">
                 {mainCard.desc}
               </p>
+              <span className="mt-5 inline-block text-sm font-semibold text-white">
+                Lihat detail
+              </span>
             </div>
-          </div>
+          </Link>
 
           <div className="lg:col-span-4 flex flex-col gap-6">
-            <div className="flex-1 rounded-[32px] bg-[#4A5D23] p-8 relative overflow-hidden flex flex-col justify-center shadow-lg group">
+            <Link
+              to={`/inovasi/${statsCard.slug}`}
+              className="flex-1 rounded-[32px] bg-[#4A5D23] p-8 relative overflow-hidden flex flex-col justify-center shadow-lg group"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -52,10 +62,16 @@ export default function InfrastrukturModern() {
                 <p className="text-sm text-white/90 font-inter leading-relaxed">
                   {statsCard.desc}
                 </p>
+                <span className="mt-5 inline-block text-sm font-semibold text-white">
+                  Lihat detail
+                </span>
               </div>
-            </div>
+            </Link>
 
-            <div className="flex-1 relative rounded-[32px] overflow-hidden shadow-lg group min-h-[240px] lg:min-h-0">
+            <Link
+              to={`/inovasi/${mapCard.slug}`}
+              className="flex-1 relative rounded-[32px] overflow-hidden shadow-lg group min-h-[240px] lg:min-h-0"
+            >
               <img
                 src={mapCard.image}
                 alt={mapCard.title}
@@ -67,8 +83,11 @@ export default function InfrastrukturModern() {
                 <h3 className="text-xl font-bold font-montserrat text-white">
                   {mapCard.title}
                 </h3>
+                <span className="mt-3 inline-block text-sm font-semibold text-white">
+                  Lihat detail
+                </span>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </div>

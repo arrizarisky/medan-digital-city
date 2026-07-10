@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { spotConfig } from "@/constants/spotData";
 import BgPattern from "../../../assets/images/bg-landscape.webp";
 
@@ -27,8 +28,8 @@ export default function LegendarySpots() {
               {subtitle}
             </p>
           </div>
-          <a
-            href={viewAllPath}
+          <Link
+            to={viewAllPath}
             className="inline-flex items-center gap-1.5 text-xs font-bold font-inter tracking-wider uppercase text-[#B28A32] hover:text-[#50652D] transition-colors whitespace-nowrap group self-start sm:self-end"
           >
             <span>{viewAllText}</span>
@@ -46,7 +47,7 @@ export default function LegendarySpots() {
             >
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
-          </a>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

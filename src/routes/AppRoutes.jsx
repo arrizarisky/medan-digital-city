@@ -4,7 +4,9 @@ import Sejarah from "@/pages/Sejarah";
 import Budaya from "@/pages/Budaya";
 import Wisata from "@/pages/Wisata";
 import Kuliner from "@/pages/KulinerPage";
-import Inovation from "@/pages/Inovation";
+import LegendarySpotsPage from "@/pages/LegendarySpotsPage";
+import Inovation, { InovationDetail } from "@/pages/Inovation";
+import CulinaryDetail from "@/components/sections/kuliner/CulinaryDetail";
 
 export default function AppRoutes({ lang, setLang }) {
   return (
@@ -32,8 +34,12 @@ export default function AppRoutes({ lang, setLang }) {
       />
 
       <Route path="/kuliner" element={<Kuliner />} />
+      <Route path="/kuliner/legendary-spots" element={<LegendarySpotsPage />} />
+      <Route path="/kuliner/:id" element={<CulinaryDetail />} />
       <Route path="/inovasi" element={<Inovation />} />
+      <Route path="/inovasi/:slug" element={<InovationDetail />} />
       <Route path="/tech" element={<Inovation />} />
+      <Route path="/tech/:slug" element={<InovationDetail />} />
 
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

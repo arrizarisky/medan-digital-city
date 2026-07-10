@@ -1,9 +1,7 @@
-
 import LontongMedanImg from "../assets/images/kuliner/lontong-medan.png";
 import BikaAmbonImg from "../assets/images/kuliner/bika-ambon.png";
 import JusMartabeImg from "../assets/images/kuliner/martabe.png";
 import UcokDurianImg from "../assets/images/kuliner/ucok-durian.png";
-
 
 export const culinaryConfig = {
   categories: [
@@ -23,6 +21,13 @@ export const culinaryConfig = {
       imageUrl: LontongMedanImg,
       gridClass:
         "col-span-12 lg:col-span-7 aspect-[4/3] lg:aspect-auto lg:h-full",
+      // --- Detail tambahan untuk halaman detail ---
+      rating: 4.7,
+      address: "Jl. Kejaksaan, Kesawan, Medan",
+      hours: "Buka 06.00 - 22.00 WIB (Setiap Hari)",
+      priceRange: "Rp 15.000 - Rp 30.000 / porsi",
+      facilities: "Dine-in, Takeaway, Area Parkir Motor",
+      gallery: [LontongMedanImg, LontongMedanImg, LontongMedanImg],
     },
     {
       id: 2,
@@ -34,6 +39,12 @@ export const culinaryConfig = {
       imageUrl: BikaAmbonImg,
       gridClass:
         "col-span-12 sm:col-span-6 lg:col-span-5 aspect-[4/3] lg:aspect-auto",
+      rating: 4.6,
+      address: "Jl. Mojopahit, Medan",
+      hours: "Buka 08.00 - 21.00 WIB (Setiap Hari)",
+      priceRange: "Rp 45.000 - Rp 90.000 / kotak",
+      facilities: "Takeaway, Packaging Oleh-oleh, Area Parkir",
+      gallery: [BikaAmbonImg],
     },
     {
       id: 3,
@@ -45,16 +56,28 @@ export const culinaryConfig = {
       imageUrl: JusMartabeImg,
       gridClass:
         "col-span-12 sm:col-span-6 lg:col-span-5 aspect-[4/3] lg:aspect-auto",
+      rating: 4.5,
+      address: "Jl. Sei Batang Serangan, Medan",
+      hours: "Buka 09.00 - 20.00 WIB (Setiap Hari)",
+      priceRange: "Rp 15.000 - Rp 25.000 / gelas",
+      facilities: "Dine-in, Takeaway",
+      gallery: [JusMartabeImg],
     },
     {
       id: 4,
-      title: "Ucok Durian", 
-      category: "camilan", 
+      title: "Ucok Durian",
+      category: "camilan",
       tag: "Ikonik",
       isMustTry: false,
       desc: "Raja durian dengan kualitas premium yang mendunia.",
       imageUrl: UcokDurianImg,
       gridClass: "col-span-12 lg:col-span-7 aspect-[16/9] lg:aspect-auto",
+      rating: 4.8,
+      address: "Jl. K.H. Wahid Hasyim No.30-32, Medan",
+      hours: "Buka 24 Jam (Setiap Hari)",
+      priceRange: "Rp 50.000 - Rp 150.000 / orang",
+      facilities: "Area Parkir Luas, Dine-in, Takeaway, Packaging Pesawat",
+      gallery: [UcokDurianImg],
     },
   ],
 };

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { culinaryConfig } from "@/constants/culinaryData";
 
 export default function Culinary() {
@@ -49,7 +50,11 @@ export default function Culinary() {
         <div className="grid grid-cols-12 gap-5 lg:h-[550px]">
           <div className="col-span-12 lg:col-span-7 h-[350px] lg:h-full">
             {leftItem ? (
-              <div className="relative w-full h-full overflow-hidden rounded-[24px] border border-[#C5C8B9]/20 shadow-sm group hover:shadow-md transition-all duration-300">
+              <Link
+                to={`/kuliner/${leftItem.id}`}
+                className="relative block w-full h-full overflow-hidden rounded-[24px] border border-[#C5C8B9]/20 shadow-sm group hover:shadow-md transition-all duration-300"
+                aria-label={`Lihat detail ${leftItem.title}`}
+              >
                 <img
                   src={leftItem.imageUrl}
                   alt={leftItem.title}
@@ -63,7 +68,7 @@ export default function Culinary() {
                     </span>
                     {leftItem.isMustTry && (
                       <span className="rounded-md bg-[#FFF3E0] text-[#5C4033] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider inline-flex items-center gap-1">
-                        ★ Must-Try
+                        â˜… Must-Try
                       </span>
                     )}
                   </div>
@@ -74,7 +79,7 @@ export default function Culinary() {
                     {leftItem.desc}
                   </p>
                 </div>
-              </div>
+              </Link>
             ) : (
               <div className="w-full h-full rounded-[24px] border border-dashed border-[#C5C8B9] flex items-center justify-center text-xs text-neutral-400">
                 Tidak ada menu berat
@@ -86,9 +91,11 @@ export default function Culinary() {
             <div className="grid grid-cols-2 gap-5 flex-1 min-h-[200px] lg:min-h-0">
               {topRightItems.length > 0 ? (
                 topRightItems.map((menu) => (
-                  <div
+                  <Link
                     key={menu.id}
-                    className="relative overflow-hidden rounded-[24px] border border-[#C5C8B9]/20 shadow-sm group hover:shadow-md transition-all duration-300 col-span-2 sm:col-span-1"
+                    to={`/kuliner/${menu.id}`}
+                    className="relative block overflow-hidden rounded-[24px] border border-[#C5C8B9]/20 shadow-sm group hover:shadow-md transition-all duration-300 col-span-2 sm:col-span-1"
+                    aria-label={`Lihat detail ${menu.title}`}
                   >
                     <img
                       src={menu.imageUrl}
@@ -107,7 +114,7 @@ export default function Culinary() {
                         {menu.desc}
                       </p>
                     </div>
-                  </div>
+                  </Link>
                 ))
               ) : (
                 <div className="col-span-2 w-full h-full rounded-[24px] border border-dashed border-[#C5C8B9] flex items-center justify-center text-xs text-neutral-400">
@@ -118,7 +125,11 @@ export default function Culinary() {
 
             <div className="flex-1 min-h-[160px] lg:min-h-0">
               {bottomRightItem ? (
-                <div className="relative w-full h-full overflow-hidden rounded-[24px] border border-[#C5C8B9]/20 shadow-sm group hover:shadow-md transition-all duration-300">
+                <Link
+                  to={`/kuliner/${bottomRightItem.id}`}
+                  className="relative block w-full h-full overflow-hidden rounded-[24px] border border-[#C5C8B9]/20 shadow-sm group hover:shadow-md transition-all duration-300"
+                  aria-label={`Lihat detail ${bottomRightItem.title}`}
+                >
                   <img
                     src={bottomRightItem.imageUrl}
                     alt={bottomRightItem.title}
@@ -136,7 +147,7 @@ export default function Culinary() {
                       {bottomRightItem.desc}
                     </p>
                   </div>
-                </div>
+                </Link>
               ) : (
                 <div className="w-full h-full rounded-[24px] border border-dashed border-[#C5C8B9] flex items-center justify-center text-xs text-neutral-400">
                   Tidak ada kuliner ikonik

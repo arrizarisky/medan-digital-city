@@ -18,9 +18,15 @@ export default function Culinary() {
   const bottomRightItem = filteredItems.find((item) => item.id === 4);
 
   return (
-    <section className="w-full bg-[#FAFAF4] py-16 px-4 md:px-8 lg:px-16 text-[#50652D]">
+    <section
+      data-gsap-section
+      className="w-full bg-[#FAFAF4] py-16 px-4 md:px-8 lg:px-16 text-[#50652D]"
+    >
       <div className="mx-auto max-w-6xl">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-10">
+        <div
+          data-gsap-reveal
+          className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-10"
+        >
           <div>
             <h2 className="text-3xl font-bold font-montserrat tracking-tight text-[#50652D] mb-2">
               Kategori Kuliner
@@ -51,11 +57,13 @@ export default function Culinary() {
           <div className="col-span-12 lg:col-span-7 h-[350px] lg:h-full">
             {leftItem ? (
               <Link
+                data-gsap-reveal
                 to={`/kuliner/${leftItem.id}`}
                 className="relative block w-full h-full overflow-hidden rounded-[24px] border border-[#C5C8B9]/20 shadow-sm group hover:shadow-md transition-all duration-300"
                 aria-label={`Lihat detail ${leftItem.title}`}
               >
                 <img
+                  data-gsap-image
                   src={leftItem.imageUrl}
                   alt={leftItem.title}
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-103"
@@ -68,7 +76,7 @@ export default function Culinary() {
                     </span>
                     {leftItem.isMustTry && (
                       <span className="rounded-md bg-[#FFF3E0] text-[#5C4033] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider inline-flex items-center gap-1">
-                        â˜… Must-Try
+                        <span className="w-2 h-2 bg-[#5C4033] rounded-full" /> Must-Try
                       </span>
                     )}
                   </div>
@@ -93,11 +101,13 @@ export default function Culinary() {
                 topRightItems.map((menu) => (
                   <Link
                     key={menu.id}
+                    data-gsap-reveal
                     to={`/kuliner/${menu.id}`}
                     className="relative block overflow-hidden rounded-[24px] border border-[#C5C8B9]/20 shadow-sm group hover:shadow-md transition-all duration-300 col-span-2 sm:col-span-1"
                     aria-label={`Lihat detail ${menu.title}`}
                   >
                     <img
+                      data-gsap-image
                       src={menu.imageUrl}
                       alt={menu.title}
                       className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-103"
@@ -126,11 +136,13 @@ export default function Culinary() {
             <div className="flex-1 min-h-[160px] lg:min-h-0">
               {bottomRightItem ? (
                 <Link
+                  data-gsap-reveal
                   to={`/kuliner/${bottomRightItem.id}`}
                   className="relative block w-full h-full overflow-hidden rounded-[24px] border border-[#C5C8B9]/20 shadow-sm group hover:shadow-md transition-all duration-300"
                   aria-label={`Lihat detail ${bottomRightItem.title}`}
                 >
                   <img
+                    data-gsap-image
                     src={bottomRightItem.imageUrl}
                     alt={bottomRightItem.title}
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-103"

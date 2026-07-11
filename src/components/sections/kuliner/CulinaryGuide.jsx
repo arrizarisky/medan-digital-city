@@ -45,7 +45,10 @@ export default function CulinaryGuide() {
   const { title, subtitle, items } = guideConfig;
 
   return (
-    <section className="relative w-full bg-[#FAFAF4] py-20 px-4 md:px-8 lg:px-16 text-[#50652D] overflow-hidden">
+    <section
+      data-gsap-section
+      className="relative w-full bg-[#FAFAF4] py-20 px-4 md:px-8 lg:px-16 text-[#50652D] overflow-hidden"
+    >
       <div
         className="absolute inset-0 opacity-[0.06] pointer-events-none z-0"
         style={{
@@ -57,7 +60,10 @@ export default function CulinaryGuide() {
       />
 
       <div className="relative z-10 mx-auto max-w-6xl">
-        <div className="text-center max-w-3xl mx-auto mb-16 px-4">
+        <div
+          data-gsap-reveal
+          className="text-center max-w-3xl mx-auto mb-16 px-4"
+        >
           <h2 className="text-3xl font-bold font-montserrat tracking-tight text-[#50652D] mb-4">
             {title}
           </h2>
@@ -70,6 +76,7 @@ export default function CulinaryGuide() {
           {items.map((card) => (
             <div
               key={card.id}
+              data-gsap-reveal
               className={`flex flex-col justify-between rounded-[28px] p-8 border border-[#C5C8B9]/20 shadow-sm min-h-[340px] ${card.cardClass}`}
             >
               <div className="flex flex-col gap-5">

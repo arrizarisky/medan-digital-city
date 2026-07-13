@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { spotConfig } from "@/constants/spotData";
 import BgPattern from "../../../assets/images/bg-landscape.webp";
 
@@ -6,7 +7,10 @@ export default function LegendarySpots() {
     spotConfig;
 
   return (
-    <section className="relative w-full bg-[#FAFAF4] py-20 px-4 md:px-8 lg:px-16 text-[#50652D] overflow-hidden">
+    <section
+      data-gsap-section
+      className="relative w-full bg-[#FAFAF4] py-20 px-4 md:px-8 lg:px-16 text-[#50652D] overflow-hidden"
+    >
       <div
         className="absolute inset-0 opacity-[0.1] pointer-events-none z-0"
         style={{
@@ -18,7 +22,10 @@ export default function LegendarySpots() {
       />
 
       <div className="relative z-10 mx-auto max-w-6xl">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+        <div
+          data-gsap-reveal
+          className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12"
+        >
           <div className="max-w-xl">
             <h2 className="text-3xl font-bold font-montserrat tracking-tight text-[#50652D] mb-3">
               {title}
@@ -27,8 +34,8 @@ export default function LegendarySpots() {
               {subtitle}
             </p>
           </div>
-          <a
-            href={viewAllPath}
+          <Link
+            to={viewAllPath}
             className="inline-flex items-center gap-1.5 text-xs font-bold font-inter tracking-wider uppercase text-[#B28A32] hover:text-[#50652D] transition-colors whitespace-nowrap group self-start sm:self-end"
           >
             <span>{viewAllText}</span>
@@ -46,17 +53,19 @@ export default function LegendarySpots() {
             >
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
-          </a>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {items.map((spot) => (
             <div
               key={spot.id}
+              data-gsap-reveal
               className="flex flex-col bg-white rounded-[24px] border border-[#C5C8B9]/30 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300"
             >
               <div className="relative w-full aspect-[16/10] overflow-hidden">
                 <img
+                  data-gsap-image
                   src={spot.imageUrl}
                   alt={spot.title}
                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-103"

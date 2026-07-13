@@ -1,4 +1,5 @@
 import { digitalConfig } from "@/constants/digitalData";
+import { Link } from "react-router-dom";
 
 export default function DigitalisasiLayanan() {
   const { header, title, cards, banner } = digitalConfig;
@@ -17,8 +18,9 @@ export default function DigitalisasiLayanan() {
 
             <div className="flex flex-col gap-5">
               {cards.map((card) => (
-                <div
+                <Link
                   key={card.id}
+                  to={`/inovasi/${card.slug}`}
                   className="bg-white rounded-[24px] p-6 flex gap-5 items-start shadow-sm"
                 >
                   <div
@@ -33,8 +35,11 @@ export default function DigitalisasiLayanan() {
                     <p className="text-sm text-neutral-600 font-inter leading-relaxed">
                       {card.desc}
                     </p>
+                    <span className="mt-4 inline-block text-sm font-semibold text-[#50652D]">
+                      Lihat detail
+                    </span>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>

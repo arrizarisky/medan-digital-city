@@ -24,8 +24,25 @@ export const digitalConfig = {
   cards: [
     {
       id: 1,
+      slug: "bapenda-digital",
       title: "Bapenda Digital",
       desc: "Sistem perpajakan kota yang transparan dan instan, memudahkan warga berkontribusi bagi pembangunan melalui satu pintu digital.",
+      category: "E-Government",
+      date: "Transformasi layanan publik",
+      image: BapendaImg,
+      location: "Kota Medan",
+      highlight:
+        "Digitalisasi pajak daerah membantu warga dan pelaku usaha mengakses pembayaran, pelaporan, dan informasi pajak dengan proses yang lebih ringkas.",
+      content: [
+        "Bapenda Digital menjadi salah satu wajah transformasi layanan publik di Medan. Pendekatan ini menempatkan kanal pembayaran digital sebagai pintu masuk agar masyarakat tidak lagi bergantung pada proses manual yang memakan waktu.",
+        "Melalui dukungan QRIS, virtual account, dan sistem informasi pajak daerah, proses administrasi dapat dilacak lebih transparan. Inovasi ini juga membantu pemerintah kota memperkuat akuntabilitas penerimaan daerah untuk membiayai pembangunan.",
+        "Bagi pelaku usaha, layanan digital seperti ini penting karena kewajiban pajak dapat diselesaikan dengan bukti transaksi yang lebih rapi, cepat, dan mudah diarsipkan."
+      ],
+      news: [
+        "Pemanfaatan kanal pembayaran non-tunai untuk pajak daerah.",
+        "Peningkatan transparansi data penerimaan melalui layanan digital.",
+        "Kemudahan akses bagi warga tanpa harus selalu datang ke kantor layanan."
+      ],
       iconBg: "bg-[#8A9C69]",
       iconColor: "text-[#2A3B19]",
       icon: createIcon([
@@ -35,8 +52,25 @@ export const digitalConfig = {
     },
     {
       id: 2,
+      slug: "pasar-petisah-4-0",
       title: "Pasar Petisah 4.0",
       desc: "Modernisasi transaksi non-tunai di Pasar Petisah untuk akuntabilitas dan efisiensi pedagang lokal menyongsong era ekonomi digital.",
+      category: "Ekonomi Digital",
+      date: "Digitalisasi pasar tradisional",
+      image: BapendaImg,
+      location: "Pasar Petisah, Medan",
+      highlight:
+        "Modernisasi pasar mendorong pedagang lokal memakai transaksi non-tunai sehingga pencatatan usaha menjadi lebih praktis dan pembeli punya pilihan pembayaran yang lebih luas.",
+      content: [
+        "Pasar Petisah 4.0 menggambarkan arah baru pasar tradisional di Medan: tetap dekat dengan aktivitas ekonomi rakyat, tetapi mulai diperkuat oleh transaksi digital dan pencatatan yang lebih tertib.",
+        "Penerapan pembayaran non-tunai seperti QRIS membantu pedagang menerima pembayaran dari berbagai aplikasi keuangan. Cara ini mengurangi ketergantungan pada uang tunai dan mempercepat proses jual beli di area pasar yang padat.",
+        "Inovasi pasar digital juga membuka peluang pengembangan data ekonomi lokal, mulai dari pola transaksi, kebutuhan pedagang, hingga program pendampingan UMKM yang lebih tepat sasaran."
+      ],
+      news: [
+        "Dorongan penggunaan QRIS untuk transaksi pasar.",
+        "Peluang integrasi data UMKM dan pedagang tradisional.",
+        "Pengalaman belanja yang lebih cepat bagi pengunjung pasar."
+      ],
       iconBg: "bg-[#F3D78B]",
       iconColor: "text-[#5C4033]",
       icon: createIcon([

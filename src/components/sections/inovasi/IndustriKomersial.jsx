@@ -1,4 +1,5 @@
 import { economyConfig } from "@/constants/economyData";
+import { Link } from "react-router-dom";
 
 export default function IndustriKomersial() {
   const { header, title, desc, features, cards } = economyConfig;
@@ -47,8 +48,9 @@ export default function IndustriKomersial() {
 
           <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
             {cards.map((card) => (
-              <div
+              <Link
                 key={card.id}
+                to={`/inovasi/${card.slug}`}
                 className="bg-white rounded-[28px] overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col"
               >
                 <div className="w-full h-48 sm:h-56 overflow-hidden p-3 pb-0">
@@ -66,8 +68,11 @@ export default function IndustriKomersial() {
                   <p className="text-sm text-neutral-500 font-inter leading-relaxed">
                     {card.desc}
                   </p>
+                  <span className="mt-5 inline-block text-sm font-semibold text-[#50652D]">
+                    Lihat detail
+                  </span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

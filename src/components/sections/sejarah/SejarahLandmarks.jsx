@@ -32,27 +32,27 @@ export default function SejarahLandmarks({
     });
   }, [landmarks]);
 
-  // Navigation handlers with animation lock
+  // Navigation handlers — dinamis berdasarkan landmarks.length
   const goNext = () => {
     if (isAnimating) return;
     setIsAnimating(true);
-    setActiveIndex((prev) => (prev + 1) % 3);
+    setActiveIndex((prev) => (prev + 1) % landmarks.length);
     setTimeout(() => setIsAnimating(false), 500);
   };
 
   const goPrev = () => {
     if (isAnimating) return;
     setIsAnimating(true);
-    setActiveIndex((prev) => (prev + 2) % 3);
+    setActiveIndex((prev) => (prev + landmarks.length - 1) % landmarks.length);
     setTimeout(() => setIsAnimating(false), 500);
   };
 
-  // Position calculations for 3 items
+  // Position calculations — dinamis berdasarkan landmarks.length
   const getPositionData = () => {
     return {
       center: activeIndex,
-      left: (activeIndex + 2) % 3,
-      right: (activeIndex + 1) % 3,
+      left: (activeIndex + landmarks.length - 1) % landmarks.length,
+      right: (activeIndex + 1) % landmarks.length,
     };
   };
 
@@ -103,7 +103,16 @@ export default function SejarahLandmarks({
           bottom: isMobile ? "30%" : "10%",
         };
       default:
-        return baseStyle;
+        // Slide ke-4, ke-5, dst disembunyikan agar tidak menumpuk
+        return {
+          ...baseStyle,
+          opacity: 0,
+          pointerEvents: "none",
+          zIndex: 0,
+          left: "50%",
+          height: "0%",
+          bottom: "0%",
+        };
     }
   };
 

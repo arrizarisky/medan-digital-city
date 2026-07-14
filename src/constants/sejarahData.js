@@ -2,6 +2,9 @@ import istanamaimun from "../assets/istanamaimun.png";
 import is3dImg from "../assets/images/3d/is3d.png";
 import mjdImg from "../assets/images/3d/mjd.png";
 import tirImg from "../assets/images/3d/tir.png";
+import ptLondonImg from "../assets/images/3d/pt-london.png";
+import posIndoImg from "../assets/images/3d/pos-indo.png";
+import tjongAfie3dImg from "../assets/images/3d/tjongafie3d.png";
 
 import MelayuImg from "../assets/images/Budaya-Tradisi/Melayu-deli.png"
 import TariTorTorImg from "../assets/images/Budaya-Tradisi/tari-tor-tor-batak.png"
@@ -436,6 +439,48 @@ export const landmark3DData = [
     longDesc: {
       id: "Menara Air Tirtanadi didirikan pada tahun 1908 oleh pemerintah Belanda dengan nama NV Waterleiding Maatschappij Aert Berceh. Pada masanya, menara ini merupakan sarana vital bagi kebutuhan air bersih di kota Medan. Dengan tinggi dan arsitekturnya yang khas, menara air ini bukan hanya bernilai fungsional, tetapi telah lama diakui sebagai tengara yang tidak bisa dipisahkan dari citra kota Medan.",
       en: "The Tirtanadi Water Tower was established in 1908 by the Dutch government under the name NV Waterleiding Maatschappij Aert Berceh. In its time, this tower was a vital facility for clean water in Medan. With its distinctive height and architecture, it holds not only functional value but has long been recognized as an inseparable landmark of Medan's city image.",
+    },
+  },
+  {
+    id: "ptlondon",
+    src: ptLondonImg,
+    year: "1906",
+    title: { id: "Gedung PT London Sumatra", en: "PT London Sumatra Building" },
+    shortDesc: {
+      id: "Gedung bergaya Edwardian kolonial Inggris di jantung Kesawan, bangunan pertama di Medan yang menggunakan lift.",
+      en: "An Edwardian-style colonial building in the heart of Kesawan, the first building in Medan to feature an elevator.",
+    },
+    longDesc: {
+      id: "Dibangun oleh perusahaan perkebunan Inggris Harrisons & Crosfield pada awal abad ke-20, Gedung PT London Sumatra berdiri megah di kawasan Kesawan sebagai lambang dominasi industri perkebunan kolonial. Gaya arsitekturnya mencerminkan estetika Edwardian—percampuran klasik Eropa dan modernitas awal—yang lazim di era kejayaan Inggris. Keistimewaan terbesarnya: gedung ini merupakan bangunan pertama di Kota Medan yang dilengkapi dengan lift (elevator) berkonstruksi sangkar besi, sebuah kemewahan teknologi pada zamannya. Hingga kini, gedung ini masih berdiri kokoh dan aktif digunakan sebagai kompleks perkantoran komersial.",
+      en: "Built by the British plantation company Harrisons & Crosfield in the early 20th century, the PT London Sumatra Building stands majestically in the Kesawan district as a symbol of colonial plantation industry dominance. Its architectural style reflects Edwardian aesthetics—a blend of European classicism and early modernism—common during the height of British prestige. Its greatest distinction: this was the very first building in Medan to be equipped with an elevator, a technological luxury of its time. To this day, the building stands firm and remains actively used as a commercial office complex.",
+    },
+  },
+  {
+    id: "posbloc",
+    src: posIndoImg,
+    year: "1911",
+    title: { id: "Pos Bloc Medan (Kantor Pos Besar)", en: "Pos Bloc Medan (Central Post Office)" },
+    shortDesc: {
+      id: "Warisan arsitektur kolonial karya Snuyf yang bertransformasi menjadi ruang kreatif publik tanpa melepas nilai heritage-nya.",
+      en: "A colonial architectural gem by Snuyf, transformed into a vibrant public creative space without abandoning its heritage soul.",
+    },
+    longDesc: {
+      id: "Kantor Pos Besar Medan dibangun pada era kolonial Belanda dan dirancang oleh arsitek terkemuka Simon Snuyf, yang saat itu menjabat sebagai Direktur Pekerjaan Umum Belanda untuk Hindia Belanda. Dengan bentuk geometris yang tegas dan kubah ikonis di puncaknya, bangunan ini adalah mahakarya transisi antara gaya klasik dan modernisme awal. Selama puluhan tahun melayani masyarakat sebagai pusat layanan pos, gedung ini kemudian mengalami revitalisasi menjadi Pos Bloc Medan—sebuah ruang kreatif publik yang memadukan kafe, galeri seni, dan pertunjukan budaya. Transformasi ini membuktikan bahwa sebuah warisan heritage dapat bernapas dalam zaman yang terus berubah.",
+      en: "The Medan Central Post Office was built during the Dutch colonial era, designed by the prominent architect Simon Snuyf, who served as the Dutch Director of Public Works for the Dutch East Indies. With its assertive geometric forms and iconic dome, the building is a masterpiece of the transition between classical and early modern styles. After decades of serving the community as a postal service hub, the building was revitalized into Pos Bloc Medan—a vibrant public creative space housing cafés, art galleries, and cultural performances. This transformation proves that a heritage landmark can breathe and thrive in an ever-changing era.",
+    },
+  },
+  {
+    id: "tjongafie3d",
+    src: tjongAfie3dImg,
+    year: "1895",
+    title: { id: "Rumah Tjong A Fie", en: "Tjong A Fie Mansion" },
+    shortDesc: {
+      id: "Kediaman megah saudagar multi-etnis Tjong A Fie yang memadukan arsitektur Tiongkok, Melayu, dan Eropa sebagai simbol harmoni.",
+      en: "The grand mansion of multi-ethnic merchant Tjong A Fie, blending Chinese, Malay, and European architecture as a symbol of harmony.",
+    },
+    longDesc: {
+      id: "Rumah Tjong A Fie adalah bukti nyata kerukunan multi-etnis yang menjadi jiwa Kota Medan. Dibangun pada 1895 sebagai kediaman Tjong A Fie—seorang saudagar besar, filantropis, dan tokoh paling berpengaruh di Medan pada masanya—rumah dua lantai dengan 35 kamar ini merupakan simfoni tiga budaya dalam satu atap. Eksteriornya memperlihatkan ornamen khas Tiongkok yang rinci, namun interiornya mengalir dengan elemen Melayu yang anggun dan sentuhan Eropa yang elegan. Tjong A Fie bukan hanya membangun gedung; ia membangun jembatan antar peradaban. Kini, rumah ini beroperasi sebagai museum yang melestarikan warisan luar biasa seorang tokoh yang pernah menyatukan Medan.",
+      en: "The Tjong A Fie Mansion stands as living proof of the multi-ethnic harmony that defines the soul of Medan. Built in 1895 as the residence of Tjong A Fie—a great merchant, philanthropist, and the most influential figure in Medan of his era—this two-story house with 35 rooms is a symphony of three cultures under one roof. Its exterior showcases intricate Chinese ornamentation, while its interior flows with elegant Malay elements and refined European touches. Tjong A Fie did not merely build a house; he built a bridge between civilizations. Today, the mansion operates as a museum preserving the extraordinary legacy of a man who once united Medan.",
     },
   },
 ];

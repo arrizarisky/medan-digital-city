@@ -1,4 +1,5 @@
 import { Calendar as CalendarIcon, ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function SejarahCalendar({ content, sectionRef }) {
   return (
@@ -14,9 +15,10 @@ export default function SejarahCalendar({ content, sectionRef }) {
             </div>
             <h3 className="text-[24px] font-extrabold text-[#222]">{content.calendar.title}</h3>
           </div>
-          <button className="text-[14px] font-bold text-[#526344] flex items-center gap-1 hover:text-[#3d4a32] hover:bg-[#526344]/10 px-4 py-2 rounded-full transition-all duration-300">
+          <Link to="/kalender-budaya" className="text-[14px] font-bold text-[#526344] flex items-center gap-1 hover:text-[#3d4a32] hover:bg-[#526344]/10 px-4 py-2 rounded-full transition-all duration-300">
             {content.calendar.viewAll}
-          </button>
+          </Link>
+
         </div>
 
         <div className="space-y-0">

@@ -1,5 +1,6 @@
 import { budayaContent } from "@/constants/budayaData";
 import { Drama, Music2 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function SeniTariMusik({ lang = "id", sectionRef }) {
   const content = budayaContent[lang].seni;
@@ -13,9 +14,9 @@ export default function SeniTariMusik({ lang = "id", sectionRef }) {
               {content.title}
             </h2>
           </div>
-          <button className="text-zinc-900 font-semibold border-b-2 border-zinc-900 pb-1 hover:text-zinc-600 hover:border-zinc-600 transition-colors inline-flex items-center gap-2">
+          <Link to="/galeri-seni" className="text-zinc-900 font-semibold border-b-2 border-zinc-900 pb-1 hover:text-zinc-600 hover:border-zinc-600 transition-colors inline-flex items-center gap-2">
             {content.cta} <span aria-hidden="true">&rarr;</span>
-          </button>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">

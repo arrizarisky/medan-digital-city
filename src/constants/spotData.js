@@ -9,7 +9,7 @@ export const spotConfig = {
   subtitle:
     "Tempat-tempat makan yang telah berdiri puluhan tahun dan menjadi identitas kuliner Kota Medan.",
   viewAllText: "Lihat Semua Lokasi",
-  viewAllPath: "/semua-lokasi",
+  viewAllPath: "/kuliner/legendary-spots",
   bgPattern: BgLandscapeImg,
   items: [
     {

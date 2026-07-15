@@ -7,6 +7,7 @@ import Kuliner from "@/pages/KulinerPage";
 import LegendarySpotsPage from "@/pages/LegendarySpotsPage";
 import Inovation, { InovationDetail } from "@/pages/Inovation";
 import CulinaryDetail from "@/components/sections/kuliner/CulinaryDetail";
+import ExploreMap from "@/pages/ExploreMaps";
 
 export default function AppRoutes({ lang, setLang }) {
   return (
@@ -40,6 +41,7 @@ export default function AppRoutes({ lang, setLang }) {
       <Route path="/inovasi/:slug" element={<InovationDetail />} />
       <Route path="/tech" element={<Inovation />} />
       <Route path="/tech/:slug" element={<InovationDetail />} />
+      <Route path="/peta-eksplorasi" element={<ExploreMap />} />
 
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

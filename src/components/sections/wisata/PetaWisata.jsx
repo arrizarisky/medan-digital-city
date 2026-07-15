@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { wisataContent } from '@/constants/wisataData';
 
 // ── Map Placeholder Visual ────────────────────────────────────
@@ -184,10 +185,10 @@ export default function PetaWisata({ lang = 'id', sectionRef }) {
 
             {/* CTA Button — subtle */}
             <div className="pt-2">
-              <button
-                disabled
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[#50652D]/10 text-[#50652D] text-sm font-semibold rounded-xl border border-[#50652D]/20 opacity-70 cursor-not-allowed"
-                title="Segera hadir"
+              <Link
+                to="/peta-eksplorasi"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#50652D]/10 text-[#50652D] text-sm font-semibold rounded-xl border border-[#50652D]/20 hover:bg-[#50652D]/20 transition-colors"
+                title={lang === 'id' ? 'Buka peta eksplorasi' : 'Open exploration map'}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -205,7 +206,7 @@ export default function PetaWisata({ lang = 'id', sectionRef }) {
                   <path d="M15 7v13" />
                 </svg>
                 {lang === 'id' ? 'Buka Peta Interaktif' : 'Open Interactive Map'}
-              </button>
+              </Link>
             </div>
           </div>
 

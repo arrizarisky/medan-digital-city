@@ -1,27 +1,31 @@
 import { economyConfig } from "@/constants/economyData";
 import { Link } from "react-router-dom";
+import GsapScrollReveal from "@/components/ui/gsap-scroll-reveal";
+import { VerticalCutReveal } from "@/components/ui/vertical-cut-reveal";
 
 export default function IndustriKomersial() {
   const { header, title, desc, features, cards } = economyConfig;
 
   return (
-    <section className="w-full bg-white py-16 px-4 md:px-8 lg:px-16">
-      <div className="mx-auto max-w-7xl bg-[#F0EFEA] rounded-[40px] p-8 md:p-12 lg:p-16">
+    <GsapScrollReveal className="w-full bg-white py-16 px-4 md:px-8 lg:px-16">
+      <div className="mx-auto max-w-7xl bg-[#F0EFEA] rounded-[40px] p-8 md:p-12 lg:p-16" data-gsap-section>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           <div className="lg:col-span-5 flex flex-col justify-center">
-            <span className="text-[#967634] text-xs font-bold uppercase tracking-widest mb-4 block">
+            <span className="text-[#967634] text-xs font-bold uppercase tracking-widest mb-4 block" data-gsap-reveal>
               {header}
             </span>
-            <h2 className="text-3xl md:text-4xl lg:text-[40px] font-bold font-montserrat text-neutral-900 leading-[1.2] mb-6">
-              {title}
+            <h2 className="text-3xl md:text-4xl lg:text-[40px] font-bold font-montserrat text-neutral-900 leading-[1.2] mb-6" data-gsap-reveal>
+              <VerticalCutReveal splitBy="words" staggerDuration={0.05} autoStart={true}>
+                {title}
+              </VerticalCutReveal>
             </h2>
-            <p className="text-sm md:text-base text-neutral-600 font-inter leading-relaxed mb-8 max-w-md">
+            <p className="text-sm md:text-base text-neutral-600 font-inter leading-relaxed mb-8 max-w-md" data-gsap-reveal>
               {desc}
             </p>
 
             <ul className="flex flex-col gap-4">
               {features.map((feature, index) => (
-                <li key={index} className="flex items-center gap-3">
+                <li key={index} className="flex items-center gap-3" data-gsap-reveal>
                   <div className="shrink-0 text-[#50652D]">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -52,12 +56,14 @@ export default function IndustriKomersial() {
                 key={card.id}
                 to={`/inovasi/${card.slug}`}
                 className="bg-white rounded-[28px] overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col"
+                data-gsap-reveal
               >
                 <div className="w-full h-48 sm:h-56 overflow-hidden p-3 pb-0">
                   <img
                     src={card.image}
                     alt={card.title}
                     className="w-full h-full object-cover rounded-[20px] transition-transform duration-500 hover:scale-105"
+                    data-gsap-image
                   />
                 </div>
 
@@ -77,6 +83,6 @@ export default function IndustriKomersial() {
           </div>
         </div>
       </div>
-    </section>
+    </GsapScrollReveal>
   );
 }

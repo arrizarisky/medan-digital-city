@@ -9,6 +9,7 @@ import { economyConfig } from "@/constants/economyData";
 import { infraConfig } from "@/constants/infraData";
 import { ArrowLeft, CalendarDays, MapPin, Newspaper, Sparkles } from "lucide-react";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import GsapScrollReveal from "@/components/ui/gsap-scroll-reveal";
 
 const innovationItems = [
   ...digitalConfig.cards,
@@ -22,10 +23,12 @@ export default function Inovation() {
   return (
     <main>
       <Navbar />
-      <Hero />
-      <DigitalisasiLayanan />
-      <InfrastrukturModern />
-      <IndustriKomersial />
+      <GsapScrollReveal>
+        <Hero />
+        <DigitalisasiLayanan />
+        <InfrastrukturModern />
+        <IndustriKomersial />
+      </GsapScrollReveal>
       <Footer />
     </main>
   );

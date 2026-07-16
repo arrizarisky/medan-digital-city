@@ -5,18 +5,13 @@ import Budaya from "@/pages/Budaya";
 import Wisata from "@/pages/Wisata";
 import Kuliner from "@/pages/KulinerPage";
 
-// Rute Baru dari Server (Updated upstream)
+// Rute Hasil Penggabungan (Inovasi & Peta dari Main)
 import LegendarySpotsPage from "@/pages/LegendarySpotsPage";
 import Inovation, { InovationDetail } from "@/pages/Inovation";
 import CulinaryDetail from "@/components/sections/kuliner/CulinaryDetail";
 import ExploreMap from "@/pages/ExploreMaps";
 
-// Rute Fitur Budaya Kamu (Stashed changes)
-import KalenderBudaya from "@/pages/KalenderBudaya";
-import GaleriSeni from "@/pages/GaleriSeni";
-import DetailEtnis from "@/pages/DetailEtnis";
-
-// Rute Fitur Budaya Kamu (Stashed changes)
+// Rute Fitur Budaya & Galeri (Dari Stash Lokal Kamu)
 import KalenderBudaya from "@/pages/KalenderBudaya";
 import GaleriSeni from "@/pages/GaleriSeni";
 import DetailEtnis from "@/pages/DetailEtnis";
@@ -58,15 +53,21 @@ export default function AppRoutes({ lang, setLang }) {
         element={<Wisata lang={lang} setLang={setLang} />}
       />
 
+      {/* Rute Kuliner */}
       <Route path="/kuliner" element={<Kuliner />} />
       <Route path="/kuliner/legendary-spots" element={<LegendarySpotsPage />} />
       <Route path="/kuliner/:id" element={<CulinaryDetail />} />
+      
+      {/* Rute Inovasi & Tech */}
       <Route path="/inovasi" element={<Inovation />} />
       <Route path="/inovasi/:slug" element={<InovationDetail />} />
       <Route path="/tech" element={<Inovation />} />
       <Route path="/tech/:slug" element={<InovationDetail />} />
+      
+      {/* Rute GIS / Peta Eksplorasi */}
       <Route path="/peta-eksplorasi" element={<ExploreMap />} />
 
+      {/* Fallback Rute */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

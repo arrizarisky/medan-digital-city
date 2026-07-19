@@ -3,7 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { etnisDetailData } from '@/constants/etnisData';
-import { ArrowLeft, ArrowRight, Share } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
+import iconPantun from '@/assets/icons/paper.svg';
 
 export default function DetailEtnis({ lang, setLang }) {
   const { slug } = useParams();
@@ -37,7 +38,7 @@ export default function DetailEtnis({ lang, setLang }) {
       {/* ═══════════════════════════════════════════════ */}
       {/* 1. HERO HEADER MEGAH */}
       {/* ═══════════════════════════════════════════════ */}
-      <section className="relative h-[85vh] md:h-[90vh] w-full overflow-hidden flex flex-col items-center justify-center text-center">
+      <section className="relative h-screen w-full overflow-hidden flex flex-col items-center justify-center text-center">
         <img 
           src={data.heroImage} 
           alt={data.heroTitle} 
@@ -145,14 +146,9 @@ export default function DetailEtnis({ lang, setLang }) {
 
             {/* Kolom Kanan (35% / 1 col): Info Minimalis Tari */}
             <div className="lg:col-span-1 bg-[#FDFCF8] rounded-3xl p-8 border border-[#EBEBE6] shadow-sm relative flex flex-col lg:h-[400px]">
-              <div className="text-[#B28A32] mb-8 bg-[#F4DBA4]/20 w-14 h-14 rounded-2xl flex items-center justify-center">
+              <div className="text-white mb-8 bg-[#B28A32] shadow-md w-14 h-14 rounded-2xl flex items-center justify-center">
                 {/* Ikon Topeng Kebudayaan */}
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M2 12a10 10 0 1 0 20 0 10 10 0 1 0-20 0"/>
-                  <path d="M8 9a2 2 0 1 0 0 4 2 2 0 1 0 0-4"/>
-                  <path d="M16 9a2 2 0 1 0 0 4 2 2 0 1 0 0-4"/>
-                  <path d="M12 17c-2.5 0-4.5-1-4.5-2 0-1 2-2 4.5-2s4.5 1 4.5 2c0 1-2 2-4.5 2Z"/>
-                </svg>
+                <img src={data.pilarBudaya.tari.icon} alt="Ikon Budaya" className="w-7 h-7 object-contain" />
               </div>
               <div>
                 <span className="text-[#8C6D23] text-xs font-bold uppercase tracking-[0.2em] mb-2 block">Tradisi</span>
@@ -169,8 +165,8 @@ export default function DetailEtnis({ lang, setLang }) {
           {/* BARIS BAWAH: Pantun Tradition (Asimetris 35% - 65%) */}
           <div className="flex flex-col md:flex-row gap-6 mt-6">
             <div className="w-full md:w-[35%] bg-[#FDFCF8] rounded-3xl p-8 border border-[#EBEBE6] shadow-sm relative flex flex-col">
-              <div className="text-[#8C6D23] mb-6">
-                <Share strokeWidth={1.5} className="w-6 h-6" />
+              <div className="mb-6 bg-[#F4DBA4]/20 w-12 h-12 rounded-2xl flex items-center justify-center">
+                <img src={iconPantun} alt="Ikon Pantun" className="w-6 h-6 object-contain" />
               </div>
               <h3 className="font-playfair text-2xl font-bold text-[#1E3F20] mb-4">
                 {data.pilarBudaya.pantun.title}
@@ -206,16 +202,16 @@ export default function DetailEtnis({ lang, setLang }) {
       <section className="bg-[#FAF9F5] py-20 md:py-28 border-t border-zinc-200/50">
         <div className="max-w-6xl mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
-            {/* Visual Kiri: 2 Gambar Portrait Vertikal Kaku & Sejajar */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="rounded-[2rem] overflow-hidden aspect-[3/4]">
+            {/* Visual Kiri: 2 Gambar Portrait Vertikal Asimetris */}
+            <div className="grid grid-cols-2 gap-4 md:gap-6">
+              <div className="rounded-[2rem] overflow-hidden aspect-[3/4] md:-translate-y-8 md:shadow-lg transition-transform duration-500">
                 <img 
                   src={data.kuliner.images[0]} 
                   alt="Kuliner Tradisional 1" 
                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" 
                 />
               </div>
-              <div className="rounded-[2rem] overflow-hidden aspect-[3/4]">
+              <div className="rounded-[2rem] overflow-hidden aspect-[3/4] md:translate-y-6 md:shadow-xl transition-transform duration-500">
                 <img 
                   src={data.kuliner.images[1]} 
                   alt="Kuliner Tradisional 2" 
@@ -235,15 +231,19 @@ export default function DetailEtnis({ lang, setLang }) {
 
               <div className="flex flex-col gap-6">
                 {data.kuliner.menus.map((menu, i) => (
-                  <div key={i} className="flex gap-4 items-start pb-6 border-b border-zinc-200/60 last:border-0 last:pb-0">
-                    {/* Kustom Elemen Bullet */}
-                    <div className="w-6 h-6 bg-[#f0c08b] text-white rounded-md flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm">
-                      <span className="text-[10px] font-bold">✖</span>
+                  <div key={i} className="flex flex-col gap-2 pb-6 border-b border-zinc-200/60 last:border-0 last:pb-0">
+                    <div className="flex items-center gap-3">
+                      {/* Kustom Elemen Bullet */}
+                      <div className="w-7 h-7 bg-[#f0c08b] text-white rounded-md flex items-center justify-center flex-shrink-0 shadow-sm">
+                        {menu.icon ? (
+                          <img src={menu.icon} alt="Icon Makanan" className="w-4 h-4 object-contain" />
+                        ) : (
+                          <span className="text-[10px] font-bold">✖</span>
+                        )}
+                      </div>
+                      <h4 className="font-inter text-[#1E3F20] text-lg font-bold">{menu.name}</h4>
                     </div>
-                    <div>
-                      <h4 className="font-inter text-[#1E3F20] text-lg font-bold mb-1">{menu.name}</h4>
-                      <p className="font-inter text-[#717973] text-sm leading-relaxed">{menu.desc}</p>
-                    </div>
+                    <p className="font-inter text-[#717973] text-sm leading-relaxed pl-10">{menu.desc}</p>
                   </div>
                 ))}
               </div>

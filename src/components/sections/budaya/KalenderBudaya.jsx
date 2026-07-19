@@ -1,4 +1,21 @@
+import { motion } from 'framer-motion';
 import { budayaContent } from "@/constants/budayaData";
+import iconTopeng from "@/assets/icons/topeng.svg";
+import iconMesjid from "@/assets/icons/mesjid.svg";
+import iconMatahari from "@/assets/icons/matahari.svg";
+
+const sectionVariant = {
+  hidden: { opacity: 0, y: 32 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
+};
+
+const rowVariant = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (delay = 0) => ({
+    opacity: 1, y: 0,
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1], delay },
+  }),
+};
 
 export default function KalenderBudaya({ lang = "id", sectionRef }) {
   const content = budayaContent[lang].kalender;
@@ -12,8 +29,24 @@ export default function KalenderBudaya({ lang = "id", sectionRef }) {
     }
   };
 
+  const getIconForColor = (color) => {
+    switch (color) {
+      case "red": return iconTopeng;
+      case "green": return iconMesjid;
+      case "gold": return iconMatahari;
+      default: return null;
+    }
+  };
+
   return (
-    <section ref={sectionRef} className="reveal-up">
+    <motion.section
+      id="kalender-budaya"
+      ref={sectionRef}
+      variants={sectionVariant}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.08 }}
+    >
       <div className="max-w-6xl mx-auto px-6 py-12 sm:py-20">
         <div className="text-center mb-16 md:mb-24">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-zinc-900 tracking-tight" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
@@ -29,7 +62,15 @@ export default function KalenderBudaya({ lang = "id", sectionRef }) {
           {content.items.map((item, index) => {
             const isEven = index % 2 === 0;
             return (
-              <div key={item.id} className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-4 md:gap-8 items-center mb-16 md:mb-24 group relative">
+              <motion.div
+                key={item.id}
+                className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-4 md:gap-8 items-center mb-16 md:mb-24 group relative"
+                variants={rowVariant}
+                initial="hidden"
+                whileInView="visible"
+                custom={index * 0.1}
+                viewport={{ once: false, amount: 0.15 }}
+              >
                 
                 {/* Desktop: Alternating Content/Image based on isEven */}
                 {/* Left Column */}
@@ -61,7 +102,9 @@ export default function KalenderBudaya({ lang = "id", sectionRef }) {
 
                 {/* Center Track */}
                 <div className="hidden md:flex flex-col items-center justify-center relative z-10">
-                  <div className={`w-10 h-10 rounded-full ${getColorClasses(item.color)} border-4 border-white shadow-xl transition-transform duration-300 group-hover:scale-125`} />
+                  <div className={`w-10 h-10 rounded-full ${getColorClasses(item.color)} border-4 border-white shadow-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-125`}>
+                    <img src={getIconForColor(item.color)} alt="Timeline Icon" className="w-4 h-4 object-contain brightness-0 invert" />
+                  </div>
                 </div>
 
                 {/* Right Column */}
@@ -79,11 +122,11 @@ export default function KalenderBudaya({ lang = "id", sectionRef }) {
                   )}
                 </div>
 
-              </div>
+              </motion.div>
             );
           })}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

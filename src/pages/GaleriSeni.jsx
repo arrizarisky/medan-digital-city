@@ -68,7 +68,7 @@ export default function GaleriSeni({ lang, setLang }) {
 
       <main className="relative z-10 pt-16">
         {/* Hero Section */}
-        <section className="relative h-[85vh] w-full overflow-hidden flex items-end">
+        <section className="relative h-screen w-full overflow-hidden flex items-end">
           <div className="absolute inset-0 z-0">
             <img alt="Heritage Architecture" className="w-full h-full object-cover brightness-75" src={galeriSeniIstana}/>
             <div className="absolute inset-0 bg-black/40 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>

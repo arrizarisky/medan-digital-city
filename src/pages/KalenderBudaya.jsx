@@ -4,60 +4,7 @@ import Footer from '@/components/Footer';
 import kalenderBudayaImg from '@/assets/images/kalender-budaya.jpg';
 import { ChevronDown } from 'lucide-react';
 
-const eventsData = [
-  {
-    id: 1,
-    title: 'Tahun Baru Imlek 2026',
-    category: 'Festival',
-    date: '17',
-    month: 'Feb',
-    fullDate: '2026-02-17',
-    location: 'Kesawan Square, Medan Barat',
-    description: 'Rasakan keriuhan tarian barongsai dan pendar lampion merah yang semarak di kawasan bersejarah Kesawan. Ratusan lampion menghiasi jalanan bergaya kolonial.',
-    image: kalenderBudayaImg,
-    featured: true
-  },
-  {
-    id: 2,
-    title: 'Ramadhan Fair 2026',
-    category: 'Religi & Kuliner',
-    date: '19',
-    month: 'Feb',
-    fullDate: '2026-02-19',
-    location: 'Masjid Raya Al-Mashun',
-    description: 'Festival kuliner dan keagamaan sebulan penuh yang digelar di pelataran megah Masjid Raya Al-Mashun dengan ribuan pengunjung setiap malam.'
-  },
-  {
-    id: 3,
-    title: 'Gelar Melayu Serumpun',
-    category: 'Tradisi',
-    date: '25',
-    month: 'Jul',
-    fullDate: '2026-07-25',
-    location: 'Istana Maimun',
-    description: 'Pesta budaya akbar yang menyatukan perwakilan budaya Melayu dari berbagai penjuru Nusantara di pelataran bersejarah Istana Maimun.'
-  },
-  {
-    id: 4,
-    title: 'Karnaval Deepavali',
-    category: 'Budaya',
-    date: '08',
-    month: 'Nov',
-    fullDate: '2026-11-08',
-    location: 'Kampung Madras',
-    description: 'Perayaan Festival Cahaya di jantung Kampung Madras dengan parade pakaian tradisional India yang memukau dan bazar kuliner autentik.'
-  },
-  {
-    id: 5,
-    title: 'Festival Bunga & Buah',
-    category: 'Festival',
-    date: '15',
-    month: 'Okt',
-    fullDate: '2026-10-15',
-    location: 'Lapangan Merdeka',
-    description: 'Pameran hasil bumi terbaik dari Tanah Karo dan sekitarnya yang diwarnai pawai kendaraan berhias bunga segar di pusat kota Medan.'
-  }
-];
+import { eventBudayaData as eventsData, defaultFallbackImage } from '@/constants/eventBudayaData';
 
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Ags', 'Sep', 'Okt', 'Nov', 'Des'];
 
@@ -75,7 +22,7 @@ export default function KalenderBudaya({ lang, setLang }) {
 
   const addToGoogleCalendar = (event) => {
     const text = encodeURIComponent(event.title);
-    const details = encodeURIComponent(event.description);
+    const details = encodeURIComponent(event.shortDescription);
     const location = encodeURIComponent(event.location);
     const d = new Date(event.fullDate);
     const year = d.getFullYear();
@@ -93,7 +40,8 @@ export default function KalenderBudaya({ lang, setLang }) {
     const matchCategory = activeFilter === 'Semua' || event.category === activeFilter;
     const matchMonth = selectedMonth ? event.month === selectedMonth : true;
     const matchSearch = event.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                        event.description.toLowerCase().includes(searchQuery.toLowerCase());
+                        event.shortDescription.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                        event.longDescription.toLowerCase().includes(searchQuery.toLowerCase());
     return matchCategory && matchMonth && matchSearch;
   });
 
@@ -198,45 +146,62 @@ export default function KalenderBudaya({ lang, setLang }) {
           
           {/* A. HERO FEATURED EVENT BANNER */}
           {featuredEvent && (
-            <div className="mb-16 rounded-[2.5rem] overflow-hidden shadow-2xl flex flex-col md:flex-row bg-[#1E3F20] relative group">
-              <div className="md:w-[45%] relative h-[400px] md:h-auto overflow-hidden">
-                <img 
-                  src={featuredEvent.image || kalenderBudayaImg} 
-                  alt={featuredEvent.title} 
-                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#1E3F20] via-[#1E3F20]/40 to-transparent"></div>
-              </div>
-              <div className="md:w-[55%] p-10 md:p-14 flex flex-col justify-center relative bg-gradient-to-t from-[#1E3F20] via-[#1E3F20] to-transparent md:bg-none -mt-24 md:mt-0">
-                <div className="flex items-center gap-4 mb-6">
-                  <span className="font-inter text-[#B28A32] font-semibold tracking-[0.2em] uppercase text-xs">
-                    {featuredEvent.category}
-                  </span>
-                  <span className="w-10 h-px bg-[#B28A32]/40"></span>
-                  <span className="font-inter text-white/80 font-medium tracking-wide text-sm">
-                    {featuredEvent.date} {featuredEvent.month} 2026
-                  </span>
+            <div className="mb-16 rounded-[2.5rem] shadow-2xl bg-[#1E3F20] p-6 md:p-10">
+              <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
+                <div className="w-full md:w-1/2 h-[300px] md:h-[450px] overflow-hidden rounded-3xl relative group shrink-0">
+                  <img 
+                    src={featuredEvent.image || defaultFallbackImage} 
+                    alt={featuredEvent.title} 
+                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/10 transition-colors duration-500 group-hover:bg-transparent"></div>
                 </div>
-                
-                <h2 className="font-playfair text-4xl md:text-5xl font-bold text-white mb-6 leading-[1.1] tracking-tight">
-                  {featuredEvent.title}
-                </h2>
-                
-                <p className="font-inter text-white/70 text-base md:text-lg mb-10 leading-relaxed font-light">
-                  {featuredEvent.description}
-                </p>
-                
-                <div className="flex items-center gap-6 mt-auto">
-                  <button 
-                    onClick={() => addToGoogleCalendar(featuredEvent)}
-                    className="group/btn flex items-center gap-3 bg-[#B28A32] text-white px-6 py-3 rounded-full font-inter font-medium hover:bg-[#9c782b] transition-all hover:shadow-lg active:scale-95"
-                  >
-                    Simpan Jadwal
-                    <span className="material-symbols-outlined text-[18px] group-hover/btn:-translate-y-0.5 transition-transform">event_upcoming</span>
-                  </button>
-                  <button className="text-white/70 hover:text-white font-inter text-sm font-medium transition-colors border-b border-transparent hover:border-white pb-0.5 hidden sm:block">
-                    Detail Eksplorasi
-                  </button>
+                <div className="w-full md:w-1/2 flex flex-col justify-center">
+                  <div className="flex items-center gap-4 mb-6">
+                    <span className="font-inter text-[#B28A32] font-semibold tracking-[0.2em] uppercase text-xs">
+                      {featuredEvent.category}
+                    </span>
+                    <span className="w-10 h-px bg-[#B28A32]/40"></span>
+                    <span className="font-inter text-white/80 font-medium tracking-wide text-sm">
+                      {featuredEvent.date} {featuredEvent.month} 2026
+                    </span>
+                  </div>
+                  
+                  <h2 className="font-playfair text-4xl md:text-5xl font-bold text-white mb-6 leading-[1.1] tracking-tight">
+                    {featuredEvent.title}
+                  </h2>
+                  
+                  <p className="font-inter text-white/70 text-base md:text-lg mb-6 leading-relaxed font-light">
+                    {featuredEvent.longDescription}
+                  </p>
+
+                  <div className="flex flex-col gap-3 mb-10">
+                    <h4 className="font-inter text-white/90 font-medium text-sm tracking-wide uppercase">Highlights</h4>
+                    <ul className="flex flex-wrap gap-2">
+                      {featuredEvent.highlights?.map((highlight, idx) => (
+                        <li key={idx} className="bg-white/10 text-white/80 px-4 py-1.5 rounded-full text-xs font-medium border border-white/5">
+                          {highlight}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  <div className="flex flex-wrap items-center gap-4 mt-auto">
+                    <button 
+                      onClick={() => addToGoogleCalendar(featuredEvent)}
+                      className="group/btn flex items-center gap-3 bg-[#B28A32] text-white px-6 py-3 rounded-full font-inter font-medium hover:bg-[#9c782b] transition-all hover:shadow-lg active:scale-95"
+                    >
+                      Simpan Jadwal
+                      <span className="material-symbols-outlined text-[18px] group-hover/btn:-translate-y-0.5 transition-transform">event_upcoming</span>
+                    </button>
+                    <button 
+                      onClick={() => window.open(featuredEvent.mapsUrl, '_blank')}
+                      className="group/btn flex items-center gap-2 text-white/70 hover:text-white font-inter text-sm font-medium transition-colors border-b border-transparent hover:border-white pb-0.5"
+                    >
+                      Petunjuk Arah
+                      <span className="material-symbols-outlined text-[16px] group-hover/btn:translate-x-0.5 transition-transform">open_in_new</span>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -283,7 +248,7 @@ export default function KalenderBudaya({ lang, setLang }) {
 
                     {/* Potong deskripsi jika tertutup */}
                     <p className={`font-inter text-[#414844] text-base leading-relaxed font-light md:max-w-3xl ${!isExpanded ? 'line-clamp-2' : 'hidden'}`}>
-                      {event.description}
+                      {event.shortDescription}
                     </p>
                   </div>
 
@@ -306,14 +271,14 @@ export default function KalenderBudaya({ lang, setLang }) {
                       {/* Kolom Kiri: Narasi & Rundown */}
                       <div className="md:w-[60%] flex flex-col gap-6">
                         <p className="font-inter text-[#414844] text-base leading-relaxed font-light">
-                          {event.description}
+                          {event.longDescription}
                         </p>
                         <div className="bg-white/50 rounded-xl p-5 border border-zinc-200/50">
-                          <h4 className="font-playfair text-[#1E3F20] font-bold text-lg mb-3">Agenda Singkat</h4>
+                          <h4 className="font-playfair text-[#1E3F20] font-bold text-lg mb-3">Highlights</h4>
                           <ul className="flex flex-col gap-2 font-inter text-[#414844] text-sm font-light">
-                            <li className="flex gap-3"><span className="text-[#B28A32]">•</span> 16:00 – Registrasi & Kuliner Tradisional</li>
-                            <li className="flex gap-3"><span className="text-[#B28A32]">•</span> 19:30 – Pertunjukan Utama Kesenian</li>
-                            <li className="flex gap-3"><span className="text-[#B28A32]">•</span> 21:00 – Sesi Foto & Penutupan</li>
+                            {event.highlights?.map((highlight, idx) => (
+                              <li key={idx} className="flex gap-3"><span className="text-[#B28A32]">•</span> {highlight}</li>
+                            ))}
                           </ul>
                         </div>
                       </div>
@@ -338,7 +303,7 @@ export default function KalenderBudaya({ lang, setLang }) {
                             Simpan ke Google Calendar
                           </button>
                           <button 
-                            onClick={(e) => e.stopPropagation()}
+                            onClick={(e) => { e.stopPropagation(); window.open(event.mapsUrl, '_blank'); }}
                             className="w-full bg-transparent border border-[#1E3F20]/30 text-[#1E3F20] py-3 rounded-full font-inter font-medium hover:bg-[#1E3F20]/5 transition-all flex items-center justify-center gap-2 active:scale-95"
                           >
                             <span className="material-symbols-outlined text-[18px]">directions</span>

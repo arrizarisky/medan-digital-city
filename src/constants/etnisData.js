@@ -1,32 +1,63 @@
-import imgMelayuDeli from '@/assets/images/Budaya-Tradisi/Melayu-deli.png';
-import imgBajuMelayu from '@/assets/images/Budaya-Tradisi/baju-adat-melayu.png';
-import imgTariZapin from '@/assets/images/Budaya-Tradisi/tari-serampang-duabelas.png';
-import imgTarianMelayu from '@/assets/images/Budaya-Tradisi/tarian-melayu.png';
-import imgFestivalMelayu from '@/assets/images/Budaya-Tradisi/festival-melayu-medan.png';
-import imgBuburPedas from '@/assets/images/Budaya-Tradisi/bubur-pedas.png';
-import imgIstanaMaimun from '@/assets/images/Bangunan-bersejarah/istana-maimun.png';
-import imgMesjidRaya from '@/assets/images/Bangunan-bersejarah/mesjid-raya.jpg';
+// Aset Melayu
+import imgMelayuDeli from '@/assets/images/detail/Melayu deli.png';
+import imgBajuMelayu from '@/assets/images/detail/baju-adat-melayu.png';
+import imgMelayuTempoDulu from '@/assets/images/detail/melayu-tempo-dulu.png';
+import imgNasiLemak from '@/assets/images/detail/nasi-lemak.png';
+import imgBuburPedas from '@/assets/images/detail/bubur pedas.png';
+import imgIstanaMaimun from '@/assets/images/detail/istana maimun.jpg';
+import imgMesjidRaya from '@/assets/images/detail/masjid raya 2.jpg';
 
-import imgBatakToba from '@/assets/images/Budaya-Tradisi/batak-toba.png';
-import imgTariTorTor from '@/assets/images/Budaya-Tradisi/tari-tor-tor-batak.png';
-import imgBajuAdatBatak from '@/assets/images/Budaya-Tradisi/baju-adat-batak-toba.png';
-import imgUlos from '@/assets/images/Budaya-Tradisi/ulos-weaving-landscape.png';
-import imgBatakKaro from '@/assets/images/Budaya-Tradisi/batak-karo.png';
-import imgSimalungun from '@/assets/images/Budaya-Tradisi/simalungun.png';
+// Aset Batak
+import imgBatakToba from '@/assets/images/detail/batak toba.png';
+import imgUlos from '@/assets/images/Budaya-Tradisi/ulos.jpeg';
+import imgBatakTempoDulu from '@/assets/images/detail/batak-tempo-dulu.png';
+import imgIkanMasArsik from '@/assets/images/detail/ikan mas arsik.jpg';
+import imgKopiSidikalang from '@/assets/images/detail/kopi sidikalang.jpg';
+import imgHKBP from '@/assets/images/detail/HKBP Sudirman.jpg';
+import imgJamburKaro from '@/assets/images/detail/Jambur Karo.jpeg';
 
-import imgJawa from '@/assets/images/Budaya-Tradisi/jawa.jpg';
-import imgMinangkabau from '@/assets/images/Budaya-Tradisi/minangkabau.jpg';
+// Aset Jawa
+import imgJawaTempoDulu from '@/assets/images/detail/jawa tempo doloe.jpeg';
+import imgKudaLumping from '@/assets/images/detail/kuda lumping.png';
+import imgPecalJawa from '@/assets/images/detail/pecal jawa.jpg';
+import imgBakso from '@/assets/images/detail/bakso.jpg';
+import imgPendopoPujakesuma from '@/assets/images/detail/pendopo pujakesuma.jpg';
+import imgMasjidJami from '@/assets/images/detail/masjid jami.webp';
 
-import imgTionghoa from '@/assets/images/Budaya-Tradisi/tionghoa.png';
+// Aset Tionghoa
+import imgKesawan from '@/assets/images/Bangunan-bersejarah/tjong-afie-mansion-2.png';
+import imgTiongHoaTempoDulu from '@/assets/images/detail/tionghoa old.png';
 import imgBarongsai from '@/assets/images/Budaya-Tradisi/barongsai.png';
-import imgCapGoMeh from '@/assets/images/Budaya-Tradisi/Festival-Cap-Go-Meh.png';
-import imgTjongAfie from '@/assets/images/Bangunan-bersejarah/Tjong-AFie-Mansion.jpg';
+import imgBakpao from '@/assets/images/detail/bakpao.jpg';
+import imgDimsum from '@/assets/images/detail/dimsum.jpg';
+import imgMahaVihara from '@/assets/images/detail/maha vihara maitreya.jpeg';
 
-import imgKampungIndia from '@/assets/images/Budaya-Tradisi/kampung-india.png';
-import imgThaipusam from '@/assets/images/Budaya-Tradisi/thaipusam-india.png';
-import imgDeepavali from '@/assets/images/Budaya-Tradisi/devapali-festival-medan.png';
-import imgGerejaIndia from '@/assets/images/Budaya-Tradisi/gereja-india.png';
-import imgKuil from '@/assets/images/Bangunan-bersejarah/kuil.jpg';
+// Aset India
+import imgIndiaTempoDulu from '@/assets/images/detail/etnis india tempo dulu.jpg';
+import imgKuilIndia from '@/assets/images/Budaya-Tradisi/thaipusam-india.png';
+import imgKuilHero from '@/assets/images/detail/india hero.png';
+import imgKuil from '@/assets/images/detail/kuil.jpg';
+import imgNasiBriyani from '@/assets/images/detail/nasi briyani.jpg';
+import imgRotiCanai from '@/assets/images/detail/roti canai.jpg';
+import imgMasjidGhaudiyah from '@/assets/images/detail/masjid al ghaudiyah.jpg';
+
+// Aset Minangkabau
+import imgMinangTempoDulu from '@/assets/images/detail/minangkabau tempo dulul.jpg';
+import imgPiringHero from '@/assets/images/detail/piring hero.png';
+import imgTariPiring from '@/assets/images/detail/tari piring 2.jpg';
+import imgRendang from '@/assets/images/detail/rendang.jpg';
+import imgSatePadang from '@/assets/images/detail/sate padang.jpg';
+import imgRumahGadang from '@/assets/images/detail/rumah-gadang.png';
+import imgGedungDakwah from '@/assets/images/detail/gedung-dakwah.png';
+
+// Aset Ikon (Tambahan jika diperlukan oleh komponen UI di masa depan)
+import iconMesjid from '@/assets/icons/mesjid.svg';
+import iconLocation from '@/assets/icons/location.svg';
+import iconKalender from '@/assets/icons/kalender.svg';
+import iconPeople from '@/assets/icons/people.svg';
+import iconSejarah from '@/assets/icons/sejarah.svg';
+import iconTopeng from '@/assets/icons/topeng.svg';
+import iconAlatMakan from '@/assets/icons/alat-makan.svg';
 
 export const etnisDetailData = {
   melayu: {
@@ -43,9 +74,10 @@ export const etnisDetailData = {
         'Dikenal dengan sebutan \'Bunga Bangsa\', etnis Melayu Deli merepresentasikan kehalusan budaya serta sejarah sosial-politik kawasan ini. Di bawah kepemimpinan Tuanku Panglima Gocah Pahlawan, kesultanan ini berkembang pesat menjadi pusat perdagangan dan diplomasi internasional.'
       ],
       quote: '"Di mana tanah Deli bertemu dengan lautan, di situlah kebudayaan Melayu tumbuh mekar di setiap relung hati dan sanubari."',
-      archiveImage: imgFestivalMelayu,
-      archiveCaption: 'Arsip Sejarah'
+      archiveImage: imgMelayuTempoDulu,
+      archiveCaption: 'Arsip Sejarah Melayu Deli'
     },
+    
 
     pilarBudaya: {
       title: 'Pilar Kebudayaan',
@@ -57,7 +89,8 @@ export const etnisDetailData = {
       },
       tari: {
         title: 'Tari Zapin',
-        description: 'Tarian berirama dinamis hasil akulturasi Arab-Melayu, yang dibawakan melalui gerakan kaki yang anggun mengikuti ketukan marwas.'
+        description: 'Tarian berirama dinamis hasil akulturasi Arab-Melayu, yang dibawakan melalui gerakan kaki yang anggun mengikuti ketukan marwas.',
+        icon: iconTopeng
       },
       pantun: {
         title: 'Pantun Tradition',
@@ -71,10 +104,10 @@ export const etnisDetailData = {
     kuliner: {
       title: 'Cita Rasa Kerajaan',
       description: 'Kuliner Melayu Deli merupakan perpaduan istimewa antara bahan lokal dan rempah dunia. Setiap hidangannya mencerminkan kehangatan dan keramahan khas Kesultanan.',
-      images: [imgBuburPedas, imgBuburPedas],
+      images: [imgNasiLemak, imgBuburPedas],
       menus: [
-        { name: 'Nasi Lemak Deli', desc: 'Berbeda dari versi biasa, Nasi Lemak khas Deli terkenal dengan aroma rempahnya yang lebih kaya serta lauk pendamping yang spesifik, seperti paru goreng atau rendang.' },
-        { name: 'Bubur Pedas', desc: 'Sajian kaya nutrisi yang terbuat dari lebih dari 40 jenis umbi, rempah, dan dedaunan, yang secara tradisi disajikan selama bulan Ramadan di Masjid Raya.' }
+        { name: 'Nasi Lemak Deli', desc: 'Berbeda dari versi biasa, Nasi Lemak khas Deli terkenal dengan aroma rempahnya yang lebih kaya serta lauk pendamping yang spesifik, seperti paru goreng atau rendang.', icon: iconAlatMakan },
+        { name: 'Bubur Pedas', desc: 'Sajian kaya nutrisi yang terbuat dari lebih dari 40 jenis umbi, rempah, dan dedaunan, yang secara tradisi disajikan selama bulan Ramadan di Masjid Raya.', icon: iconAlatMakan }
       ]
     },
 
@@ -112,8 +145,8 @@ export const etnisDetailData = {
         'Terbagi ke dalam berbagai sub-etnis yang kaya akan keunikan, suku Batak merepresentasikan kekuatan tradisi, sistem kekerabatan yang erat, serta sejarah ketangguhan sosial di wilayah ini. Di bawah falsafah adat luhur dan struktur marga yang mengakar kuat, kebudayaan ini terus tumbuh subur menjadi simbol kehormatan, persaudaraan, dan diplomasi adat yang tak lekang oleh waktu.'
       ],
       quote: '"Di mana angin dataran tinggi berembus melintasi pegunungan dan danau, di situlah jiwa masyarakat Batak teguh berdiri di dalam setiap langkah dan garis keturunan."',
-      archiveImage: imgUlos,
-      archiveCaption: 'Arsip Sejarah'
+      archiveImage: imgBatakTempoDulu,
+      archiveCaption: 'Arsip Sejarah Batak'
     },
 
     pilarBudaya: {
@@ -122,11 +155,12 @@ export const etnisDetailData = {
       baju: {
         title: 'Ulos: Kain Tenun Sakral',
         description: 'Lebih dari sekadar kain biasa, Ulos melambangkan kehangatan, perlindungan, serta ikatan spiritual yang menghubungkan antargenerasi.',
-        image: imgBajuAdatBatak
+        image: imgUlos
       },
       tari: {
         title: 'Somba Marhula-hula',
-        description: 'Hormat kepada pihak pemberi wanita, yang dipandang sebagai sumber berkat.'
+        description: 'Hormat kepada pihak pemberi wanita, yang dipandang sebagai sumber berkat.',
+        icon: iconTopeng
       },
       pantun: {
         title: 'Elek Marboru',
@@ -140,10 +174,10 @@ export const etnisDetailData = {
     kuliner: {
       title: 'Cita Rasa Tegas & Budaya Kopi',
       description: 'Kuliner Batak terkenal dengan perpaduan rempah eksotis yang berani dan menggugah selera. Di samping hidangannya yang kaya rasa, tradisi minum kopi di kedai-kedai lokal telah lama menjadi bagian tak terpisahkan dari denyut kehidupan masyarakatnya.',
-      images: [imgBatakKaro, imgSimalungun],
+      images: [imgIkanMasArsik, imgKopiSidikalang],
       menus: [
-        { name: 'Arsik Ikan Mas', desc: 'Hidangan adat ikonik berkuah kuning khas Batak yang dimasak menggunakan bumbu khas dataran tinggi, seperti andaliman, asam gelugur, dan kincung (kecombrang), menghasilkan rasa getir, asam, dan gurih yang segar.' },
-        { name: 'Kopi Sidikalang dan Mandailing', desc: 'Dua varietas kopi legendaris dari tanah Sumatra Utara yang telah mendunia. Terkenal dengan karakteristik aromanya yang kuat, berbody tebal (full body), serta tingkat keasaman rendah yang khas.' }
+        { name: 'Arsik Ikan Mas', desc: 'Hidangan adat ikonik berkuah kuning khas Batak yang dimasak menggunakan bumbu khas dataran tinggi, seperti andaliman, asam gelugur, dan kincung (kecombrang), menghasilkan rasa getir, asam, dan gurih yang segar.', icon: iconAlatMakan },
+        { name: 'Kopi Sidikalang dan Mandailing', desc: 'Dua varietas kopi legendaris dari tanah Sumatra Utara yang telah mendunia. Terkenal dengan karakteristik aromanya yang kuat, berbody tebal (full body), serta tingkat keasaman rendah yang khas.', icon: iconAlatMakan }
       ]
     },
 
@@ -155,13 +189,13 @@ export const etnisDetailData = {
           title: 'HKBP Sudirman Medan',
           description: 'Salah satu gereja ikonik di Kota Medan yang memadukan arsitektur modern dengan sentuhan struktural rumah adat Batak Toba. Bagian depannya menampilkan replika atap segitiga yang menjulang tinggi serta ornamen ukiran Gorga yang megah di area pintu masuk.',
           category: 'Pusat Spiritual • Landmark Kota',
-          image: imgBatakToba
+          image: imgHKBP
         },
         {
           title: 'Jambur Karo',
           description: 'Medan memiliki beberapa bangunan pertemuan adat (Jambur) dan gereja GBKP yang dibangun dengan mengadopsi gaya atap ijuk bertingkat khas rumah adat Karo (Siwaluh Jabu). Bangunan ini berfungsi sebagai pusat pelestarian budaya dan tempat berlangsungnya musyawarah serta upacara adat.',
           category: 'Pusat Budaya • Monumen Sosial',
-          image: imgBatakKaro
+          image: imgJamburKaro
         }
       ]
     }
@@ -171,7 +205,7 @@ export const etnisDetailData = {
     slug: 'jawa',
     heroTitle: 'Nafas Jawa di Tanah Deli ',
     heroSubtitle: 'Menelusuri jejak langkah, kesederhanaan tradisi, dan kehangatan budaya leluhur Jawa yang telah berabad-abad berasimilasi serta menjadi bagian penting dalam keberagaman sosial di Kota Medan.',
-    heroImage: imgJawa,
+    heroImage: imgJawaTempoDulu,
 
     sejarah: {
       tag: 'SEJARAH & ASAL USUL',
@@ -181,8 +215,8 @@ export const etnisDetailData = {
         'Seiring berjalannya waktu, komunitas yang kerap disebut sebagai Jawa Deli atau Jadel ini menetap, berbaur, dan menyebar ke wilayah perkotaan Medan. Kontribusi mereka sangat besar dalam membentuk lanskap sosial, keragaman kuliner, dan kehidupan kultural perkotaan. Warisan budaya Jawa di Medan tetap lestari hingga hari ini melalui pelestarian seni tradisional seperti jaran kepang (kuda lumping), pagelaran wayang, hingga akulturasi dialek bahasa yang khas.'
       ],
       quote: '"Di mana alunan gamelan berpadu dengan dinamika kota dan kehangatan tradisi gotong royong tetap terjaga, di situlah denyut kebudayaan Jawa hidup memperkaya keberagaman Medan."',
-      archiveImage: imgJawa,
-      archiveCaption: 'Arsip Sejarah'
+      archiveImage: imgJawaTempoDulu,
+      archiveCaption: 'Arsip Sejarah Jawa Deli'
     },
 
     pilarBudaya: {
@@ -191,11 +225,12 @@ export const etnisDetailData = {
       baju: {
         title: 'Seni Jaran Kepang (Kuda Lumping)',
         description: 'Seni pertunjukan rakyat paling populer yang terus dirawat oleh berbagai paguyuban di Medan. Menampilkan tarian prajurit berkuda anyaman bambu yang enerjik berpadu ritme gamelan, tarian ini menyimbolkan kegagahan, heroisme, serta refleksi kekuatan spiritual manusia.',
-        image: imgJawa
+        image: imgKudaLumping
       },
       tari: {
         title: 'Tradisi Malam Satu Suro',
-        description: 'Momen sakral pergantian tahun Jawa yang diperingati sebagai waktu untuk introspeksi diri (tirakat). Tradisi ini biasanya diisi dengan doa bersama, prosesi jalan sunyi, hingga pagelaran wayang kulit semalam suntuk sebagai refleksi spiritual.'
+        description: 'Momen sakral pergantian tahun Jawa yang diperingati sebagai waktu untuk introspeksi diri (tirakat). Tradisi ini biasanya diisi dengan doa bersama, prosesi jalan sunyi, hingga pagelaran wayang kulit semalam suntuk sebagai refleksi spiritual.',
+        icon: iconTopeng
       },
       pantun: {
         title: 'Grebeg Suro & Gunungan',
@@ -209,10 +244,10 @@ export const etnisDetailData = {
     kuliner: {
       title: 'Kesederhanaan Rasa & Kehangatan Tradisi',
       description: 'Kuliner Jawa di Medan terkenal dengan perpaduan cita rasa manis, gurih, dan segar yang diolah dari resep warisan leluhur. Di samping hidangannya yang merakyat, tradisi menyajikan kuliner dengan sentuhan bumbu kacang atau kuah kaldu hangat telah lama menjadi simbol kenyamanan rasa yang menyatukan berbagai kalangan.',
-      images: [imgJawa, imgJawa],
+      images: [imgPecalJawa, imgBakso],
       menus: [
-        { name: 'Pecel Jawa', desc: 'Hidangan sehat berupa aneka sayuran rebus segar yang disiram saus kacang kental bercita rasa manis, gurih, dan sedikit pedas. Di Medan, kuliner legendaris ini sering disajikan bersama pelengkap seperti rempeyek renyah atau mie lidi, melambangkan kesederhanaan hidup yang kaya rasa.' },
-        { name: 'Bakso & Mie Sop Jawa', desc: 'Hidangan berkuah kaldu sapi atau ayam yang gurih, disajikan bersama mie, suwiran daging, dan bulatan bakso yang kenyal. Racikan bumbu rempah tradisionalnya yang khas menghadirkan kehangatan sejati di setiap mangkuknya, menjadikannya kuliner favorit yang merata di setiap sudut kota.' }
+        { name: 'Pecel Jawa', desc: 'Hidangan sehat berupa aneka sayuran rebus segar yang disiram saus kacang kental bercita rasa manis, gurih, dan sedikit pedas. Di Medan, kuliner legendaris ini sering disajikan bersama pelengkap seperti rempeyek renyah atau mie lidi, melambangkan kesederhanaan hidup yang kaya rasa.', icon: iconAlatMakan },
+        { name: 'Bakso & Mie Sop Jawa', desc: 'Hidangan berkuah kaldu sapi atau ayam yang gurih, disajikan bersama mie, suwiran daging, dan bulatan bakso yang kenyal. Racikan bumbu rempah tradisionalnya yang khas menghadirkan kehangatan sejati di setiap mangkuknya, menjadikannya kuliner favorit yang merata di setiap sudut kota.', icon: iconAlatMakan }
       ]
     },
 
@@ -224,13 +259,13 @@ export const etnisDetailData = {
           title: 'Pendopo Pujakesuma',
           description: 'Kompleks pusat kebudayaan dan organisasi kemasyarakatan warga Jawa kelahiran Sumatra (Pujakesuma) di Medan. Bangunan ini mengadopsi struktur Pendopo dengan atap Joglo terbuka, berfungsi sebagai wadah pelestarian seni tradisional, diskusi budaya, hingga ruang guyub antargenerasi.',
           category: 'Pusat Budaya • Monumen Sosial',
-          image: imgJawa
+          image: imgPendopoPujakesuma
         },
         {
           title: 'Masjid Jami\' Kampung Baru',
           description: 'Terletak di salah satu kantong pemukiman awal masyarakat Jawa di Kota Medan, masjid lama ini menjadi saksi bisu perkembangan dakwah dan gotong royong warga setempat. Keberadaannya mengakar kuat dalam sejarah komunitas Jawa urban, berfungsi sebagai ruang spiritual sekaligus pengikat silaturahmi antargenerasi.',
           category: 'Situs Warisan • Landmark Kota',
-          image: imgJawa
+          image: imgMasjidJami
         }
       ]
     }
@@ -240,7 +275,7 @@ export const etnisDetailData = {
     slug: 'tionghoa',
     heroTitle: 'Jiwa dari Negeri Tirai Bambu ',
     heroSubtitle: 'Menelusuri akulturasi budaya dan warisan leluhur Tionghoa yang telah berabad-abad memperkaya keberagaman sosial, arsitektur, serta dinamika Kota Medan.',
-    heroImage: imgTionghoa,
+    heroImage: imgKesawan,
 
     sejarah: {
       tag: 'SEJARAH & ASAL USUL',
@@ -250,8 +285,8 @@ export const etnisDetailData = {
         'Seiring berjalannya waktu, komunitas ini tumbuh menjadi pilar penting yang menggerakkan roda perekonomian, perdagangan, dan membentuk lanskap perkotaan. Dipelopori oleh tokoh-tokoh visioner legendaris seperti Tjong A Fie, warisan etnis Tionghoa melekat erat pada keindahan arsitektur kota kuno, keragaman kuliner, serta semangat filantropi yang terus lestari hingga hari ini.'
       ],
       quote: '"Di mana lampion merah menyala di sepanjang koridor Kesawan, di situlah jejak akulturasi dan sumbangsih komunitas Tionghoa terus hidup memperkaya sanubari Kota Medan."',
-      archiveImage: imgBarongsai,
-      archiveCaption: 'Arsip Sejarah'
+      archiveImage: imgTiongHoaTempoDulu,
+      archiveCaption: 'Arsip Sejarah Tionghoa'
     },
 
     pilarBudaya: {
@@ -264,7 +299,8 @@ export const etnisDetailData = {
       },
       tari: {
         title: 'Tahun Baru Imlek',
-        description: 'Momen sakral untuk berkumpul bersama keluarga besar, melakukan sembahyang syukur kepada leluhur, dan saling mendoakan kemakmuran di tahun yang baru.'
+        description: 'Momen sakral untuk berkumpul bersama keluarga besar, melakukan sembahyang syukur kepada leluhur, dan saling mendoakan kemakmuran di tahun yang baru.',
+        icon: iconTopeng
       },
       pantun: {
         title: 'Festival Cap Go Meh',
@@ -278,10 +314,10 @@ export const etnisDetailData = {
     kuliner: {
       title: 'Harmoni Rasa & Kehangatan',
       description: 'Kuliner Tionghoa terkenal dengan teknik memasak warisan leluhur yang mengutamakan keseimbangan rasa, aroma, dan tekstur. Di samping hidangannya yang menggugah selera, tradisi berkumpul menikmati camilan hangat telah lama menjadi simbol kebersamaan keluarga yang erat.',
-      images: [imgTionghoa, imgBarongsai],
+      images: [imgDimsum, imgBakpao],
       menus: [
-        { name: 'Dimsum', desc: 'Hidangan kecil gurih berupa kukusan maupun gorengan yang dibuat dengan tingkat presisi tinggi. Setiap gigitan kulitnya yang lembut menyimpan kelezatan isian daging atau udang segar yang kaya rasa, menyimbolkan sentuhan kehangatan di hati.' },
-        { name: 'Bakpao', desc: 'Roti kukus tradisional bertekstur empuk dan lembut bagaikan awan yang menyajikan kehangatan sejati. Diisi dengan berbagai varian manis maupun gurih, hidangan legendaris ini melambangkan doa untuk rezeki yang terus mengembang dan utuh.' }
+        { name: 'Dimsum', desc: 'Hidangan kecil gurih berupa kukusan maupun gorengan yang dibuat dengan tingkat presisi tinggi. Setiap gigitan kulitnya yang lembut menyimpan kelezatan isian daging atau udang segar yang kaya rasa, menyimbolkan sentuhan kehangatan di hati.', icon: iconAlatMakan },
+        { name: 'Bakpao', desc: 'Roti kukus tradisional bertekstur empuk dan lembut bagaikan awan yang menyajikan kehangatan sejati. Diisi dengan berbagai varian manis maupun gurih, hidangan legendaris ini melambangkan doa untuk rezeki yang terus mengembang dan utuh.', icon: iconAlatMakan }
       ]
     },
 
@@ -293,14 +329,13 @@ export const etnisDetailData = {
           title: 'Tjong A Fie Mansion',
           description: 'Istana megah dua lantai yang dibangun pada tahun 1895 oleh tokoh filantropi legendaris Tjong A Fie. Bangunan ini menampilkan perpaduan arsitektur Tionghoa kuno, Melayu, dan Eropa, serta berdiri sebagai monumen sejarah kejayaan perdagangan di Medan.',
           category: 'Situs Warisan • Landmark Kota',
-          
-          image: imgTjongAfie
+          image: imgKesawan
         },
         {
           title: 'Maha Vihara Maitreya',
           description: 'Salah satu vihara terbesar di Indonesia yang menjadi pusat spiritual dan keagamaan komunitas Tionghoa di Medan. Bangunan ini menampilkan arsitektur modern berpadu dengan simbolisme oriental klasik, menghadirkan suasana yang megah namun penuh kedamaian.',
           category: 'Pusat Spiritual • Monumen Sosial',
-          image: imgCapGoMeh
+          image: imgMahaVihara
         }
       ]
     }
@@ -310,7 +345,7 @@ export const etnisDetailData = {
     slug: 'india',
     heroTitle: 'Jiwa dari Kampung Madras ',
     heroSubtitle: 'Menelusuri kehangatan tradisi, warna-warni budaya, dan warisan leluhur India yang telah berabad-abad melekat erat serta memperkaya keberagaman sosial kebudayaan di Kota Medan.',
-    heroImage: imgKampungIndia,
+    heroImage: imgKuilHero,
 
     sejarah: {
       tag: 'SEJARAH & ASAL USUL',
@@ -320,8 +355,8 @@ export const etnisDetailData = {
         'Seiring waktu, komunitas ini menetap dan membentuk kawasan ikonis bernama Kampung Madras (Little India). Warisan budaya mereka tetap hidup kokoh hingga hari ini melalui kemegahan kuil-kuil Hindu bergaya arsitektur India Selatan, perayaan festival keagamaan yang meriah, serta kekayaan kuliner rempah yang khas.'
       ],
       quote: '"Di mana aroma rempah kari menyerbak dan rona festival Thaipusam menyala, di situlah denyut tradisi etnis India terus hidup menjadi bagian tak terpisahkan dari identitas Kota Medan."',
-      archiveImage: imgThaipusam,
-      archiveCaption: 'Arsip Sejarah'
+      archiveImage: imgIndiaTempoDulu,
+      archiveCaption: 'Arsip Sejarah Etnis India'
     },
 
     pilarBudaya: {
@@ -330,11 +365,12 @@ export const etnisDetailData = {
       baju: {
         title: 'Festival Thaipusam',
         description: 'Perayaan agung yang menjadi ikon spiritual komunitas India Tamil di Medan. Ditandai dengan prosesi megah arak-arakan kereta kencana kuno dari Kuil Sri Mariamman serta ritual membawa Kavadi sebagai bentuk kaul, keteguhan iman, dan pembersihan diri dari dosa.',
-        image: imgKampungIndia
+        image: imgKuilIndia
       },
       tari: {
         title: 'Hari Raya Deepavali',
-        description: 'Dikenal sebagai Festival Cahaya, momen sakral ini merayakan kemenangan kebaikan atas kejahatan. Ditandai dengan penyalaan lampu minyak (diyas), memakai pakaian tradisional baru, dan berkumpul bersama keluarga.'
+        description: 'Dikenal sebagai Festival Cahaya, momen sakral ini merayakan kemenangan kebaikan atas kejahatan. Ditandai dengan penyalaan lampu minyak (diyas), memakai pakaian tradisional baru, dan berkumpul bersama keluarga.',
+        icon: iconTopeng
       },
       pantun: {
         title: 'Seni Kolam & Ornamen Tradisional',
@@ -348,10 +384,10 @@ export const etnisDetailData = {
     kuliner: {
       title: 'Kekayaan Rempah & Warisan Tradisi',
       description: 'Kuliner India Tamil terkenal dengan penggunaan perpaduan rempah-rempah autentik yang berani, menghasilkan aroma yang kuat dan cita rasa yang mendalam. Di samping hidangannya yang kaya rasa, tradisi menyajikan makanan hangat di atas daun pisang menjadi simbol keramahan dan rasa syukur yang diwariskan antargenerasi.',
-      images: [imgKampungIndia, imgDeepavali],
+      images: [imgNasiBriyani, imgRotiCanai],
       menus: [
-        { name: 'Nasi Briyani', desc: 'Hidangan utama ikonik berupa nasi berbutir panjang yang dimasak bersama rempah-rempah aromatik seperti kapulaga, kayu manis, dan cengkih. Disajikan bersama kuah kari kental yang kaya bumbu, hidangan ini merepresentasikan kehangatan dan kemeriahan tradisi rasa India Selatan.' },
-        { name: 'Roti Canai', desc: 'Roti pipih tradisional bertekstur renyah di luar namun lembut dan berlapis di dalam, dibuat dengan teknik memutar dan membalik adonan yang khas. Biasa disantap bersama kuah dal atau kuah kari hangat, hidangan legendaris ini melambangkan kesederhanaan yang menyatukan kebersamaan.' }
+        { name: 'Nasi Briyani', desc: 'Hidangan utama ikonik berupa nasi berbutir panjang yang dimasak bersama rempah-rempah aromatik seperti kapulaga, kayu manis, dan cengkih. Disajikan bersama kuah kari kental yang kaya bumbu, hidangan ini merepresentasikan kehangatan dan kemeriahan tradisi rasa India Selatan.', icon: iconAlatMakan },
+        { name: 'Roti Canai', desc: 'Roti pipih tradisional bertekstur renyah di luar namun lembut dan berlapis di dalam, dibuat dengan teknik memutar dan membalik adonan yang khas. Biasa disantap bersama kuah dal atau kuah kari hangat, hidangan legendaris ini melambangkan kesederhanaan yang menyatukan kebersamaan.', icon: iconAlatMakan }
       ]
     },
 
@@ -369,7 +405,7 @@ export const etnisDetailData = {
           title: 'Masjid Ghaudiyah',
           description: 'Tempat ibadah bersejarah milik komunitas Muslim India Selatan (Maniakar) di Medan yang didirikan sejak akhir abad ke-19. Bangunan ini menampilkan keunikan arsitektur bergaya Mughal dengan kubah, pilar, dan menara mini yang menyerupai bangunan ikonik di India.',
           category: 'Monumen Sosial • Landmark Kota',
-          image: imgGerejaIndia
+          image: imgMasjidGhaudiyah
         }
       ]
     }
@@ -379,7 +415,7 @@ export const etnisDetailData = {
     slug: 'minangkabau',
     heroTitle: 'Langkah Minang di Tanah Deli',
     heroSubtitle: 'Menelusuri jejak langkah, filosofi hidup yang dinamis, dan keteguhan tradisi leluhur Minangkabau yang telah lama merantau serta memperkaya denyut nadi perekonomian dan sosial di Kota Medan.',
-    heroImage: imgMinangkabau,
+    heroImage: imgPiringHero,
 
     sejarah: {
       tag: 'SEJARAH & ASAL USUL',
@@ -389,8 +425,8 @@ export const etnisDetailData = {
         'Berpegang teguh pada prinsip di mana bumi dipijak, di situ langit dijunjung, warga Minang berintegrasi secara harmonis dengan masyarakat lokal tanpa kehilangan jati diri mereka. Warisan kultural ini tetap hidup subur di Medan, tercermin dari menjamurnya usaha rumah makan Padang, eksistensi organisasi kekeluargaan yang solid, hingga penerapan nilai adat yang relijius.'
       ],
       quote: '"Di mana semangat perantau membaja, falsafah \'adat basandi syarak\' dijaga, dan kehangatan rasa masakan Minang menyatu dalam keseharian, di situlah denyut kebudayaan Minangkabau memperkaya warna Kota Medan."',
-      archiveImage: imgMinangkabau,
-      archiveCaption: 'Arsip Sejarah'
+      archiveImage: imgMinangTempoDulu,
+      archiveCaption: 'Arsip Sejarah Minangkabau'
     },
 
     pilarBudaya: {
@@ -399,11 +435,12 @@ export const etnisDetailData = {
       baju: {
         title: 'Seni Tari Piring (Tari Piriang)',
         description: 'Seni pertunjukan ikonik yang melambangkan rasa syukur atas hasil panen yang melimpah. Menampilkan gerakan lincah dan cepat tanpa menjatuhkan piring di tangan, tarian ini merefleksikan ketangkasan, kebersamaan, serta keteguhan jiwa masyarakat Minangkabau dalam menghadapi tantangan hidup.',
-        image: imgMinangkabau
+        image: imgTariPiring
       },
       tari: {
         title: 'Malam Bainai',
-        description: 'Malam terakhir bagi calon pengantin wanita (anak daro) menikmati masa lajangnya. Prosesi melekatkan tumbukan daun pacar merah (inai) ke kuku ini dipenuhi suasana sakral, iringan doa, dan ungkapan kasih sayang tulus dari orang tua serta kerabat dekat.'
+        description: 'Malam terakhir bagi calon pengantin wanita (anak daro) menikmati masa lajangnya. Prosesi melekatkan tumbukan daun pacar merah (inai) ke kuku ini dipenuhi suasana sakral, iringan doa, dan ungkapan kasih sayang tulus dari orang tua serta kerabat dekat.',
+        icon: iconTopeng
       },
       pantun: {
         title: 'Tradisi Baralek (Pesta Adat)',
@@ -417,10 +454,10 @@ export const etnisDetailData = {
     kuliner: {
       title: 'Kekayaan Rempah & Keaslian Rasa',
       description: 'Hidangan mahakarya yang dimasak perlahan menggunakan aneka rempah Nusantara dan santan hingga meresap sempurna ke serat daging. Proses karamelisasi alami ini menghasilkan cita rasa gurih yang mendalam...',
-      images: [imgMinangkabau, imgMinangkabau],
+      images: [imgRendang, imgSatePadang],
       menus: [
-        { name: 'Rendang Daging', desc: 'Hidangan mahakarya yang dimasak perlahan menggunakan aneka rempah Nusantara dan santan hingga meresap sempurna ke serat daging. Proses karamelisasi alami ini menghasilkan cita rasa gurih yang mendalam dan warna gelap yang khas, melambangkan ketabahan, kesabaran, serta kearifan budaya leluhur.' },
-        { name: 'Sate Padang', desc: 'Potongan daging atau lidah sapi empuk yang dibakar harum, lalu disiram saus kuah kental berwarna kuning kecokelatan yang kaya akan rempah dan cabai. Kehangatan rasa pedasnya yang menggigit berpadu dengan taburan bawang goreng renyah, menjadikannya kuliner malam yang sangat diburu di setiap sudut Medan.' }
+        { name: 'Rendang Daging', desc: 'Hidangan mahakarya yang dimasak perlahan menggunakan aneka rempah Nusantara dan santan hingga meresap sempurna ke serat daging. Proses karamelisasi alami ini menghasilkan cita rasa gurih yang mendalam dan warna gelap yang khas, melambangkan ketabahan, kesabaran, serta kearifan budaya leluhur.', icon: iconAlatMakan },
+        { name: 'Sate Padang', desc: 'Potongan daging atau lidah sapi empuk yang dibakar harum, lalu disiram saus kuah kental berwarna kuning kecokelatan yang kaya akan rempah dan cabai. Kehangatan rasa pedasnya yang menggigit berpadu dengan taburan bawang goreng renyah, menjadikannya kuliner malam yang sangat diburu di setiap sudut Medan.', icon: iconAlatMakan }
       ]
     },
 
@@ -432,13 +469,13 @@ export const etnisDetailData = {
           title: 'Gedung Dakwah IKGS',
           description: 'Kompleks pusat dakwah dan sosial yang dikelola oleh Ikatan Keluarga Gasan Satyo (IKGS) di Medan. Bangunan ini memadukan fungsi modern dengan elemen atap gonjong khas Minangkabau, menjadi ruang pemersatu bagi perantau asal Gasan Gadang (Padang Pariaman) untuk menjalankan kegiatan keagamaan, pendidikan, dan pelestarian nilai budaya.',
           category: 'Pusat Budaya • Monumen Sosial',
-          image: imgMinangkabau
+          image: imgGedungDakwah
         },
         {
           title: 'Rumah Gadang Manuhampu Medan',
           description: 'Rumah adat tradisional Minangkabau yang didirikan oleh persatuan keluarga perantau asal Banuhampu di Kota Medan. Bangunan dengan ornamen ukiran dan kain songket khas ini berfungsi sebagai wadah pertemuan akbar, pelestarian adat istiadat, serta penguat tali silaturahmi gotong royong warga Minang di tanah rantau.',
           category: 'Situs Warisan • Landmark Kota',
-          image: imgMinangkabau
+          image: imgRumahGadang
         }
       ]
     }

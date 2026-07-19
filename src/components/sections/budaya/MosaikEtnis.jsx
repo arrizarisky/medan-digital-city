@@ -55,6 +55,7 @@ export default function MosaikEtnis({ lang = "id", sectionRef }) {
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
             <div className="absolute bottom-0 left-0 p-6 md:p-8 w-full">
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">{content.items[2].name}</h3>
+              <p className="text-white/80 line-clamp-3 text-sm md:text-base">{content.items[2].description}</p>
             </div>
           </div>
           
@@ -80,6 +81,7 @@ export default function MosaikEtnis({ lang = "id", sectionRef }) {
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
             <div className="absolute bottom-0 left-0 p-6 md:p-8 w-full">
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">{content.items[4].name}</h3>
+              <p className="text-white/80 line-clamp-3 text-sm md:text-base">{content.items[4].description}</p>
             </div>
           </div>
           
@@ -92,6 +94,7 @@ export default function MosaikEtnis({ lang = "id", sectionRef }) {
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
             <div className="absolute bottom-0 left-0 p-6 md:p-8 w-full">
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">{content.items[5].name}</h3>
+              <p className="text-white/80 line-clamp-3 text-sm md:text-base">{content.items[5].description}</p>
             </div>
           </div>
         </div>

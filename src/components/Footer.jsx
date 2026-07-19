@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { navConfig } from "@/constants/NavData";
+import Logo from "@/assets/logo/Logo_Kota_Medan.webp";
 
 export default function Footer() {
   const footerItems = navConfig.items;
@@ -13,6 +14,7 @@ export default function Footer() {
               to="/"
               className="flex items-center space-x-2 text-xl font-bold tracking-wide"
             >
+              <img src={Logo} alt="" className="w-10 h-10 object-contain"/>
               <span>Medan Digital City</span>
             </Link>
           </div>

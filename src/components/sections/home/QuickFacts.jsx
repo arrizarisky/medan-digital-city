@@ -1,4 +1,5 @@
-
+import GsapScrollReveal from "@/components/ui/gsap-scroll-reveal";
+import { VerticalCutReveal } from "@/components/ui/vertical-cut-reveal";
 const factsData = [
   {
     id: "populasi",
@@ -87,7 +88,8 @@ const factsData = [
 
 export default function QuickFacts() {
   return (
-    <section className="w-full bg-[#FAFAF4] py-16 px-4 md:px-8 lg:px-16 text-[#50652D]">
+    <GsapScrollReveal className="">
+    <section className="w-full bg-[#FFFF] py-16 px-4 md:px-8 lg:px-16 text-[#50652D]">
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
           <div className="max-w-xl">
@@ -150,5 +152,6 @@ export default function QuickFacts() {
         </div>
       </div>
     </section>
+    </GsapScrollReveal>
   );
 }

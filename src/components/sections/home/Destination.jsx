@@ -18,90 +18,95 @@ export default function Destination() {
   };
 
   return (
-    <section className="w-full bg-[#FAFAF4] py-16 px-4 md:px-8 lg:px-16 text-[#50652D]">
-      <div className="mx-auto max-w-6xl">
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
-            Destinasi Unggulan
-          </h2>
+    <section className="w-full bg-[#FAFAF4] py-10 md:py-20">
+      <div className="relative w-full">
+        <h1 className="text-2xl md:text-3xl font-bold tracking-tight mb-10 text-neutral-800 font-bold px-4 md:px-8 lg:px-16">
+          Destinasi Wisata
+        </h1>
+        <div
+          ref={carouselRef}
+          className="flex w-full overflow-x-scroll overscroll-x-auto scroll-smooth [scrollbar-width:none]"
+        >
+          <div className="pointer-events-none absolute right-0 top-0 z-[1000] h-full w-[5%] overflow-hidden bg-gradient-to-l from-[#FAFAF4]"></div>
 
-          <div className="flex gap-2">
-            <button
-              onClick={() => scroll("left")}
-              aria-label="Scroll left"
-              className="flex size-10 items-center justify-center rounded-full border border-[#C5C8B9] bg-white text-[#50652D] hover:bg-[#50652D]/10 transition-colors"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="m15 18-6-6 6-6" />
-              </svg>
-            </button>
-            <button
-              onClick={() => scroll("right")}
-              aria-label="Scroll right"
-              className="flex size-10 items-center justify-center rounded-full bg-[#50652D] text-white hover:bg-[#3e4f1f] transition-colors"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="m9 18 6-6-6-6" />
-              </svg>
-            </button>
+          <div className="mx-auto flex max-w-8xl flex-row justify-start gap-4 pl-4 md:pl-8 lg:pl-16">
+            {destinations.map((item) => (
+              <div key={item.id} className="rounded-3xl last:pr-[5%] md:last:pr-[33%]">
+                <button className="relative z-10 flex h-80 w-56 flex-col items-start justify-start overflow-hidden rounded-3xl bg-gray-100 md:h-[40rem] md:w-96 dark:bg-neutral-900">
+                  <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-full bg-gradient-to-b from-black/80 via-black/10 to-transparent" />
+
+                  <div className="relative z-40 p-8 text-left">
+                    <span
+                      className={`inline-block rounded-md px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider text-white ${item.tagClass}`}
+                    >
+                      {item.tag}
+                    </span>
+                    <p className="mt-3 max-w-xs font-sans text-xl font-semibold text-white [text-wrap:balance] md:text-3xl">
+                      {item.title}
+                    </p>
+                    <p className="mt-2 max-w-xs font-sans text-xs leading-relaxed text-white/80 line-clamp-3">
+                      {item.desc}
+                    </p>
+                  </div>
+
+                  <img
+                    src={item.imageUrl}
+                    alt={item.title}
+                    loading="lazy"
+                    decoding="async"
+                    className="absolute inset-0 z-10 h-full w-full object-cover blur-0 transition duration-300"
+                  />
+                </button>
+              </div>
+            ))}
           </div>
         </div>
 
-        <div
-          ref={carouselRef}
-          className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-6 scrollbar-none"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-        >
-          {destinations.map((item) => (
-            <div
-              key={item.id}
-              className="relative w-[290px] sm:w-[340px] aspect-[4/5] shrink-0 snap-start overflow-hidden rounded-3xl shadow-sm group hover:shadow-md transition-all duration-300"
+        <div className="mr-4 mt-2 flex justify-end gap-2 md:mr-10">
+          <button
+            onClick={() => scroll("left")}
+            aria-label="Scroll left"
+            className="relative z-40 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-6 w-6 text-gray-500"
             >
-              <img
-                src={item.imageUrl}
-                alt={item.title}
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-
-              <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
-                <div>
-                  <span
-                    className={`inline-block rounded-md px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider mb-3 ${item.tagClass}`}
-                  >
-                    {item.tag}
-                  </span>
-                  <h3 className="text-xl font-bold tracking-tight mb-2 drop-shadow-sm">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs text-white/80 leading-relaxed drop-shadow-sm line-clamp-3">
-                    {item.desc}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
+              <path d="M5 12l14 0" />
+              <path d="M5 12l4 4" />
+              <path d="M5 12l4 -4" />
+            </svg>
+          </button>
+          <button
+            onClick={() => scroll("right")}
+            aria-label="Scroll right"
+            className="relative z-40 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-6 w-6 text-gray-500"
+            >
+              <path d="M5 12l14 0" />
+              <path d="M15 16l4 -4" />
+              <path d="M15 8l4 4" />
+            </svg>
+          </button>
         </div>
       </div>
     </section>

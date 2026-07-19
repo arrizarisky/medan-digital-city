@@ -1,7 +1,7 @@
 'use client'
 
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from "react"
-import { motion } from "framer-motion"
+import { motion, useInView } from "framer-motion"
 import { cn } from "@/lib/utils"
 
 const VerticalCutReveal = forwardRef(
@@ -27,6 +27,7 @@ const VerticalCutReveal = forwardRef(
     const containerRef = useRef(null)
     const text = typeof children === "string" ? children : children?.toString() || ""
     const [isAnimating, setIsAnimating] = useState(false)
+    const isInView = useInView(containerRef, { once: false, amount: 0.2 })
 
     const splitIntoCharacters = (value) => {
       if (typeof Intl !== "undefined" && "Segmenter" in Intl) {
@@ -87,9 +88,13 @@ const VerticalCutReveal = forwardRef(
 
     useEffect(() => {
       if (autoStart) {
-        startAnimation()
+        if (isInView) {
+          startAnimation()
+        } else {
+          setIsAnimating(false)
+        }
       }
-    }, [autoStart, startAnimation])
+    }, [autoStart, isInView, startAnimation])
 
     const variants = {
       hidden: { y: reverse ? "-100%" : "100%" },

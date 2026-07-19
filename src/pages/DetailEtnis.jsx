@@ -37,7 +37,7 @@ export default function DetailEtnis({ lang, setLang }) {
       {/* ═══════════════════════════════════════════════ */}
       {/* 1. HERO HEADER MEGAH */}
       {/* ═══════════════════════════════════════════════ */}
-      <section className="relative h-[85vh] md:h-[90vh] w-full overflow-hidden flex flex-col items-center justify-center text-center">
+      <section className="relative h-screen w-full overflow-hidden flex flex-col items-center justify-center text-center">
         <img 
           src={data.heroImage} 
           alt={data.heroTitle} 

@@ -11,10 +11,11 @@ import Inovation, { InovationDetail } from "@/pages/Inovation";
 import CulinaryDetail from "@/components/sections/kuliner/CulinaryDetail";
 import ExploreMap from "@/pages/ExploreMaps";
 
-// Rute Fitur Budaya Kamu (Stashed changes)
+// Rute Fitur Budaya & Wisata
 import KalenderBudaya from "@/pages/KalenderBudaya";
 import GaleriSeni from "@/pages/GaleriSeni";
 import DetailEtnis from "@/pages/DetailEtnis";
+import DetailWisata from "@/pages/DetailWisata";
 
 export default function AppRoutes({ lang, setLang }) {
   return (
@@ -51,6 +52,10 @@ export default function AppRoutes({ lang, setLang }) {
       <Route
         path="/wisata"
         element={<Wisata lang={lang} setLang={setLang} />}
+      />
+      <Route
+        path="/wisata/:slug"
+        element={<DetailWisata lang={lang} setLang={setLang} />}
       />
 
       <Route path="/kuliner" element={<Kuliner />} />

@@ -4,13 +4,14 @@ import imgTariZapin from '@/assets/images/Budaya-Tradisi/tari-serampang-duabelas
 import imgTarianMelayu from '@/assets/images/Budaya-Tradisi/tarian-melayu.png';
 import imgFestivalMelayu from '@/assets/images/Budaya-Tradisi/festival-melayu-medan.png';
 import imgBuburPedas from '@/assets/images/Budaya-Tradisi/bubur-pedas.png';
+import imgNasiLemak from '@/assets/images/kuliner/nasi-lemak.png';
 import imgIstanaMaimun from '@/assets/images/Bangunan-bersejarah/istana-maimun.png';
 import imgMesjidRaya from '@/assets/images/Bangunan-bersejarah/mesjid-raya.jpg';
 
 import imgBatakToba from '@/assets/images/Budaya-Tradisi/batak-toba.png';
 import imgTariTorTor from '@/assets/images/Budaya-Tradisi/tari-tor-tor-batak.png';
-import imgBajuAdatBatak from '@/assets/images/Budaya-Tradisi/baju-adat-batak-toba.png';
-import imgUlos from '@/assets/images/Budaya-Tradisi/ulos-weaving-landscape.png';
+import imgBajuAdatBatak from '@/assets/images/Budaya-Tradisi/ulos.jpeg';
+import imgUlos from '@/assets/images/detail/batak-tempo-dulu.png';
 import imgBatakKaro from '@/assets/images/Budaya-Tradisi/batak-karo.png';
 import imgSimalungun from '@/assets/images/Budaya-Tradisi/simalungun.png';
 
@@ -71,7 +72,7 @@ export const etnisDetailData = {
     kuliner: {
       title: 'Cita Rasa Kerajaan',
       description: 'Kuliner Melayu Deli merupakan perpaduan istimewa antara bahan lokal dan rempah dunia. Setiap hidangannya mencerminkan kehangatan dan keramahan khas Kesultanan.',
-      images: [imgBuburPedas, imgBuburPedas],
+      images: [imgNasiLemak, imgBuburPedas],
       menus: [
         { name: 'Nasi Lemak Deli', desc: 'Berbeda dari versi biasa, Nasi Lemak khas Deli terkenal dengan aroma rempahnya yang lebih kaya serta lauk pendamping yang spesifik, seperti paru goreng atau rendang.' },
         { name: 'Bubur Pedas', desc: 'Sajian kaya nutrisi yang terbuat dari lebih dari 40 jenis umbi, rempah, dan dedaunan, yang secara tradisi disajikan selama bulan Ramadan di Masjid Raya.' }

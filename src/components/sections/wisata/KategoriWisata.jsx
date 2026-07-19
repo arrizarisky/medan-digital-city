@@ -31,8 +31,12 @@ function KategoriCard({ item, index }) {
       {/* Card Content */}
       <div className="absolute inset-0 flex flex-col justify-end p-6">
         {/* Icon */}
-        <div className="mb-3 w-10 h-10 bg-white/15 backdrop-blur-sm rounded-xl flex items-center justify-center text-xl border border-white/20 transition-transform duration-300 group-hover:scale-110">
-          {item.icon}
+        <div className="mb-3 w-10 h-10 bg-white/15 backdrop-blur-sm rounded-xl flex items-center justify-center border border-white/20 transition-transform duration-300 group-hover:scale-110">
+          <img
+            src={item.icon}
+            alt={item.name}
+            className="w-5 h-5 object-contain brightness-0 invert"
+          />
         </div>
 
         {/* Title */}

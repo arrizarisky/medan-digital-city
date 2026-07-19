@@ -9,7 +9,13 @@ import imgGerejaIndia from '@/assets/images/Budaya-Tradisi/gereja-india.png';
 import imgCadika from '@/assets/images/Destinasi-Wisata/cadika.png';
 import imgMuseum from '@/assets/images/Destinasi-Wisata/museum.png';
 import imgKuliner from '@/assets/images/kuliner/kuliner.png';
+import imgIstanaMaimun from '@/assets/images/Bangunan-bersejarah/istana-maimun.png';
 import imgHeroBg from '@/assets/images/mesjid-raya.jpg';
+
+// ── Ikon SVG Lokal untuk Kategori Wisata ─────────────────────
+import iconAlatMakan from '@/assets/icons/alat-makan.svg';
+import iconSejarah from '@/assets/icons/sejarah.svg';
+import iconLocation from '@/assets/icons/location.svg';
 
 // ─── HERO SECTION ────────────────────────────────────────────
 const heroData = {
@@ -39,6 +45,7 @@ const destinasiData = {
     sectionLabel: 'PILIHAN UTAMA',
     sectionTitle: 'Destinasi Terpopuler',
     viewAll: 'Lihat Semua',
+    viewLess: 'Lihat Sedikit',
     viewDetailBtn: 'Lihat Detail',
     items: [
       {
@@ -46,7 +53,7 @@ const destinasiData = {
         name: 'Masjid Raya Al-Mashun',
         description:
           'Ikon arsitektur megah yang menjadi kebanggaan sejarah dan keindahan kota Medan.',
-        badge: 'Gratis',
+        badge: 'Religi',
         badgeColor: 'green',
         image: imgMesjidRaya,
         path: '/wisata/mesjid-raya',
@@ -56,7 +63,7 @@ const destinasiData = {
         name: 'Tjong A Fie Mansion',
         description:
         'Rumah bersejarah milik saudagar Tionghoa yang menjadi museum budaya lintas etnis.',
-        badge: 'Rp 35.000',
+        badge: 'Sejarah',
         badgeColor: 'yellow',
         image: imgTjongAfie,
         path: '/wisata/tjong-afie',
@@ -66,10 +73,40 @@ const destinasiData = {
         name: 'Graha Maria Velangkanni',
         description:
           'Gereja Katolik dengan arsitektur unik yang menjadi destinasi ziarah dan wisata religi.',
-        badge: 'Gratis',
+        badge: 'Religi',
         badgeColor: 'green',
         image: imgGerejaIndia,
         path: '/wisata/graha-maria',
+      },
+      {
+        id: 'istana-maimun',
+        name: 'Istana Maimun',
+        description:
+          'Istana megah Kesultanan Deli yang dibangun tahun 1888, perpaduan arsitektur Melayu, Islam, dan Eropa.',
+        badge: 'Sejarah',
+        badgeColor: 'yellow',
+        image: imgIstanaMaimun,
+        path: '/wisata/istana-maimun',
+      },
+      {
+        id: 'cadika',
+        name: 'Taman Cadika Pramuka',
+        description:
+          'Ruang hijau terbuka keluarga yang luas, dilengkapi danau buatan dan area bermain yang menyegarkan.',
+        badge: 'Alam',
+        badgeColor: 'green',
+        image: imgCadika,
+        path: '/wisata/cadika',
+      },
+      {
+        id: 'museum',
+        name: 'Museum Negeri Sumatera Utara',
+        description:
+          'Koleksi artefak dan warisan budaya Sumatera Utara yang komprehensif dari berbagai era sejarah.',
+        badge: 'Sejarah',
+        badgeColor: 'yellow',
+        image: imgMuseum,
+        path: '/wisata/museum',
       },
     ],
   },
@@ -77,6 +114,7 @@ const destinasiData = {
     sectionLabel: 'TOP PICKS',
     sectionTitle: 'Most Popular Destinations',
     viewAll: 'View All',
+    viewLess: 'Show Less',
     viewDetailBtn: 'View Detail',
     items: [
       {
@@ -84,7 +122,7 @@ const destinasiData = {
         name: 'Masjid Raya Al-Mashun',
         description:
           "An iconic majestic architectural landmark that is the pride of Medan's history and beauty.",
-        badge: 'Free',
+        badge: 'Religious',
         badgeColor: 'green',
         image: imgMesjidRaya,
         path: '/wisata/mesjid-raya',
@@ -94,7 +132,7 @@ const destinasiData = {
         name: 'Tjong A Fie Mansion',
         description:
           'A historic house owned by a Chinese merchant, now a cross-ethnic cultural museum.',
-        badge: 'Rp 35,000',
+        badge: 'History',
         badgeColor: 'yellow',
         image: imgTjongAfie,
         path: '/wisata/tjong-afie',
@@ -104,10 +142,40 @@ const destinasiData = {
         name: 'Graha Maria Velangkanni',
         description:
           'A Catholic church with unique architecture serving as a pilgrimage and religious tourism destination.',
-        badge: 'Free',
+        badge: 'Religious',
         badgeColor: 'green',
         image: imgGerejaIndia,
         path: '/wisata/graha-maria',
+      },
+      {
+        id: 'istana-maimun',
+        name: 'Maimun Palace',
+        description:
+          'Grand palace of the Deli Sultanate built in 1888, a blend of Malay, Islamic, and European architecture.',
+        badge: 'History',
+        badgeColor: 'yellow',
+        image: imgIstanaMaimun,
+        path: '/wisata/istana-maimun',
+      },
+      {
+        id: 'cadika',
+        name: 'Cadika Scout Park',
+        description:
+          'A wide open green family space equipped with an artificial lake and refreshing play areas.',
+        badge: 'Nature',
+        badgeColor: 'green',
+        image: imgCadika,
+        path: '/wisata/cadika',
+      },
+      {
+        id: 'museum',
+        name: 'North Sumatra State Museum',
+        description:
+          'A comprehensive collection of artifacts and cultural heritage of North Sumatra from various historical eras.',
+        badge: 'History',
+        badgeColor: 'yellow',
+        image: imgMuseum,
+        path: '/wisata/museum',
       },
     ],
   },
@@ -122,7 +190,7 @@ const kategoriData = {
     items: [
       {
         id: 'kuliner',
-        icon: '🍜',
+        icon: iconAlatMakan,
         name: 'Wisata Kuliner',
         description:
           'Nikmati kekayaan cita rasa kuliner khas Medan yang terkenal lezat dan beragam di setiap sudut kota.',
@@ -131,7 +199,7 @@ const kategoriData = {
       },
       {
         id: 'sejarah',
-        icon: '🏛️',
+        icon: iconSejarah,
         name: 'Wisata Sejarah',
         description:
           'Telusuri bangunan-bangunan bersejarah yang menjadi saksi bisu perjalanan panjang kota Medan.',
@@ -140,7 +208,7 @@ const kategoriData = {
       },
       {
         id: 'taman',
-        icon: '🌿',
+        icon: iconLocation,
         name: 'Taman Kota',
         description:
           'Nikmati ruang hijau dan taman kota yang menjadi paru-paru kota sekaligus destinasi rekreasi keluarga.',
@@ -156,7 +224,7 @@ const kategoriData = {
     items: [
       {
         id: 'kuliner',
-        icon: '🍜',
+        icon: iconAlatMakan,
         name: 'Culinary Tourism',
         description:
           "Enjoy the richness of Medan's signature culinary flavors, famous for being delicious and diverse throughout the city.",
@@ -165,7 +233,7 @@ const kategoriData = {
       },
       {
         id: 'sejarah',
-        icon: '🏛️',
+        icon: iconSejarah,
         name: 'Historical Tourism',
         description:
           "Explore historical buildings that serve as silent witnesses to Medan's long journey through time.",
@@ -174,7 +242,7 @@ const kategoriData = {
       },
       {
         id: 'taman',
-        icon: '🌿',
+        icon: iconLocation,
         name: 'City Parks',
         description:
           "Enjoy green spaces and city parks that serve as the city's lungs as well as family recreation destinations.",

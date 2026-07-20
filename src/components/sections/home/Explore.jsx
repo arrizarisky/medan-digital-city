@@ -7,9 +7,17 @@ export default function Explore() {
   return (
     <section className="w-full bg-[#FAFAF4] py-16 px-4 md:px-8 lg:px-16">
       <div className="mx-auto max-w-6xl">
-        <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-10 text-[#50652D]">
-          Jelajahi Medan
-        </h2>
+        <div className="mb-10 md:mb-14">
+          <span className="text-xs font-bold tracking-widest uppercase text-[#B28A32] block mb-2">
+            Eksplorasi Kota
+          </span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#50652D] tracking-tight leading-tight">
+            Jelajahi Medan
+          </h2>
+          <p className="mt-3 text-sm md:text-base text-[#6E7C5A] max-w-2xl leading-relaxed">
+            Mulai petualangan Anda dengan menelusuri kekayaan sejarah, keragaman budaya, kecanggihan teknologi, serta cita rasa kuliner legendaris Kota Medan.
+          </p>
+        </div>
 
         <div className="grid grid-cols-1 divide-x-0 divide-y divide-[#C5C8B9]/50 overflow-hidden rounded-2xl shadow-sm ring-1 ring-[#50652D]/15 md:grid-cols-2 md:divide-y-0 lg:grid-cols-5 md:divide-x">
           {exploreItems.map((card, i) => (

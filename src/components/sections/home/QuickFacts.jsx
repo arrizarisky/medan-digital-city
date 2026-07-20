@@ -89,19 +89,19 @@ const factsData = [
 export default function QuickFacts() {
   return (
     <GsapScrollReveal className="">
-    <section className="w-full bg-[#FFFF] py-16 px-4 md:px-8 lg:px-16 text-[#50652D]">
+    <section className="w-full bg-white py-16 px-4 md:px-8 lg:px-16 text-[#50652D]">
       <div className="mx-auto max-w-6xl">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
-          <div className="max-w-xl">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-16">
+          <div className="max-w-2xl">
             <span className="text-xs font-bold tracking-widest uppercase text-[#B28A32] block mb-2">
               Sekilas Pandangan
             </span>
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-[#50652D]">
-              Medan : Sebuah Perpaduan Pertumbuhan
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#50652D] leading-[1.15]">
+              Medan: Sebuah Perpaduan Pertumbuhan
             </h2>
           </div>
-          <div className="max-w-md">
-            <p className="text-sm text-neutral-600 leading-relaxed md:text-right">
+          <div className="max-w-md md:text-right">
+            <p className="text-sm md:text-base text-neutral-600 leading-relaxed">
               Kota terbesar ketiga di Indonesia, yang menjadi penggerak ekonomi
               dan pusat budaya Sumatra Utara.
             </p>

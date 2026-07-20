@@ -2,7 +2,7 @@ import imgIstana from '../assets/images/istanamaimun.png';
 import imgMelayudeli from "../assets/images/Budaya-Tradisi/Melayu-deli.png"
 import imgBatakToba from "../assets/images/Budaya-Tradisi/batak-toba.png"
 import imgTjongAfie from '../assets/images/tjong-afie-mansion.png';
-import imgKuil from '../assets/images/bangunan-bersejarah/kuil.jpg';
+import imgKuil from '../assets/images/Bangunan-bersejarah/kuil.jpg';
 import imgRumahJawa from '../assets/images/Budaya-Tradisi/jawa.jpg';
 import imgMinangkabau from '../assets/images/Budaya-Tradisi/minangkabau.jpg';
 import imgTor from '../assets/images/Budaya-Tradisi/tari-tor-tor-batak.png';

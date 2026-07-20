@@ -1,5 +1,5 @@
 import istanaMaimunImg from "../assets/images/istanamaimun.png";
-import TjongAfie2Img from "../assets/images/Tjong-AFie-Mansion.png";
+import TjongAfie2Img from "../assets/images/tjong-afie-mansion.png";
 import KulinerImg from "../assets/images/kuliner-hero.png";
 import masjidRayaImg from "../assets/images/mesjid-raya.jpg";
 import JalanTolImg from "../assets/images/Teknologi-Modern/jalan-tol.png";

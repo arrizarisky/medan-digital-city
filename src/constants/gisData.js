@@ -1,7 +1,7 @@
-import MansionTjongAfieImg from "../assets/images/Tjong-AFie-Mansion.png";
+import MansionTjongAfieImg from "../assets/images/tjong-afie-mansion.png";
 import MasjidRayaImg from "../assets/images/mesjid-raya.jpg";
 import IstanaMaimunImg from "../assets/images/istanamaimun.png";
-import KantorPosImg from "../assets/images/Bangunan-bersejarah/kantor-pos-2.png"
+import KantorPosImg from "../assets/images/Bangunan-bersejarah/kantor-pos-2.png";
 
 export const gisData = {
   categories: [

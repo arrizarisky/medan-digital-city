@@ -1,6 +1,10 @@
 import { ctaConfig } from "@/constants/ctaData";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function CTA() {
+  const { lang } = useLanguage();
+  const c = ctaConfig[lang] ?? ctaConfig.id;
+
   return (
     <section className="w-full bg-[#F1F3EA] py-16 px-4 md:px-8 lg:px-16 transition-colors duration-300">
       <div className="mx-auto max-w-6xl">
@@ -11,11 +15,11 @@ export default function CTA() {
 
           <div className="relative z-10 max-w-2xl text-white">
             <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-4 drop-shadow-sm">
-              {ctaConfig.title}
+              {c.title}
             </h2>
 
             <p className="text-sm md:text-base text-white/90 leading-relaxed mb-8 max-w-xl font-medium">
-              {ctaConfig.desc}
+              {c.desc}
             </p>
 
             <form
@@ -25,7 +29,7 @@ export default function CTA() {
               <input
                 type="email"
                 required
-                placeholder={ctaConfig.placeholder}
+                placeholder={c.placeholder}
                 className="w-full sm:flex-1 h-12 rounded-full bg-white px-6 text-sm text-neutral-800 placeholder-neutral-400 outline-none shadow-inner border-2 border-transparent focus:border-[#E9D48F] focus:ring-4 focus:ring-[#E9D48F]/10 transition-all duration-300"
               />
 
@@ -33,12 +37,12 @@ export default function CTA() {
                 type="submit"
                 className="h-12 shrink-0 rounded-full bg-[#B28A32] hover:bg-[#977325] active:bg-[#7D5E1E] px-8 text-xs font-extrabold uppercase tracking-widest text-white transition-all duration-300 shadow-lg shadow-[#B28A32]/25 hover:shadow-xl hover:shadow-[#B28A32]/40 active:scale-[0.98] cursor-pointer"
               >
-                {ctaConfig.buttonText}
+                {c.buttonText}
               </button>
             </form>
 
             <p className="text-[11px] text-white/70 leading-normal">
-              {ctaConfig.disclaimer}
+              {c.disclaimer}
             </p>
           </div>
         </div>

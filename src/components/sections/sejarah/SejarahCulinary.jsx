@@ -1,4 +1,5 @@
 import { MapPin, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function SejarahCulinary({ content, sectionRef }) {
   return (
@@ -21,14 +22,14 @@ export default function SejarahCulinary({ content, sectionRef }) {
           <p className="text-white/80 text-[16px] mb-10 leading-relaxed max-w-[500px]">
             {content.culinary.desc}
           </p>
-          <button className="self-start relative overflow-hidden px-8 py-4 bg-[#50652D] text-white font-bold text-[15px] rounded-xl transition-all duration-300 shadow-[0_10px_20px_-10px_rgba(80,101,45,0.6)] hover:shadow-[0_15px_30px_-10px_rgba(80,101,45,0.8)] hover:-translate-y-1 group/btn">
+          <Link to="/kuliner" className="self-start relative overflow-hidden px-6 py-3 bg-[#50652D] text-white font-bold text-[15px] rounded-full transition-all duration-300 shadow-[0_10px_20px_-10px_rgba(80,101,45,0.6)] hover:shadow-[0_15px_30px_-10px_rgba(80,101,45,0.8)] hover:-translate-y-1 group/btn">
             <span className="relative z-10 flex items-center gap-2">
               {content.culinary.button}
               <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
             </span>
             {/* Button sweep animation */}
             <span className="absolute inset-0 bg-white/20 transform -translate-x-full skew-x-12 group-hover/btn:animate-[sweep_0.6s_ease-out_forwards]"></span>
-          </button>
+          </Link>
         </div>
       </div>
     </section>

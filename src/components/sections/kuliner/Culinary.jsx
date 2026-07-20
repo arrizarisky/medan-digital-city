@@ -2,8 +2,30 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { culinaryConfig } from "@/constants/culinaryData";
 
-export default function Culinary() {
-  const { categories, items } = culinaryConfig;
+const t = {
+  id: {
+    title: "Kategori Kuliner",
+    subtitle: "Pilih jenis hidangan yang ingin Anda nikmati hari ini",
+    emptyHeavy: "Tidak ada menu berat",
+    emptySnack: "Tidak ada camilan / minuman",
+    emptyIconic: "Tidak ada kuliner ikonik",
+    mustTry: "Must-Try",
+  },
+  en: {
+    title: "Culinary Categories",
+    subtitle: "Choose the type of dish you want to enjoy today",
+    emptyHeavy: "No main course available",
+    emptySnack: "No snacks / drinks available",
+    emptyIconic: "No iconic culinary available",
+    mustTry: "Must-Try",
+  }
+};
+
+export default function Culinary({ lang = 'id' }) {
+  const c = culinaryConfig[lang] ?? culinaryConfig.id;
+  const { categories, items } = c;
+  const text = t[lang] ?? t.id;
+  
   const [activeTab, setActiveTab] = useState("all");
 
   const filteredItems =
@@ -29,10 +51,10 @@ export default function Culinary() {
         >
           <div>
             <h2 className="text-3xl font-bold font-montserrat tracking-tight text-[#50652D] mb-2">
-              Kategori Kuliner
+              {text.title}
             </h2>
             <p className="text-sm text-neutral-500 font-inter">
-              Pilih jenis hidangan yang ingin Anda nikmati hari ini
+              {text.subtitle}
             </p>
           </div>
 
@@ -76,7 +98,7 @@ export default function Culinary() {
                     </span>
                     {leftItem.isMustTry && (
                       <span className="rounded-md bg-[#FFF3E0] text-[#5C4033] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider inline-flex items-center gap-1">
-                        <span className="w-2 h-2 bg-[#5C4033] rounded-full" /> Must-Try
+                        <span className="w-2 h-2 bg-[#5C4033] rounded-full" /> {text.mustTry}
                       </span>
                     )}
                   </div>
@@ -90,7 +112,7 @@ export default function Culinary() {
               </Link>
             ) : (
               <div className="w-full h-full rounded-[24px] border border-dashed border-[#C5C8B9] flex items-center justify-center text-xs text-neutral-400">
-                Tidak ada menu berat
+                {text.emptyHeavy}
               </div>
             )}
           </div>
@@ -128,7 +150,7 @@ export default function Culinary() {
                 ))
               ) : (
                 <div className="col-span-2 w-full h-full rounded-[24px] border border-dashed border-[#C5C8B9] flex items-center justify-center text-xs text-neutral-400">
-                  Tidak ada camilan / minuman
+                  {text.emptySnack}
                 </div>
               )}
             </div>
@@ -162,7 +184,7 @@ export default function Culinary() {
                 </Link>
               ) : (
                 <div className="w-full h-full rounded-[24px] border border-dashed border-[#C5C8B9] flex items-center justify-center text-xs text-neutral-400">
-                  Tidak ada kuliner ikonik
+                  {text.emptyIconic}
                 </div>
               )}
             </div>

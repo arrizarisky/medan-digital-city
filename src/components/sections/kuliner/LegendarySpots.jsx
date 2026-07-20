@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { spotConfig } from "@/constants/spotData";
 import BgPattern from "../../../assets/images/bg-landscape.webp";
 
-export default function LegendarySpots() {
-  const { title, subtitle, viewAllText, viewAllPath, bgPattern, items } =
-    spotConfig;
+export default function LegendarySpots({ lang = 'id' }) {
+  const c = spotConfig[lang] ?? spotConfig.id;
+  const { title, subtitle, viewAllText, viewAllPath, bgPattern, items } = c;
 
   return (
     <section
@@ -14,7 +14,7 @@ export default function LegendarySpots() {
       <div
         className="absolute inset-0 opacity-[0.1] pointer-events-none z-0"
         style={{
-          backgroundImage: `url(${BgPattern})`,
+          backgroundImage: `url(${bgPattern || BgPattern})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",

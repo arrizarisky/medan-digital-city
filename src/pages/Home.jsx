@@ -7,10 +7,10 @@ import Potential from "@/components/sections/home/Potential";
 import Explore from "@/components/sections/home/Explore";
 import CTA from "@/components/sections/home/CTA";
 
-export default function Home({ lang, setLang }) {
+export default function Home() {
   return (
     <main>
-      <Navbar lang={lang} setLang={setLang} />
+      <Navbar />
       <Hero />
       <QuickFacts />
       <Destination />

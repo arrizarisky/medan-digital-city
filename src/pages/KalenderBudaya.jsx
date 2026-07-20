@@ -3,27 +3,41 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import kalenderBudayaImg from '@/assets/images/kalender-budaya.jpg';
 import { ChevronDown } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 import { eventBudayaData as eventsData, defaultFallbackImage } from '@/constants/eventBudayaData';
 
-const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Ags', 'Sep', 'Okt', 'Nov', 'Des'];
+const months = {
+  id: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Ags', 'Sep', 'Okt', 'Nov', 'Des'],
+  en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+};
 
-export default function KalenderBudaya({ lang, setLang }) {
-  const [activeFilter, setActiveFilter] = useState('Semua');
+const filters = {
+  id: ['Semua', 'Festival', 'Religi & Kuliner', 'Budaya', 'Tradisi'],
+  en: ['All', 'Festival', 'Religious & Culinary', 'Culture', 'Tradition']
+};
+
+export default function KalenderBudaya() {
+  const { lang } = useLanguage();
+  const [activeFilter, setActiveFilter] = useState(filters[lang][0]);
   const [selectedMonth, setSelectedMonth] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedId, setExpandedId] = useState(null);
-  
-  const filters = ['Semua', 'Festival', 'Religi & Kuliner', 'Budaya', 'Tradisi'];
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  useEffect(() => {
+    // Reset to default filter when lang changes
+    setActiveFilter(filters[lang][0]);
+    setSelectedMonth(null);
+  }, [lang]);
+
   const addToGoogleCalendar = (event) => {
-    const text = encodeURIComponent(event.title);
-    const details = encodeURIComponent(event.shortDescription);
-    const location = encodeURIComponent(event.location);
+    const text = encodeURIComponent(event.title[lang]);
+    const details = encodeURIComponent(event.shortDescription[lang]);
+    const location = encodeURIComponent(event.location[lang]);
     const d = new Date(event.fullDate);
     const year = d.getFullYear();
     const monthStr = String(d.getMonth() + 1).padStart(2, '0');
@@ -37,11 +51,11 @@ export default function KalenderBudaya({ lang, setLang }) {
   };
 
   const filteredEvents = eventsData.filter(event => {
-    const matchCategory = activeFilter === 'Semua' || event.category === activeFilter;
-    const matchMonth = selectedMonth ? event.month === selectedMonth : true;
-    const matchSearch = event.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                        event.shortDescription.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                        event.longDescription.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchCategory = activeFilter === filters[lang][0] || event.category[lang] === activeFilter;
+    const matchMonth = selectedMonth ? event.month[lang] === selectedMonth : true;
+    const matchSearch = event.title[lang].toLowerCase().includes(searchQuery.toLowerCase()) || 
+                        event.shortDescription[lang].toLowerCase().includes(searchQuery.toLowerCase()) ||
+                        event.longDescription[lang].toLowerCase().includes(searchQuery.toLowerCase());
     return matchCategory && matchMonth && matchSearch;
   });
 
@@ -50,6 +64,43 @@ export default function KalenderBudaya({ lang, setLang }) {
 
   const toggleAccordion = (id) => {
     setExpandedId(prev => prev === id ? null : id);
+  };
+
+  const staticText = {
+    id: {
+      headerTitle: 'Kalender Budaya',
+      headerDesc: 'Menelusuri perayaan tahunan yang membentuk jiwa Kota Medan. Dari keriuhan Imlek hingga keagungan Ramadhan.',
+      searchPlaceholder: 'Cari acara atau tradisi...',
+      yearBtn: 'Tahun 2026',
+      categoryLabel: 'Kategori',
+      curatorialInfoTitle: 'Informasi Kurasi',
+      curatorialInfoDesc: 'Setiap item dalam galeri ini telah diverifikasi oleh dewan kebudayaan daerah untuk keaslian sejarahnya.',
+      featuredHighlights: 'Highlights',
+      saveSchedule: 'Simpan Jadwal',
+      directionsBtn: 'Petunjuk Arah',
+      noScheduleAvailable: 'Belum ada jadwal yang tersedia untuk kriteria ini.',
+      freeEvent: 'Gratis & Terbuka untuk Umum',
+      eventTime: 'Pukul 16:00 - 22:00 WIB',
+      saveToGoogle: 'Simpan ke Google Calendar',
+      directionsMap: 'Petunjuk Arah / Peta'
+    },
+    en: {
+      headerTitle: 'Cultural Calendar',
+      headerDesc: 'Exploring the annual celebrations that shape the soul of Medan City. From the excitement of Chinese New Year to the majesty of Ramadhan.',
+      searchPlaceholder: 'Search for events or traditions...',
+      yearBtn: 'Year 2026',
+      categoryLabel: 'Category',
+      curatorialInfoTitle: 'Curatorial Information',
+      curatorialInfoDesc: 'Every item in this gallery has been verified by the regional cultural board for its historical authenticity.',
+      featuredHighlights: 'Highlights',
+      saveSchedule: 'Save Schedule',
+      directionsBtn: 'Directions',
+      noScheduleAvailable: 'No schedules available for these criteria yet.',
+      freeEvent: 'Free & Open to Public',
+      eventTime: '04:00 PM - 10:00 PM WIB',
+      saveToGoogle: 'Save to Google Calendar',
+      directionsMap: 'Directions / Map'
+    }
   };
 
   return (
@@ -69,7 +120,7 @@ export default function KalenderBudaya({ lang, setLang }) {
         }
       `}</style>
       
-      <Navbar lang={lang} setLang={setLang} />
+      <Navbar />
 
       <main className="min-h-screen py-16 px-4 md:px-8 mt-16 relative">
         {/* Grain/Artsy background effect for the whole page (subtle) */}
@@ -78,9 +129,9 @@ export default function KalenderBudaya({ lang, setLang }) {
         <div className="max-w-6xl mx-auto relative z-10">
           {/* Header */}
           <div className="mb-14 text-center md:text-left">
-            <h1 className="font-playfair text-[#1E3F20] text-5xl md:text-7xl font-bold mb-6 tracking-tight">Kalender Budaya</h1>
+            <h1 className="font-playfair text-[#1E3F20] text-5xl md:text-7xl font-bold mb-6 tracking-tight">{staticText[lang].headerTitle}</h1>
             <p className="font-inter text-[#414844] max-w-2xl text-lg mx-auto md:mx-0 font-light leading-relaxed">
-              Menelusuri perayaan tahunan yang membentuk jiwa Kota Medan. Dari keriuhan Imlek hingga keagungan Ramadhan.
+              {staticText[lang].headerDesc}
             </p>
           </div>
 
@@ -93,12 +144,12 @@ export default function KalenderBudaya({ lang, setLang }) {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full pl-12 pr-4 py-3.5 rounded-full bg-white/60 backdrop-blur-sm border border-[#1E3F20]/10 focus:ring-2 focus:ring-[#1E3F20]/30 focus:border-transparent outline-none transition-all font-inter text-base shadow-sm" 
-                  placeholder="Cari acara atau tradisi..." 
+                  placeholder={staticText[lang].searchPlaceholder}
                   type="text"
                 />
               </div>
               <div className="flex overflow-x-auto whitespace-nowrap scrollbar-hide gap-2 items-center">
-                  {filters.map((filter) => (
+                  {filters[lang].map((filter) => (
                     <button 
                       key={filter}
                       onClick={() => setActiveFilter(filter)}
@@ -124,9 +175,9 @@ export default function KalenderBudaya({ lang, setLang }) {
                   : 'text-[#717973] hover:text-[#1E3F20] hover:bg-[#1E3F20]/5'
                 }`}
               >
-                Tahun 2026
+                {staticText[lang].yearBtn}
               </button>
-              {months.map((m) => (
+              {months[lang].map((m) => (
                 <button 
                   key={m}
                   onClick={() => setSelectedMonth(m)}
@@ -151,7 +202,7 @@ export default function KalenderBudaya({ lang, setLang }) {
                 <div className="w-full md:w-1/2 h-[300px] md:h-[450px] overflow-hidden rounded-3xl relative group shrink-0">
                   <img 
                     src={featuredEvent.image || defaultFallbackImage} 
-                    alt={featuredEvent.title} 
+                    alt={featuredEvent.title[lang]} 
                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-black/10 transition-colors duration-500 group-hover:bg-transparent"></div>
@@ -159,26 +210,26 @@ export default function KalenderBudaya({ lang, setLang }) {
                 <div className="w-full md:w-1/2 flex flex-col justify-center">
                   <div className="flex items-center gap-4 mb-6">
                     <span className="font-inter text-[#B28A32] font-semibold tracking-[0.2em] uppercase text-xs">
-                      {featuredEvent.category}
+                      {featuredEvent.category[lang]}
                     </span>
                     <span className="w-10 h-px bg-[#B28A32]/40"></span>
                     <span className="font-inter text-white/80 font-medium tracking-wide text-sm">
-                      {featuredEvent.date} {featuredEvent.month} 2026
+                      {featuredEvent.date} {featuredEvent.month[lang]} 2026
                     </span>
                   </div>
                   
                   <h2 className="font-playfair text-4xl md:text-5xl font-bold text-white mb-6 leading-[1.1] tracking-tight">
-                    {featuredEvent.title}
+                    {featuredEvent.title[lang]}
                   </h2>
                   
                   <p className="font-inter text-white/70 text-base md:text-lg mb-6 leading-relaxed font-light">
-                    {featuredEvent.longDescription}
+                    {featuredEvent.longDescription[lang]}
                   </p>
 
                   <div className="flex flex-col gap-3 mb-10">
-                    <h4 className="font-inter text-white/90 font-medium text-sm tracking-wide uppercase">Highlights</h4>
+                    <h4 className="font-inter text-white/90 font-medium text-sm tracking-wide uppercase">{staticText[lang].featuredHighlights}</h4>
                     <ul className="flex flex-wrap gap-2">
-                      {featuredEvent.highlights?.map((highlight, idx) => (
+                      {featuredEvent.highlights[lang]?.map((highlight, idx) => (
                         <li key={idx} className="bg-white/10 text-white/80 px-4 py-1.5 rounded-full text-xs font-medium border border-white/5">
                           {highlight}
                         </li>
@@ -191,14 +242,14 @@ export default function KalenderBudaya({ lang, setLang }) {
                       onClick={() => addToGoogleCalendar(featuredEvent)}
                       className="group/btn flex items-center gap-3 bg-[#B28A32] text-white px-6 py-3 rounded-full font-inter font-medium hover:bg-[#9c782b] transition-all hover:shadow-lg active:scale-95"
                     >
-                      Simpan Jadwal
+                      {staticText[lang].saveSchedule}
                       <span className="material-symbols-outlined text-[18px] group-hover/btn:-translate-y-0.5 transition-transform">event_upcoming</span>
                     </button>
                     <button 
                       onClick={() => window.open(featuredEvent.mapsUrl, '_blank')}
                       className="group/btn flex items-center gap-2 text-white/70 hover:text-white font-inter text-sm font-medium transition-colors border-b border-transparent hover:border-white pb-0.5"
                     >
-                      Petunjuk Arah
+                      {staticText[lang].directionsBtn}
                       <span className="material-symbols-outlined text-[16px] group-hover/btn:translate-x-0.5 transition-transform">open_in_new</span>
                     </button>
                   </div>
@@ -226,7 +277,7 @@ export default function KalenderBudaya({ lang, setLang }) {
                   <div className="md:w-40 p-6 md:p-8 flex flex-col md:items-end justify-start md:border-r border-zinc-200/40 shrink-0">
                     <div className="flex flex-row md:flex-col items-baseline md:items-end gap-2 md:gap-0">
                       <span className="font-playfair text-[#1E3F20] text-5xl font-bold leading-none">{event.date}</span>
-                      <span className="font-inter font-medium text-sm uppercase text-[#717973] md:mt-2 tracking-widest">{event.month}</span>
+                      <span className="font-inter font-medium text-sm uppercase text-[#717973] md:mt-2 tracking-widest">{event.month[lang]}</span>
                     </div>
                   </div>
 
@@ -234,21 +285,21 @@ export default function KalenderBudaya({ lang, setLang }) {
                   <div className="flex-1 p-6 md:p-8 md:pl-10 flex flex-col justify-center">
                     <div className="flex flex-wrap items-center gap-4 mb-3">
                       <h3 className={`font-playfair text-3xl font-bold transition-colors ${isExpanded ? 'text-[#B28A32]' : 'text-[#1b1c1c] group-hover:text-[#1E3F20]'}`}>
-                        {event.title}
+                        {event.title[lang]}
                       </h3>
                       <span className="font-inter text-[#B28A32] text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-[#B28A32]/20 bg-[#B28A32]/5">
-                        {event.category}
+                        {event.category[lang]}
                       </span>
                     </div>
                     
                     <div className="flex items-center gap-2 mb-4 text-[#717973]">
                       <span className="material-symbols-outlined text-[16px] text-[#B28A32]">location_on</span>
-                      <span className="font-inter text-sm font-medium">{event.location}</span>
+                      <span className="font-inter text-sm font-medium">{event.location[lang]}</span>
                     </div>
 
                     {/* Potong deskripsi jika tertutup */}
                     <p className={`font-inter text-[#414844] text-base leading-relaxed font-light md:max-w-3xl ${!isExpanded ? 'line-clamp-2' : 'hidden'}`}>
-                      {event.shortDescription}
+                      {event.shortDescription[lang]}
                     </p>
                   </div>
 
@@ -271,12 +322,12 @@ export default function KalenderBudaya({ lang, setLang }) {
                       {/* Kolom Kiri: Narasi & Rundown */}
                       <div className="md:w-[60%] flex flex-col gap-6">
                         <p className="font-inter text-[#414844] text-base leading-relaxed font-light">
-                          {event.longDescription}
+                          {event.longDescription[lang]}
                         </p>
                         <div className="bg-white/50 rounded-xl p-5 border border-zinc-200/50">
-                          <h4 className="font-playfair text-[#1E3F20] font-bold text-lg mb-3">Highlights</h4>
+                          <h4 className="font-playfair text-[#1E3F20] font-bold text-lg mb-3">{staticText[lang].featuredHighlights}</h4>
                           <ul className="flex flex-col gap-2 font-inter text-[#414844] text-sm font-light">
-                            {event.highlights?.map((highlight, idx) => (
+                            {event.highlights[lang]?.map((highlight, idx) => (
                               <li key={idx} className="flex gap-3"><span className="text-[#B28A32]">•</span> {highlight}</li>
                             ))}
                           </ul>
@@ -287,11 +338,11 @@ export default function KalenderBudaya({ lang, setLang }) {
                       <div className="md:w-[40%] flex flex-col gap-4">
                         <div className="flex items-center gap-3 bg-white/60 p-4 rounded-xl border border-zinc-200/50">
                           <span className="text-xl">🎟️</span>
-                          <span className="font-inter text-sm font-medium text-[#1E3F20]">Gratis & Terbuka untuk Umum</span>
+                          <span className="font-inter text-sm font-medium text-[#1E3F20]">{staticText[lang].freeEvent}</span>
                         </div>
                         <div className="flex items-center gap-3 bg-white/60 p-4 rounded-xl border border-zinc-200/50">
                           <span className="text-xl">🕒</span>
-                          <span className="font-inter text-sm font-medium text-[#1E3F20]">Pukul 16:00 - 22:00 WIB</span>
+                          <span className="font-inter text-sm font-medium text-[#1E3F20]">{staticText[lang].eventTime}</span>
                         </div>
                         
                         <div className="flex flex-col gap-3 mt-4">
@@ -300,14 +351,14 @@ export default function KalenderBudaya({ lang, setLang }) {
                             className="w-full bg-[#1E3F20] text-white py-3 rounded-full font-inter font-medium hover:bg-[#152c16] transition-all flex items-center justify-center gap-2 shadow-sm hover:shadow-md active:scale-95"
                           >
                             <span className="material-symbols-outlined text-[18px]">event_available</span>
-                            Simpan ke Google Calendar
+                            {staticText[lang].saveToGoogle}
                           </button>
                           <button 
                             onClick={(e) => { e.stopPropagation(); window.open(event.mapsUrl, '_blank'); }}
                             className="w-full bg-transparent border border-[#1E3F20]/30 text-[#1E3F20] py-3 rounded-full font-inter font-medium hover:bg-[#1E3F20]/5 transition-all flex items-center justify-center gap-2 active:scale-95"
                           >
                             <span className="material-symbols-outlined text-[18px]">directions</span>
-                            Petunjuk Arah / Peta
+                            {staticText[lang].directionsMap}
                           </button>
                         </div>
                       </div>
@@ -319,7 +370,7 @@ export default function KalenderBudaya({ lang, setLang }) {
             }) : !featuredEvent && (
               <div className="p-20 text-center text-[#717973] font-inter border-b border-zinc-200/60">
                 <span className="material-symbols-outlined text-4xl mb-4 opacity-30 text-[#1E3F20]">calendar_today</span>
-                <p className="text-lg font-light">Belum ada jadwal yang tersedia untuk kriteria ini.</p>
+                <p className="text-lg font-light">{staticText[lang].noScheduleAvailable}</p>
               </div>
             )}
           </div>

@@ -1,8 +1,23 @@
 import heroImage from "../../../assets/images/heroImage.svg";
 import GsapScrollReveal from "@/components/ui/gsap-scroll-reveal";
 import { VerticalCutReveal } from "@/components/ui/vertical-cut-reveal";
+import { useLanguage } from "@/context/LanguageContext";
+
+const t = {
+  id: {
+    quote: "Medan adalah perpaduan harmonis antara warisan budaya yang kaya, keindahan alam yang memukau, dan semangat modern yang terus berkembang.",
+    city: "Medan"
+  },
+  en: {
+    quote: "Medan is a harmonious blend of rich cultural heritage, stunning natural beauty, and a constantly evolving modern spirit.",
+    city: "Medan"
+  }
+};
 
 export default function Hero() {
+  const { lang } = useLanguage();
+  const text = t[lang] ?? t.id;
+
   return (
     <GsapScrollReveal className="
     ">
@@ -24,9 +39,7 @@ export default function Hero() {
 
               <p className="font-playfair text-sm md:text-2xl lg:text-3xl italic font-medium leading-relaxed text-[#50652D] tracking-wide text-balance">
                 <VerticalCutReveal splitBy="words" staggerDuration={0.05}>
-                  Medan adalah perpaduan harmonis antara warisan budaya yang kaya,
-                  keindahan alam yang memukau, dan semangat modern yang terus
-                  berkembang.
+                  {text.quote}
                 </VerticalCutReveal>
               </p>
 
@@ -36,7 +49,7 @@ export default function Hero() {
 
               <div className="mx-auto mt-6 w-16 h-[2px] bg-[#50652D]/40 rounded" />
               <span className="mt-2 block text-xs tracking-widest uppercase text-[#50652D]/70 font-semibold">
-                Medan
+                {text.city}
               </span>
             </div>
           </div>

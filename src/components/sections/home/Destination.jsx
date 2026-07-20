@@ -1,8 +1,28 @@
 import { useRef, useState, useEffect } from "react";
 import { destinationConfig } from "@/constants/destinationData";
+import { useLanguage } from "@/context/LanguageContext";
+
+const t = {
+  id: {
+    badge: "Destinasi Pilihan",
+    title: "Destinasi Wisata",
+    desc: "Jelajahi keindahan arsitektur bersejarah, warisan budaya yang megah, dan pesona wisata ikonik yang membuat Kota Medan begitu istimewa.",
+    about: "Tentang",
+  },
+  en: {
+    badge: "Featured Destinations",
+    title: "Tourism Destinations",
+    desc: "Explore the beauty of historical architecture, majestic cultural heritage, and iconic tourist charms that make Medan City so special.",
+    about: "About",
+  }
+};
 
 export default function Destination() {
-  const destinations = destinationConfig.items;
+  const { lang } = useLanguage();
+  const c = destinationConfig[lang] ?? destinationConfig.id;
+  const destinations = c.items;
+  const text = t[lang] ?? t.id;
+
   const carouselRef = useRef(null);
   const [selectedItem, setSelectedItem] = useState(null);
 
@@ -36,13 +56,13 @@ export default function Destination() {
         {/* Section Header with rich hierarchy and whitespace */}
         <div className="px-4 md:px-8 lg:px-16 mb-10 md:mb-14">
           <span className="text-xs font-bold tracking-widest uppercase text-[#B28A32] block mb-2">
-            Destinasi Pilihan
+            {text.badge}
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#50652D] tracking-tight leading-tight">
-            Destinasi Wisata
+            {text.title}
           </h2>
           <p className="mt-3 text-sm md:text-base text-[#6E7C5A] max-w-2xl leading-relaxed">
-            Jelajahi keindahan arsitektur bersejarah, warisan budaya yang megah, dan pesona wisata ikonik yang membuat Kota Medan begitu istimewa.
+            {text.desc}
           </p>
         </div>
 
@@ -214,7 +234,7 @@ export default function Destination() {
                 <div className="bg-[#F5F5F7] dark:bg-neutral-800/80 p-6 md:p-14 rounded-3xl border border-neutral-100/5">
                   <p className="text-neutral-600 dark:text-neutral-300 text-base md:text-2xl font-sans max-w-3xl mx-auto leading-relaxed mb-6">
                     <span className="font-extrabold text-[#50652D] dark:text-[#E9D48F]">
-                      Tentang {selectedItem.title}.{" "}
+                      {text.about} {selectedItem.title}.{" "}
                     </span>
                     {selectedItem.desc}
                   </p>

@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { navConfig } from "@/constants/NavData";
 import Logo from "@/assets/logo/Logo_Kota_Medan.webp";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Footer() {
+  const { lang } = useLanguage();
   const footerItems = navConfig.items;
 
   return (
@@ -26,7 +28,7 @@ export default function Footer() {
                   to={item.path}
                   className="transition-colors hover:text-black"
                 >
-                  {item.label}
+                  {item.label[lang]}
                 </Link>
               </li>
             ))}

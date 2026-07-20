@@ -63,3 +63,4 @@ export default function BudayaHero({ lang = "id", sectionRef }) {
     </motion.section>
   );
 }
+

@@ -2,9 +2,17 @@ import { digitalConfig } from "@/constants/digitalData";
 import { Link } from "react-router-dom";
 import GsapScrollReveal from "@/components/ui/gsap-scroll-reveal";
 import { VerticalCutReveal } from "@/components/ui/vertical-cut-reveal";
+import { useLanguage } from "@/context/LanguageContext";
+
+const t = {
+  id: { viewDetails: "Lihat detail" },
+  en: { viewDetails: "View details" },
+};
 
 export default function DigitalisasiLayanan() {
-  const { header, title, cards, banner } = digitalConfig;
+  const { lang } = useLanguage();
+  const { header, title, cards, banner } = digitalConfig[lang] ?? digitalConfig.id;
+  const ui = t[lang] ?? t.id;
 
   return (
     <GsapScrollReveal className="w-full bg-[#FAFAFA] py-20 px-4 md:px-8 lg:px-16">
@@ -41,7 +49,7 @@ export default function DigitalisasiLayanan() {
                       {card.desc}
                     </p>
                     <span className="mt-4 inline-block text-sm font-semibold text-[#50652D]">
-                      Lihat detail
+                      {ui.viewDetails}
                     </span>
                   </div>
                 </Link>

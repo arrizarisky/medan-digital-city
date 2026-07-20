@@ -1,8 +1,28 @@
 import { potentialConfig } from "@/constants/potentialData";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/context/LanguageContext";
+
+const t = {
+  id: {
+    badge: "Transformasi Digital",
+    title: "Mengoptimalkan Potensi Ekosistem Smart City.",
+    desc: "Medan tengah berkembang pesat menjadi pusat teknologi utama di Sumatra. Mulai dari digitalisasi pemerintahan hingga ekosistem startup yang terus tumbuh, kami sedang membangun fondasi bagi kota cerdas yang sesungguhnya.",
+    explore: "Jelajahi Layanan Teknologi"
+  },
+  en: {
+    badge: "Digital Transformation",
+    title: "Optimizing the Potential of the Smart City Ecosystem.",
+    desc: "Medan is rapidly developing into a major technology hub in Sumatra. From government digitalization to a growing startup ecosystem, we are building the foundation for a true smart city.",
+    explore: "Explore Technology Services"
+  }
+};
 
 export default function Potential() {
-  const { features, images } = potentialConfig;
+  const { lang } = useLanguage();
+  const c = potentialConfig[lang] ?? potentialConfig.id;
+  const { images } = potentialConfig;
+  const features = c.features;
+  const text = t[lang] ?? t.id;
 
   return (
     <section className="w-full bg-[#FFFF] py-20 px-4 md:px-8 lg:px-16 text-[#50652D]">
@@ -10,16 +30,13 @@ export default function Potential() {
         <div className="grid grid-cols-12 gap-8 lg:gap-12 items-center">
           <div className="col-span-12 lg:col-span-7 flex flex-col justify-center">
             <span className="text-xs font-bold tracking-widest uppercase text-[#B28A32] mb-3 block">
-              Transformasi Digital
+              {text.badge}
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#50652D] leading-[1.15] mb-6 max-w-xl">
-              Mengoptimalkan Potensi Ekosistem Smart City.
+              {text.title}
             </h2>
             <p className="text-sm md:text-base text-neutral-600 leading-relaxed max-w-2xl mb-10">
-              Medan tengah berkembang pesat menjadi pusat teknologi utama di
-              Sumatra. Mulai dari digitalisasi pemerintahan hingga ekosistem
-              startup yang terus tumbuh, kami sedang membangun fondasi bagi kota
-              cerdas yang sesungguhnya.
+              {text.desc}
             </p>
 
             <div className="space-y-6 mb-10 max-w-xl">
@@ -47,7 +64,7 @@ export default function Potential() {
                 to="/tech"
                 className="inline-flex items-center gap-2 rounded-full bg-[#50652D] px-6 py-3 text-sm font-bold text-white shadow-sm hover:bg-[#3e4f1f] transition-colors group"
               >
-                <span>Jelajahi Layanan Teknologi</span>
+                <span>{text.explore}</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"

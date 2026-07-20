@@ -3,18 +3,58 @@ import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { culinaryConfig } from "@/constants/culinaryData";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { ArrowLeft, Share2, Heart, MapPin, Navigation, Clock8, CircleDollarSign, Building2, MoveRight     } from "lucide-react"
+import { ArrowLeft, Share2, Heart, MapPin, Navigation, Clock8, CircleDollarSign, Building2, MoveRight } from "lucide-react"
+import { useLanguage } from "@/context/LanguageContext";
+
+const t = {
+  id: {
+    back: "Kembali",
+    about: "Tentang",
+    menuHighlightTitle: "Menu Highlights",
+    menuHighlightSub: "Pilihan terbaik yang wajib Anda coba saat berkunjung.",
+    signature: "★ Signature",
+    recommendation: "Rekomendasi",
+    operational: "Informasi Operasional",
+    hours: "Jam Buka",
+    price: "Estimasi Harga",
+    facility: "Fasilitas",
+    directions: "Dapatkan Petunjuk Arah",
+    exploreMore: "Jelajahi Kuliner Lainnya",
+    exploreMoreSub: "Temukan cita rasa legendaris lainnya di Kota Medan.",
+    viewDetail: "Lihat Detail",
+  },
+  en: {
+    back: "Back",
+    about: "About",
+    menuHighlightTitle: "Menu Highlights",
+    menuHighlightSub: "The best choices you must try when visiting.",
+    signature: "★ Signature",
+    recommendation: "Recommended",
+    operational: "Operational Info",
+    hours: "Opening Hours",
+    price: "Estimated Price",
+    facility: "Facilities",
+    directions: "Get Directions",
+    exploreMore: "Explore More Culinary",
+    exploreMoreSub: "Discover other legendary flavors in Medan City.",
+    viewDetail: "View Details",
+  }
+};
 
 export default function CulinaryDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const item = culinaryConfig.items.find((i) => i.id === Number(id));
+  const { lang } = useLanguage();
+  
+  const c = culinaryConfig[lang] ?? culinaryConfig.id;
+  const item = c.items.find((i) => i.id === Number(id));
+  const text = t[lang] ?? t.id;
 
   if (!item) {
     return <Navigate to="/kuliner" replace />;
   }
 
-  const recommendations = culinaryConfig.items
+  const recommendations = c.items
     .filter((i) => i.id !== item.id)
     .slice(0, 3);
 
@@ -32,10 +72,10 @@ export default function CulinaryDetail() {
               type="button"
               onClick={() => navigate(-1)}
               className="mb-8 inline-flex items-center gap-2 rounded-full border border-[#C5C8B9]/40 bg-white/85 px-4 py-2 text-sm font-semibold text-[#50652D] shadow-sm backdrop-blur-md transition-colors hover:bg-white"
-              aria-label="Kembali ke halaman sebelumnya"
+              aria-label={text.back}
             >
               <ArrowLeft size={18} />
-              Kembali
+              {text.back}
             </button>
 
             <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
@@ -89,20 +129,20 @@ export default function CulinaryDetail() {
             <div className="flex flex-col gap-16 lg:col-span-8">
               <section>
                 <h2 className="mb-6 font-montserrat text-3xl font-bold text-[#50652D] md:text-4xl">
-                  Tentang {item.title}
+                  {text.about} {item.title}
                 </h2>
                 <p className="text-base leading-relaxed text-neutral-700 md:text-lg">
                   {item.desc}
                 </p>
               </section>
 
-<section>
+              <section>
                 <div className="mb-6 flex flex-col gap-1.5">
                   <h3 className="font-montserrat text-2xl font-bold text-[#50652D]">
-                    Menu Highlights
+                    {text.menuHighlightTitle}
                   </h3>
                   <p className="text-sm text-neutral-600">
-                    Pilihan terbaik yang wajib Anda coba saat berkunjung.
+                    {text.menuHighlightSub}
                   </p>
                 </div>
 
@@ -114,7 +154,7 @@ export default function CulinaryDetail() {
 
                     return (
                       <div
-                        key={imgUrl}
+                        key={imgUrl + idx}
                         className={`group relative overflow-hidden rounded-2xl border border-[#C5C8B9]/30 shadow-sm ${
                           isMain
                             ? "md:col-span-2 md:row-span-2 h-[280px] md:h-full"
@@ -135,7 +175,7 @@ export default function CulinaryDetail() {
                           <span className={`inline-block rounded-md px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider shadow-sm ${
                             isMain ? "bg-[#B28A32]" : "bg-white/20 backdrop-blur-md"
                           }`}>
-                            {isMain ? "★ Signature" : "Rekomendasi"}
+                            {isMain ? text.signature : text.recommendation}
                           </span>
                         </div>
                       </div>
@@ -149,14 +189,14 @@ export default function CulinaryDetail() {
               <div className="flex flex-col gap-6 rounded-xl border border-[#C5C8B9]/30 bg-white p-6 shadow-[0_4px_24px_rgba(54,69,25,0.05)]">
                 <div>
                   <h3 className="mb-4 font-montserrat text-xl font-bold text-[#50652D]">
-                    Informasi Operasional
+                    {text.operational}
                   </h3>
                   <ul className="flex flex-col gap-4">
                     <li className="flex items-start gap-3">
                       <span className="mt-0.5 text-[#B28A32]"><Clock8 /></span>
                       <div>
                         <p className="text-sm font-semibold text-[#2f381d]">
-                          Jam Buka
+                          {text.hours}
                         </p>
                         <p className="mt-1 text-sm text-neutral-600">
                           {item.hours}
@@ -167,7 +207,7 @@ export default function CulinaryDetail() {
                       <span className="mt-0.5 text-[#B28A32]"><CircleDollarSign /></span>
                       <div>
                         <p className="text-sm font-semibold text-[#2f381d]">
-                          Estimasi Harga
+                          {text.price}
                         </p>
                         <p className="mt-1 text-sm text-neutral-600">
                           {item.priceRange}
@@ -178,7 +218,7 @@ export default function CulinaryDetail() {
                       <span className="mt-0.5 text-[#B28A32]"><Building2 /></span>
                       <div>
                         <p className="text-sm font-semibold text-[#2f381d]">
-                          Fasilitas
+                          {text.facility}
                         </p>
                         <p className="mt-1 text-sm text-neutral-600">
                           {item.facilities}
@@ -195,7 +235,7 @@ export default function CulinaryDetail() {
                   className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#50652D] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#3f5224]"
                 >
                   <span className="text-lg"><Navigation /></span>
-                  Dapatkan Petunjuk Arah
+                  {text.directions}
                 </a>
               </div>
             </aside>
@@ -207,10 +247,10 @@ export default function CulinaryDetail() {
             <div className="mb-8 flex items-end justify-between">
               <div>
                 <h2 className="mb-2 font-montserrat text-3xl font-bold text-[#50652D] md:text-4xl">
-                  Jelajahi Kuliner Lainnya
+                  {text.exploreMore}
                 </h2>
                 <p className="text-sm text-neutral-600 md:text-base">
-                  Temukan cita rasa legendaris lainnya di Kota Medan.
+                  {text.exploreMoreSub}
                 </p>
               </div>
             </div>
@@ -240,7 +280,7 @@ export default function CulinaryDetail() {
                       {rec.desc}
                     </p>
                     <span className="flex gap-2 items-center text-sm font-semibold text-[#50652D]">
-                      Lihat Detail <MoveRight />
+                      {text.viewDetail} <MoveRight />
                     </span>
                   </div>
                 </Link>

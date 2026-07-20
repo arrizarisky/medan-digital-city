@@ -240,7 +240,7 @@ export default function ExploreMap() {
                 {lang === 'id' ? 'Pesan Tour Guide' : 'Book Tour Guide'}
               </button>
               <a 
-                href={`https://maps.google.com/?q=$${selectedLoc.coordinates[0]},${selectedLoc.coordinates[1]}`}
+                href={`https://maps.google.com/?q=${selectedLoc.coordinates[0]},${selectedLoc.coordinates[1]}`}
                 target="_blank"
                 rel="noreferrer"
                 className="flex-1 bg-white hover:bg-neutral-50 border-2 border-[#EFECE1] text-[#1a2e23] py-3.5 px-6 rounded-full font-bold text-sm transition-colors flex items-center justify-center gap-2"

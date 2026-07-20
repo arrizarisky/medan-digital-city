@@ -12,10 +12,10 @@ export default function Potential() {
             <span className="text-xs font-bold tracking-widest uppercase text-[#B28A32] mb-3 block">
               Transformasi Digital
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#50652D] leading-[1.15] mb-6 max-w-xl">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#50652D] leading-[1.15] mb-6 max-w-xl">
               Mengoptimalkan Potensi Ekosistem Smart City.
             </h2>
-            <p className="text-sm text-neutral-600 leading-relaxed max-w-2xl mb-10">
+            <p className="text-sm md:text-base text-neutral-600 leading-relaxed max-w-2xl mb-10">
               Medan tengah berkembang pesat menjadi pusat teknologi utama di
               Sumatra. Mulai dari digitalisasi pemerintahan hingga ekosistem
               startup yang terus tumbuh, kami sedang membangun fondasi bagi kota

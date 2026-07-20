@@ -28,7 +28,7 @@ export default function GsapScrollReveal({ children, className = "" }) {
             scrollTrigger: {
               trigger: section,
               start: "top 78%",
-              once: true,
+              toggleActions: "play none none reverse",
             },
           },
         );
@@ -43,7 +43,7 @@ export default function GsapScrollReveal({ children, className = "" }) {
             scrollTrigger: {
               trigger: section,
               start: "top 82%",
-              once: true,
+              toggleActions: "play none none reverse",
             },
           },
         );

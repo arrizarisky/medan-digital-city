@@ -17,22 +17,24 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'animation-vendor': ['framer-motion', 'gsap', '@gsap/react'],
-          'map-vendor': ['leaflet', 'react-leaflet'],
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router-dom')) {
+              return 'react-vendor';
+            }
+            if (id.includes('framer-motion') || id.includes('gsap')) {
+              return 'animation-vendor';
+            }
+            if (id.includes('leaflet')) {
+              return 'map-vendor';
+            }
+            return 'vendor';
+          }
         },
       },
     },
     chunkSizeWarningLimit: 1000,
     sourcemap: false,
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-      },
-    },
   },
   server: {
     port: 5173,

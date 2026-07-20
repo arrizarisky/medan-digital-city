@@ -1,17 +1,17 @@
-import imgIstana from '../assets/images/istanamaimun.png';
-import imgMelayudeli from "../assets/images/Budaya-Tradisi/Melayu-deli.png"
-import imgBatakToba from "../assets/images/Budaya-Tradisi/batak-toba.png"
-import imgTjongAfie from '../assets/images/tjong-afie-mansion.png';
-import imgKuil from '../assets/images/Bangunan-bersejarah/kuil.jpg';
-import imgRumahJawa from '../assets/images/Budaya-Tradisi/jawa.jpg';
-import imgMinangkabau from '../assets/images/Budaya-Tradisi/minangkabau.jpg';
-import imgTor from '../assets/images/Budaya-Tradisi/tari-tor-tor-batak.png';
-import imgMangalahat from '../assets/images/Budaya-Tradisi/manghalat-horbo.jpg'; 
-import imgCina from '../assets/images/Budaya-Tradisi/barongsai.png'; 
-import imgFair from '../assets/images/Budaya-Tradisi/ramadhan-fair.jpg'; 
-import imgIndie from '../assets/images/Budaya-Tradisi/devapali-festival-medan.png'; 
-import imgUlos1 from '../assets/images/Budaya-Tradisi/ulos-weaving-landscape.png'; 
-import imgUlos2 from '../assets/images/Budaya-Tradisi/ulos-couple-portrait.png'; 
+import imgIstana from '@/assets/images/istanamaimun.png';
+import imgMelayudeli from '@/assets/images/Budaya-Tradisi/Melayu-deli.png';
+import imgBatakToba from '@/assets/images/Budaya-Tradisi/batak-toba.png';
+import imgTjongAfie from '@/assets/images/tjong-afie-mansion.png';
+import imgKuil from '@/assets/images/Bangunan-bersejarah/kuil.jpg';
+import imgRumahJawa from '@/assets/images/Budaya-Tradisi/jawa.jpg';
+import imgMinangkabau from '@/assets/images/Budaya-Tradisi/minangkabau.jpg';
+import imgTor from '@/assets/images/Budaya-Tradisi/tari-tor-tor-batak.png';
+import imgMangalahat from '@/assets/images/Budaya-Tradisi/manghalat-horbo.jpg';
+import imgCina from '@/assets/images/Budaya-Tradisi/barongsai.png';
+import imgFair from '@/assets/images/Budaya-Tradisi/ramadhan-fair.jpg';
+import imgIndie from '@/assets/images/Budaya-Tradisi/devapali-festival-medan.png';
+import imgUlos1 from '@/assets/images/Budaya-Tradisi/ulos-weaving-landscape.png';
+import imgUlos2 from '@/assets/images/Budaya-Tradisi/ulos-couple-portrait.png'; 
 
 
 

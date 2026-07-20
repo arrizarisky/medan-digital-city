@@ -8,13 +8,13 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "postinstall": "echo 'Dependencies installed successfully'"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.2",
     "@vitejs/plugin-react": "^6.0.3",
     "tailwindcss": "^4.3.2",
-    "terser": "^5.36.0",
     "vite": "^8.1.2"
   },
   "dependencies": {

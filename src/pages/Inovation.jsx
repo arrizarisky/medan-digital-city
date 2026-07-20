@@ -10,14 +10,42 @@ import { infraConfig } from "@/constants/infraData";
 import { ArrowLeft, CalendarDays, MapPin, Newspaper, Sparkles } from "lucide-react";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import GsapScrollReveal from "@/components/ui/gsap-scroll-reveal";
+import { useLanguage } from "@/context/LanguageContext";
 
-const innovationItems = [
-  ...digitalConfig.cards,
-  infraConfig.mainCard,
-  infraConfig.statsCard,
-  infraConfig.mapCard,
-  ...economyConfig.cards,
-];
+// Build all items for a given language (used by InovationDetail)
+function getAllItems(lang) {
+  const d = digitalConfig[lang] ?? digitalConfig.id;
+  const i = infraConfig[lang] ?? infraConfig.id;
+  const e = economyConfig[lang] ?? economyConfig.id;
+  return [
+    ...d.cards,
+    i.mainCard,
+    i.statsCard,
+    i.mapCard,
+    ...e.cards,
+  ];
+}
+
+const detailT = {
+  id: {
+    back: "Kembali",
+    sectionBadge: "Sorotan Inovasi",
+    sectionTitle: "Perkembangan teknologi di Medan",
+    newsBadge: "Ringkasan Berita",
+    newsSubtitle: "Poin penting dari inovasi ini.",
+    recBadge: "Jelajahi Lainnya",
+    recTitle: "Inovasi teknologi Medan",
+  },
+  en: {
+    back: "Back",
+    sectionBadge: "Innovation Spotlight",
+    sectionTitle: "Technology developments in Medan",
+    newsBadge: "News Summary",
+    newsSubtitle: "Key points from this innovation.",
+    recBadge: "Explore More",
+    recTitle: "Medan technology innovations",
+  },
+};
 
 export default function Inovation() {
   return (
@@ -37,15 +65,20 @@ export default function Inovation() {
 export function InovationDetail() {
   const { slug } = useParams();
   const navigate = useNavigate();
-  const item = innovationItems.find((innovation) => innovation.slug === slug);
+  const { lang } = useLanguage();
+
+  const allItems = getAllItems(lang);
+  const item = allItems.find((innovation) => innovation.slug === slug);
 
   if (!item) {
     return <Navigate to="/inovasi" replace />;
   }
 
-  const recommendations = innovationItems
+  const recommendations = allItems
     .filter((innovation) => innovation.slug !== item.slug)
     .slice(0, 3);
+
+  const ui = detailT[lang] ?? detailT.id;
 
   return (
     <main className="min-h-screen bg-[#FAFAFA] font-inter text-neutral-900">
@@ -66,7 +99,7 @@ export function InovationDetail() {
             className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-4 py-2 text-sm font-semibold backdrop-blur-md transition-colors hover:bg-white/25"
           >
             <ArrowLeft size={18} />
-            Kembali
+            {ui.back}
           </button>
 
           <div className="max-w-4xl">
@@ -99,10 +132,10 @@ export function InovationDetail() {
           <article className="lg:col-span-8">
             <div className="mb-8">
               <span className="text-xs font-bold uppercase tracking-widest text-[#B28A32]">
-                Sorotan Inovasi
+                {ui.sectionBadge}
               </span>
               <h2 className="mt-3 font-montserrat text-3xl font-bold text-[#50652D] md:text-4xl">
-                Perkembangan teknologi di Medan
+                {ui.sectionTitle}
               </h2>
             </div>
 
@@ -121,10 +154,10 @@ export function InovationDetail() {
                 </span>
                 <div>
                   <h3 className="font-montserrat text-xl font-bold text-neutral-900">
-                    Ringkasan Berita
+                    {ui.newsBadge}
                   </h3>
                   <p className="text-sm text-neutral-500">
-                    Poin penting dari inovasi ini.
+                    {ui.newsSubtitle}
                   </p>
                 </div>
               </div>
@@ -148,10 +181,10 @@ export function InovationDetail() {
         <div className="mx-auto max-w-6xl">
           <div className="mb-8">
             <span className="text-xs font-bold uppercase tracking-widest text-[#967634]">
-              Jelajahi Lainnya
+              {ui.recBadge}
             </span>
             <h2 className="mt-3 font-montserrat text-3xl font-bold text-neutral-900">
-              Inovasi teknologi Medan
+              {ui.recTitle}
             </h2>
           </div>
 

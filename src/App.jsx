@@ -1,6 +1,10 @@
-import { useState } from "react";
+import { LanguageProvider } from "@/context/LanguageContext";
 import AppRoutes from "@/routes/AppRoutes";
+
 export default function App() {
-  const [lang, setLang] = useState("id");
-  return <AppRoutes lang={lang} setLang={setLang} />;
+  return (
+    <LanguageProvider>
+      <AppRoutes />
+    </LanguageProvider>
+  );
 }

@@ -12,10 +12,10 @@ import imgKuliner from '@/assets/images/kuliner/kuliner.png';
 import imgIstanaMaimun from '@/assets/images/Bangunan-bersejarah/istana-maimun.png';
 import imgHeroBg from '@/assets/images/mesjid-raya.jpg';
 
-// ── Ikon SVG Lokal untuk Kategori Wisata ─────────────────────
+// Ikon SVG lokal untuk Kategori Wisata
 import iconAlatMakan from '@/assets/icons/alat-makan.svg';
 import iconSejarah from '@/assets/icons/sejarah.svg';
-import iconLocation from '@/assets/icons/location.svg';
+import iconTopeng from '@/assets/icons/topeng.svg';
 
 // ─── HERO SECTION ────────────────────────────────────────────
 const heroData = {
@@ -99,7 +99,7 @@ const destinasiData = {
         path: '/wisata/cadika',
       },
       {
-        id: 'museum',
+        id: 'museum-medan',
         name: 'Museum Negeri Sumatera Utara',
         description:
           'Koleksi artefak dan warisan budaya Sumatera Utara yang komprehensif dari berbagai era sejarah.',
@@ -151,7 +151,7 @@ const destinasiData = {
         id: 'istana-maimun',
         name: 'Maimun Palace',
         description:
-          'Grand palace of the Deli Sultanate built in 1888, a blend of Malay, Islamic, and European architecture.',
+          'The grand palace of the Deli Sultanate built in 1888, a blend of Malay, Islamic, and European architecture.',
         badge: 'History',
         badgeColor: 'yellow',
         image: imgIstanaMaimun,
@@ -161,14 +161,14 @@ const destinasiData = {
         id: 'cadika',
         name: 'Cadika Scout Park',
         description:
-          'A wide open green family space equipped with an artificial lake and refreshing play areas.',
+          'A wide open green family space, equipped with an artificial lake and refreshing play areas.',
         badge: 'Nature',
         badgeColor: 'green',
         image: imgCadika,
         path: '/wisata/cadika',
       },
       {
-        id: 'museum',
+        id: 'museum-medan',
         name: 'North Sumatra State Museum',
         description:
           'A comprehensive collection of artifacts and cultural heritage of North Sumatra from various historical eras.',
@@ -208,12 +208,12 @@ const kategoriData = {
       },
       {
         id: 'taman',
-        icon: iconLocation,
-        name: 'Taman Kota',
+        icon: iconTopeng,
+        name: 'Wisata Budaya',
         description:
-          'Nikmati ruang hijau dan taman kota yang menjadi paru-paru kota sekaligus destinasi rekreasi keluarga.',
+          'Selami kekayaan adat, kesenian, dan tradisi dari beragam etnis yang membentuk identitas unik kota Medan.',
         image: imgCadika,
-        path: '/wisata/taman',
+        path: '/budaya',
       },
     ],
   },
@@ -242,12 +242,12 @@ const kategoriData = {
       },
       {
         id: 'taman',
-        icon: iconLocation,
-        name: 'City Parks',
+        icon: iconTopeng,
+        name: 'Cultural Tourism',
         description:
-          "Enjoy green spaces and city parks that serve as the city's lungs as well as family recreation destinations.",
+          "Immerse yourself in the rich customs, arts, and traditions of the diverse ethnic groups that shape Medan's unique identity.",
         image: imgCadika,
-        path: '/wisata/taman',
+        path: '/budaya',
       },
     ],
   },

@@ -4,10 +4,27 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { spotConfig } from "@/constants/spotData";
 import BgPattern from "@/assets/images/bg-landscape.webp";
+import { useLanguage } from "@/context/LanguageContext";
+
+const t = {
+  id: {
+    badge: "Kuliner Legendaris",
+    route: "Rute",
+    back: "Kembali ke Halaman Kuliner",
+  },
+  en: {
+    badge: "Legendary Culinary",
+    route: "Directions",
+    back: "Back to Culinary Page",
+  }
+};
 
 export default function LegendarySpotsPage() {
   const navigate = useNavigate();
-  const { title, subtitle, items } = spotConfig;
+  const { lang } = useLanguage();
+  const c = spotConfig[lang] ?? spotConfig.id;
+  const { title, subtitle, items } = c;
+  const text = t[lang] ?? t.id;
 
   return (
     <div className="min-h-screen bg-[#FAFAF4] font-inter text-[#2f381d] selection:bg-[#50652D] selection:text-white">
@@ -29,7 +46,7 @@ export default function LegendarySpotsPage() {
 
             <div className="mb-10 max-w-3xl">
               <span className="mb-3 inline-flex rounded-sm bg-[#B28A32]/15 px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#B28A32]">
-                Kuliner Legendaris
+                {text.badge}
               </span>
               <h1 className="mb-4 font-montserrat text-4xl font-bold tracking-tight text-[#50652D] md:text-5xl">
                 {title}
@@ -91,7 +108,7 @@ export default function LegendarySpotsPage() {
                           className="inline-flex items-center gap-2 rounded-full border border-[#C5C8B9] px-3 py-2 text-xs font-semibold text-[#50652D] transition-colors hover:bg-[#50652D]/10"
                         >
                           <Navigation size={14} />
-                          Rute
+                          {text.route}
                         </a>
                       </div>
                     </div>
@@ -105,7 +122,7 @@ export default function LegendarySpotsPage() {
                 to="/kuliner"
                 className="inline-flex rounded-full bg-[#50652D] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#3f5224]"
               >
-                Kembali ke Halaman Kuliner
+                {text.back}
               </Link>
             </div>
           </div>

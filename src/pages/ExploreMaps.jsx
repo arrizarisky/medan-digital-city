@@ -4,8 +4,10 @@ import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
 import { ArrowLeft, Ticket, Clock, History, Navigation, UserCheck, MapPin } from "lucide-react";
 import L from "leaflet";
 import { gisData } from "@/constants/gisData";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { useLanguage } from "@/context/LanguageContext";
 
-// Import CSS bawaan Leaflet
 import "leaflet/dist/leaflet.css";
 
 const createCustomIcon = (imageUrl) => {
@@ -55,19 +57,22 @@ function MapFlyTo({ coordinates }) {
 }
 
 export default function ExploreMap() {
+  const { lang } = useLanguage();
   const [selectedLoc, setSelectedLoc] = useState(gisData.locations[0]);
   const defaultCenter = [3.5850, 98.6750]; // Titik tengah Medan
 
   return (
     <div className="min-h-screen bg-[#F5F4ED] font-inter text-[#2f381d] pb-20">
-      
+      <Navbar />
+
       {/* ── HEADER ── */}
-      <div className="max-w-7xl mx-auto px-4 md:px-8 pt-8 pb-6">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 pt-28 pb-6">
         <Link 
           to="/" 
           className="inline-flex items-center gap-2 text-sm text-neutral-600 hover:text-[#1a2e23] transition-colors mb-4"
         >
-          <ArrowLeft size={16} /> Kembali ke Beranda
+          <ArrowLeft size={16} />
+          {lang === 'id' ? 'Kembali ke Beranda' : 'Back to Home'}
         </Link>
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-[#1a2e23] rounded-full flex items-center justify-center text-[#c0a062]">
@@ -75,10 +80,12 @@ export default function ExploreMap() {
           </div>
           <div>
             <h1 className="text-3xl font-bold font-montserrat text-[#1a2e23]">
-              Peta Wisata Medan
+              {lang === 'id' ? 'Peta Wisata Medan' : 'Medan Tourism Map'}
             </h1>
             <p className="text-sm text-neutral-500 mt-1">
-              Klik penanda pada peta atau pilih dari daftar untuk melihat detail.
+              {lang === 'id'
+                ? 'Klik penanda pada peta atau pilih dari daftar untuk melihat detail.'
+                : 'Click a marker on the map or select from the list to see details.'}
             </p>
           </div>
         </div>
@@ -127,7 +134,9 @@ export default function ExploreMap() {
                 <line x1="3" y1="12" x2="3.01" y2="12"></line>
                 <line x1="3" y1="18" x2="3.01" y2="18"></line>
               </svg>
-              <h3 className="font-bold font-montserrat text-[#1a2e23]">Daftar Wisata</h3>
+              <h3 className="font-bold font-montserrat text-[#1a2e23]">
+                {lang === 'id' ? 'Daftar Wisata' : 'Tourism List'}
+              </h3>
             </div>
             
             <div className="flex-1 overflow-y-auto p-4 space-y-2">
@@ -193,14 +202,18 @@ export default function ExploreMap() {
               <div className="bg-[#F5F4ED] p-4 rounded-xl border border-[#C5C8B9]/30 flex items-start gap-3">
                 <Ticket className="text-[#c0a062] shrink-0 mt-0.5" size={20} />
                 <div>
-                  <p className="text-[11px] font-bold text-neutral-400 uppercase tracking-wider">Tiket Masuk</p>
+                  <p className="text-[11px] font-bold text-neutral-400 uppercase tracking-wider">
+                    {lang === 'id' ? 'Tiket Masuk' : 'Entry Ticket'}
+                  </p>
                   <p className="text-sm font-semibold text-[#1a2e23] mt-1">{selectedLoc.price}</p>
                 </div>
               </div>
               <div className="bg-[#F5F4ED] p-4 rounded-xl border border-[#C5C8B9]/30 flex items-start gap-3">
                 <Clock className="text-[#c0a062] shrink-0 mt-0.5" size={20} />
                 <div>
-                  <p className="text-[11px] font-bold text-neutral-400 uppercase tracking-wider">Jam Buka</p>
+                  <p className="text-[11px] font-bold text-neutral-400 uppercase tracking-wider">
+                    {lang === 'id' ? 'Jam Buka' : 'Opening Hours'}
+                  </p>
                   <p className="text-sm font-semibold text-[#1a2e23] mt-1">{selectedLoc.hours}</p>
                 </div>
               </div>
@@ -212,7 +225,8 @@ export default function ExploreMap() {
             </p>
             <div className="mb-10">
               <h4 className="flex items-center gap-2 text-xs font-bold text-[#1a2e23] uppercase tracking-widest mb-3">
-                <History size={16} className="text-[#c0a062]" /> Sejarah
+                <History size={16} className="text-[#c0a062]" />
+                {lang === 'id' ? 'Sejarah' : 'History'}
               </h4>
               <p className="text-neutral-500 text-sm leading-relaxed pl-6 border-l-2 border-[#EFECE1]">
                 {selectedLoc.history}
@@ -222,7 +236,8 @@ export default function ExploreMap() {
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mt-auto">
               <button className="flex-1 bg-[#1a2e23] hover:bg-[#111f17] text-white py-3.5 px-6 rounded-full font-bold text-sm transition-colors flex items-center justify-center gap-2 shadow-md">
-                <UserCheck size={18} /> Pesan Tour Guide
+                <UserCheck size={18} />
+                {lang === 'id' ? 'Pesan Tour Guide' : 'Book Tour Guide'}
               </button>
               <a 
                 href={`https://maps.google.com/?q=$${selectedLoc.coordinates[0]},${selectedLoc.coordinates[1]}`}
@@ -230,7 +245,8 @@ export default function ExploreMap() {
                 rel="noreferrer"
                 className="flex-1 bg-white hover:bg-neutral-50 border-2 border-[#EFECE1] text-[#1a2e23] py-3.5 px-6 rounded-full font-bold text-sm transition-colors flex items-center justify-center gap-2"
               >
-                <Navigation size={18} /> Arahkan Lokasi
+                <Navigation size={18} />
+                {lang === 'id' ? 'Arahkan Lokasi' : 'Get Directions'}
               </a>
             </div>
 
@@ -238,6 +254,7 @@ export default function ExploreMap() {
         </div>
       </div>
 
+      <Footer />
     </div>
   );
 }

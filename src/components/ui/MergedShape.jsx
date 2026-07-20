@@ -1,14 +1,15 @@
 // ============================================================
-// MergedShape.jsx — Dekoratif background pill untuk NavLink aktif
-// Digunakan oleh Navbar desktop sebagai highlight efek hover/active
+// MergedShape.jsx
+// Komponen dekoratif background "pill" untuk highlight NavLink
+// aktif/hover di Navbar desktop.
 // ============================================================
 
 /**
  * @param {object}  props
- * @param {string}  [props.fill="#ffffff"]  - Warna fill shape
- * @param {*}       [props.children]        - Child nodes opsional
- * @param {object}  [props.style]           - Style tambahan untuk wrapper
- * @param {string}  [props.className]       - Class tambahan untuk wrapper
+ * @param {string}  [props.fill="#ffffff"]   Warna fill ketiga segmen pill
+ * @param {*}       [props.children]         Konten opsional di dalam shape
+ * @param {object}  [props.style]            Inline style tambahan untuk wrapper
+ * @param {string}  [props.className]        Class Tailwind tambahan untuk wrapper
  */
 export default function MergedShape({
   fill = "#ffffff",
@@ -23,7 +24,7 @@ export default function MergedShape({
       style={{ position: "absolute", width: 90, height: 38, ...containerStyle }}
       {...props}
     >
-      {/* Pill tengah (vertikal) */}
+      {/* Segmen tengah (vertikal lebih tinggi) */}
       <div
         style={{
           position: "absolute",
@@ -33,7 +34,7 @@ export default function MergedShape({
           borderRadius: "18px",
         }}
       />
-      {/* Pill kiri */}
+      {/* Segmen kiri */}
       <div
         style={{
           position: "absolute",
@@ -43,7 +44,7 @@ export default function MergedShape({
           borderRadius: "18px 0 0 18px",
         }}
       />
-      {/* Pill kanan */}
+      {/* Segmen kanan */}
       <div
         style={{
           position: "absolute",

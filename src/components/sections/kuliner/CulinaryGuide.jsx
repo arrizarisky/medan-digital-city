@@ -9,12 +9,13 @@ const tabIcons = {
   "etika": <Coffee size={18} />,
 };
 
-export default function CulinaryGuide() {
-  const { header, title, subtitle, items } = guideConfig;
+export default function CulinaryGuide({ lang = 'id' }) {
+  const c = guideConfig[lang] ?? guideConfig.id;
+  const { header, title, subtitle, items } = c;
   
   // Set item pertama sebagai default active tab
   const [activeTab, setActiveTab] = useState(items[0].id);
-  const activeContent = items.find((item) => item.id === activeTab);
+  const activeContent = items.find((item) => item.id === activeTab) || items[0];
 
   return (
     <section 

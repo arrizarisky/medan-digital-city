@@ -11,6 +11,7 @@ import {
 } from '@/components/sections/budaya';
 import bgPattern from '@/assets/images/heroImage.svg';
 import bgPortrait from '@/assets/images/bg-potrait.webp';
+import { useLanguage } from '@/context/LanguageContext';
 
 function useScrollReveal(options = {}) {
   const ref = useRef(null);
@@ -30,7 +31,8 @@ function useScrollReveal(options = {}) {
   return ref;
 }
 
-export default function Budaya({ lang = 'id', setLang }) {
+export default function Budaya() {
+  const { lang } = useLanguage();
   const heroRef = useScrollReveal({ threshold: 0.2 });
   const mosaikRef = useScrollReveal();
   const seniRef = useScrollReveal();
@@ -69,9 +71,9 @@ export default function Budaya({ lang = 'id', setLang }) {
         style={{ backgroundImage: `url(${bgPattern})`, backgroundSize: '400px', backgroundRepeat: 'repeat' }}
       />
 
-      <Navbar lang={lang} setLang={setLang} />
+      <Navbar />
 
-      <main className="overflow-hidden relative z-10">
+      <main className="overflow-hidden relative z-10" translate="no">
         <BudayaHero lang={lang} sectionRef={heroRef} />
         <MosaikEtnis lang={lang} sectionRef={mosaikRef} />
         <SeniTariMusik lang={lang} sectionRef={seniRef} />

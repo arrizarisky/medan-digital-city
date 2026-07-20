@@ -58,7 +58,6 @@ export const budayaContent = {
       rightItem: { id: "mangalahat", title: "Mangalahat Horbo", subtitle: "Ritual adat paling agung sebagai bentuk rasa syukur, penyucian diri, dan permohonan berkat kepada Sang Pencipta.", image: imgMengalunkan },
       featureItems: [
         { id: "gordang", title: "Gordang Sambilan", subtitle: "Sembilan gendang besar sakral dari Mandailing." },
-        { id: "opera", title: "Opera Batak", subtitle: "Pertunjukan teater rakyat yang memadukan komedi dan tragedi." },
       ],
       gridItems: [
         { id: "menari", title: "Mengalunkan Merdu", subtitle: "Kesenian yang menjadi bagian integral dari budaya setiap etnis.", image: imgMengalunkan },
@@ -67,7 +66,7 @@ export const budayaContent = {
       ],
     },
     kalender: {
-      title: "Kalender Budaya",
+      title: "Kalender Budaya 2026",
       items: [
         { id: "jan-feb", month: "Januari - Februari", title: "Keseruan Imlek Fair", description: "Perayaan Tahun Baru Cina dengan parade barongsai, liong, dan berbagai kuliner khas.", color: "red", image: imgImlek },
         { id: "mar-apr", month: "Maret - April", title: "Ramadan Fair", description: "Pasar malam Ramadan yang menawarkan berbagai makanan khas nusantara.", color: "green", image: imgRamadan },
@@ -108,7 +107,6 @@ export const budayaContent = {
       rightItem: { id: "mangalahat", title: "Mangalahat Horbo", subtitle: "The greatest traditional ritual as a form of gratitude, purification, and prayer for blessings from the Creator.", image: imgMengalunkan },
       featureItems: [
         { id: "gordang", title: "Gordang Sambilan", subtitle: "Nine sacred large drums from Mandailing." },
-        { id: "opera", title: "Batak Opera", subtitle: "Folk theater performance blending comedy and tragedy." },
       ],
       gridItems: [
         { id: "menari", title: "Melodious Performances", subtitle: "Performing arts that are an integral part of every ethnic culture.", image: imgMengalunkan },
@@ -117,7 +115,7 @@ export const budayaContent = {
       ],
     },
     kalender: {
-      title: "Cultural Calendar",
+      title: "Cultural Calendar 2026",
       items: [
         { id: "jan-feb", month: "January - February", title: "Imlek Fair Excitement", description: "Chinese New Year celebration with barongsai parade, lion dance, and various authentic cuisines.", color: "red", image: imgImlek },
         { id: "mar-apr", month: "March - April", title: "Ramadan Fair", description: "Ramadan night market offering various authentic Nusantara foods.", color: "green", image: imgRamadan },

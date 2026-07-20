@@ -2,9 +2,17 @@ import { economyConfig } from "@/constants/economyData";
 import { Link } from "react-router-dom";
 import GsapScrollReveal from "@/components/ui/gsap-scroll-reveal";
 import { VerticalCutReveal } from "@/components/ui/vertical-cut-reveal";
+import { useLanguage } from "@/context/LanguageContext";
+
+const t = {
+  id: { viewDetails: "Lihat detail" },
+  en: { viewDetails: "View details" },
+};
 
 export default function IndustriKomersial() {
-  const { header, title, desc, features, cards } = economyConfig;
+  const { lang } = useLanguage();
+  const { header, title, desc, features, cards } = economyConfig[lang] ?? economyConfig.id;
+  const ui = t[lang] ?? t.id;
 
   return (
     <GsapScrollReveal className="w-full bg-white py-16 px-4 md:px-8 lg:px-16">
@@ -75,7 +83,7 @@ export default function IndustriKomersial() {
                     {card.desc}
                   </p>
                   <span className="mt-5 inline-block text-sm font-semibold text-[#50652D]">
-                    Lihat detail
+                    {ui.viewDetails}
                   </span>
                 </div>
               </Link>

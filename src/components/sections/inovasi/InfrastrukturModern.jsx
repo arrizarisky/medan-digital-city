@@ -2,9 +2,17 @@ import { infraConfig } from "@/constants/infraData";
 import { Link } from "react-router-dom";
 import GsapScrollReveal from "@/components/ui/gsap-scroll-reveal";
 import { VerticalCutReveal } from "@/components/ui/vertical-cut-reveal";
+import { useLanguage } from "@/context/LanguageContext";
+
+const t = {
+  id: { viewDetails: "Lihat detail" },
+  en: { viewDetails: "View details" },
+};
 
 export default function InfrastrukturModern() {
-  const { header, title, mainCard, statsCard, mapCard } = infraConfig;
+  const { lang } = useLanguage();
+  const { header, title, mainCard, statsCard, mapCard } = infraConfig[lang] ?? infraConfig.id;
+  const ui = t[lang] ?? t.id;
 
   return (
     <GsapScrollReveal className="w-full bg-[#F4F4F4F4] py-20 px-4 md:px-8 lg:px-16">
@@ -42,7 +50,7 @@ export default function InfrastrukturModern() {
                 {mainCard.desc}
               </p>
               <span className="mt-5 inline-block text-sm font-semibold text-white">
-                Lihat detail
+                {ui.viewDetails}
               </span>
             </div>
           </Link>
@@ -70,7 +78,7 @@ export default function InfrastrukturModern() {
                   {statsCard.desc}
                 </p>
                 <span className="mt-5 inline-block text-sm font-semibold text-white">
-                  Lihat detail
+                  {ui.viewDetails}
                 </span>
               </div>
             </Link>
@@ -93,7 +101,7 @@ export default function InfrastrukturModern() {
                   {mapCard.title}
                 </h3>
                 <span className="mt-3 inline-block text-sm font-semibold text-white">
-                  Lihat detail
+                  {ui.viewDetails}
                 </span>
               </div>
             </Link>

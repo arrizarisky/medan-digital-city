@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { sejarahContent, landmark3DData } from '@/constants/sejarahData';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -12,7 +12,7 @@ import {
   SejarahCulinary,
   LandmarkModal
 } from '@/components/sections/sejarah';
-import { useState } from 'react';
+import { useLanguage } from '@/context/LanguageContext';
 
 // Scroll Reveal Hook
 function useScrollReveal(options = {}) {
@@ -36,7 +36,8 @@ function useScrollReveal(options = {}) {
   return ref;
 }
 
-export default function Sejarah({ lang = 'id', setLang }) {
+export default function Sejarah() {
+  const { lang } = useLanguage();
   const [scrollY, setScrollY] = useState(0);
   const [selectedLandmark, setSelectedLandmark] = useState(null);
   
@@ -132,11 +133,11 @@ export default function Sejarah({ lang = 'id', setLang }) {
       {/* Layer 2 — Overlay putih ringan: menjaga kontras teks */}
       <div className="fixed inset-0 pointer-events-none z-0 bg-[#FDFDFC]/15" />
 
-      {/* Global Navbar with Language Toggle */}
-      <Navbar lang={lang} setLang={setLang} />
+      {/* Global Navbar */}
+      <Navbar />
 
-      {/* Main Content */}
-      <main className="overflow-hidden">
+      {/* Main Content — notranslate karena sudah punya data manual [lang] */}
+      <main className="overflow-hidden" translate="no">
         
         {/* Hero Section - Full Viewport 3D Carousel */}
         <SejarahHero 

@@ -88,7 +88,7 @@ export const sejarahContent = {
       ],
     },
     calendar: {
-      title: "Kalender Budaya 2024",
+      title: "Kalender Budaya 2026",
       viewAll: "Lihat Semua",
       events: [
         {
@@ -280,7 +280,7 @@ export const sejarahContent = {
       ],
     },
     calendar: {
-      title: "Cultural Calendar 2024",
+      title: "Cultural Calendar 2026",
       viewAll: "View All",
       events: [
         {

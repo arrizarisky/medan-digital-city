@@ -1,21 +1,40 @@
 import { exploreConfig } from "@/constants/exploreData";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/context/LanguageContext";
+
+const t = {
+  id: {
+    badge: "Eksplorasi Kota",
+    title: "Jelajahi Medan",
+    desc: "Mulai petualangan Anda dengan menelusuri kekayaan sejarah, keragaman budaya, kecanggihan teknologi, serta cita rasa kuliner legendaris Kota Medan.",
+    explore: "Jelajahi →"
+  },
+  en: {
+    badge: "City Exploration",
+    title: "Explore Medan",
+    desc: "Start your adventure by exploring the rich history, cultural diversity, technological advancements, and legendary culinary flavors of Medan City.",
+    explore: "Explore →"
+  }
+};
 
 export default function Explore() {
-  const exploreItems = exploreConfig.items;
+  const { lang } = useLanguage();
+  const c = exploreConfig[lang] ?? exploreConfig.id;
+  const exploreItems = c.items;
+  const text = t[lang] ?? t.id;
 
   return (
     <section className="w-full bg-[#FAFAF4] py-16 px-4 md:px-8 lg:px-16">
       <div className="mx-auto max-w-6xl">
         <div className="mb-10 md:mb-14">
           <span className="text-xs font-bold tracking-widest uppercase text-[#B28A32] block mb-2">
-            Eksplorasi Kota
+            {text.badge}
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#50652D] tracking-tight leading-tight">
-            Jelajahi Medan
+            {text.title}
           </h2>
           <p className="mt-3 text-sm md:text-base text-[#6E7C5A] max-w-2xl leading-relaxed">
-            Mulai petualangan Anda dengan menelusuri kekayaan sejarah, keragaman budaya, kecanggihan teknologi, serta cita rasa kuliner legendaris Kota Medan.
+            {text.desc}
           </p>
         </div>
 
@@ -53,7 +72,7 @@ export default function Explore() {
               </div>
 
               <div className="mt-5 text-xs font-bold text-[#829E65] group-hover:text-[#50652D]">
-                Jelajahi →
+                {text.explore}
               </div>
             </Link>
           ))}

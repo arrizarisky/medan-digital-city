@@ -1,261 +1,185 @@
 import { useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, Navigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { wisataDetailData } from '@/constants/wisataDetailData';
-import { ArrowLeft, MapPin, Navigation } from 'lucide-react';
+import { ArrowLeft, Navigation } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
-// ─────────────────────────────────────────────────────────────
-// UTILITY: Defensively extract 4 hero metric values
-// Priority 1: top-level keys  |  Priority 2: info[] array scan
-// ─────────────────────────────────────────────────────────────
-function extractMetrics(data) {
-  const find = (label) =>
-    data.info?.find((i) => i.label.toLowerCase().includes(label.toLowerCase()))?.value ?? '—';
+// ── Helper: warna badge ───────────────────────────────────────
+function getBadgeBg(color) {
+  const map = {
+    '#50652D': 'bg-[#50652D]',
+    '#B28A32': 'bg-[#B28A32]',
+  };
+  return map[color] || 'bg-[#50652D]';
+}
 
-  return [
-    {
-      label: 'Dibangun',
-      value: data.builtYear ?? find('dibangun') ?? find('tahun'),
-    },
-    {
-      label: 'Arsitek',
-      value: data.architect ?? find('arsitek') ?? '—',
-    },
-    {
-      label: 'Alamat',
-      value: data.shortAddress ?? find('lokasi'),
-    },
-    {
-      label: 'Tiket Masuk',
-      value: data.ticketPrice ?? find('tiket'),
-    },
+// ── 1. HERO INFO BOXES (melayang di bawah hero) ───────────────
+function HeroInfoBoxes({ data, lang }) {
+  const boxes = [
+    { label: { id: 'Dibangun', en: 'Built' }, value: data.builtYear },
+    { label: { id: 'Arsitek', en: 'Architect' }, value: data.architect },
+    { label: { id: 'Alamat', en: 'Address' }, value: data.shortAddress },
+    { label: { id: 'Tiket Masuk', en: 'Entrance Ticket' }, value: data.ticketPrice },
   ];
-}
-
-// ─────────────────────────────────────────────────────────────
-// SECTION 1 — HERO + FLOATING INFO BAR
-// ─────────────────────────────────────────────────────────────
-function HeroSection({ data }) {
-  const metrics = extractMetrics(data);
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
-      {/* Background image */}
-      <img
-        src={data.heroImage}
-        alt={data.name}
-        className="absolute inset-0 h-full w-full object-cover"
-      />
-
-      {/* Gradient layers */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10" />
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            'radial-gradient(ellipse at center, transparent 35%, rgba(0,0,0,0.35) 100%)',
-        }}
-      />
-
-      {/* Back button */}
-      <Link
-        to="/wisata"
-        className="absolute left-6 top-24 z-20 flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white/80 backdrop-blur-sm transition-colors hover:text-white md:left-12"
-      >
-        <ArrowLeft className="h-4 w-4" />
-        Wisata
-      </Link>
-
-      {/* Hero text */}
-      <div className="absolute bottom-44 left-0 right-0 z-10 md:bottom-48">
-        <div className="mx-auto max-w-5xl px-6 md:px-12">
-          <span
-            className="mb-4 inline-block rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-white"
-            style={{ backgroundColor: data.badgeColor }}
+    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 w-full max-w-5xl px-6 md:px-12">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        {boxes.map((box, i) => (
+          <div
+            key={i}
+            className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-4 py-3 text-center"
           >
-            {data.badge}
-          </span>
-          <h1
-            className="mb-3 font-playfair text-5xl font-bold leading-tight tracking-tight text-white drop-shadow-md md:text-7xl lg:text-8xl"
-          >
-            {data.name}
-          </h1>
-          <p className="max-w-2xl font-inter text-lg font-light text-white/75 md:text-xl">
-            {data.subtitle}
-          </p>
-        </div>
+            <p className="font-inter text-white/60 text-[10px] font-bold uppercase tracking-widest mb-1">
+              {box.label[lang]}
+            </p>
+            <p className="font-inter text-white text-sm font-semibold leading-snug line-clamp-2">
+              {box.value[lang]}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ── 2. SECTION ATTRACTIONS (list bernomor) ────────────────────
+function AttractionSection({ data, lang }) {
+  if (!data.attractions || data.attractions.length === 0) return null;
+
+  return (
+    <section className="max-w-6xl mx-auto px-6 md:px-12 py-20 md:py-28">
+      {/* Header */}
+      <div className="mb-14">
+        <span className="inline-block bg-[#F4DBA4] text-[#8C6D23] px-4 py-1.5 rounded-full font-inter text-xs font-bold uppercase tracking-wider mb-4">
+          {lang === 'id' ? 'DAYA TARIK UTAMA' : 'MAIN ATTRACTIONS'}
+        </span>
+        <h2 className="font-playfair text-4xl md:text-5xl font-bold text-[#1E3F20] tracking-tight max-w-2xl">
+          {data.attractionSectionTitle[lang]}
+        </h2>
+        <p className="font-inter text-[#717973] text-lg mt-3 max-w-2xl leading-relaxed">
+          {data.attractionSectionSubtitle[lang]}
+        </p>
       </div>
 
-      {/* Floating info bar */}
-      <div className="absolute bottom-8 left-0 right-0 z-20">
-        <div className="mx-auto max-w-5xl px-6 md:px-12">
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-            {metrics.map((m, i) => (
-              <div
-                key={i}
-                className="rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-center backdrop-blur-md"
-              >
-                <p className="mb-1 font-inter text-[10px] font-bold uppercase tracking-widest text-white/60">
-                  {m.label}
-                </p>
-                <p className="line-clamp-2 font-inter text-sm font-semibold leading-snug text-white">
-                  {m.value}
+      {/* Grid 2 kolom: List kiri + Gambar kanan */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        {/* Sisi Kiri — Numbered list */}
+        <div className="space-y-10">
+          {data.attractions.map((item, i) => (
+            <div key={i} className="flex gap-5">
+              {/* Nomor bulatan emas */}
+              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-[#D4A843] to-[#B28A32] flex items-center justify-center shadow-md">
+                <span className="font-playfair text-white font-bold text-base leading-none">
+                  {i + 1}
+                </span>
+              </div>
+              <div className="pt-1">
+                <h3 className="font-inter text-[#1E3F20] text-lg font-bold mb-2 leading-snug">
+                  {item.title[lang]}
+                </h3>
+                <p className="font-inter text-[#5A5F5B] text-base leading-[1.8] font-light">
+                  {item.description[lang]}
                 </p>
               </div>
-            ))}
+            </div>
+          ))}
+        </div>
+
+        {/* Sisi Kanan — Gambar interior + caption quote */}
+        <div className="relative">
+          <div className="rounded-3xl overflow-hidden aspect-[3/4] shadow-2xl">
+            <img
+              src={data.interiorImage}
+              alt={data.name[lang]}
+              className="w-full h-full object-cover"
+            />
           </div>
+          {/* Caption quote box di sudut bawah */}
+          {data.architectureQuote && (
+            <div className="absolute bottom-6 left-6 right-6 bg-white rounded-2xl p-5 shadow-xl">
+              <p className="font-playfair text-[#1E3F20] text-sm leading-relaxed italic">
+                {data.architectureQuote[lang]}
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </section>
   );
 }
 
-// ─────────────────────────────────────────────────────────────
-// SECTION 2 — DESCRIPTION + ATTRACTIONS (2-COL)
-// ─────────────────────────────────────────────────────────────
-function AttractionSection({ data }) {
+// ── 3. GALERI ASIMETRIS ───────────────────────────────────────
+function GallerySection({ data, lang }) {
+  if (!data.gallery || data.gallery.length === 0) return null;
+
+  const images = data.gallery;
+
   return (
-    <section className="bg-[#FAF9F5] py-20 md:py-28">
-      <div className="mx-auto max-w-6xl px-6 md:px-12">
-
-        {/* Section label */}
-        <div className="mb-14">
-          <span className="mb-4 inline-block rounded-full bg-[#F4DBA4] px-4 py-1.5 font-inter text-xs font-bold uppercase tracking-wider text-[#8C6D23]">
-            DAYA TARIK UTAMA
-          </span>
-          <h2 className="font-playfair text-4xl font-bold leading-tight tracking-tight text-[#1E3F20] md:text-5xl">
-            {data.attractionSectionTitle}
-          </h2>
-          <p className="mt-3 max-w-2xl font-inter text-lg leading-relaxed text-[#717973]">
-            {data.attractionSectionSubtitle}
-          </p>
-        </div>
-
-        {/* 2-column grid */}
-        <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-20">
-
-          {/* LEFT — description paragraphs + numbered attractions */}
-          <div className="space-y-8">
-            {/* Description */}
-            <div className="space-y-5">
-              {data.description.map((para, i) => (
-                <p
-                  key={i}
-                  className="font-inter text-base font-light leading-[1.9] text-[#414844] md:text-lg"
-                >
-                  {para}
-                </p>
-              ))}
-            </div>
-
-            {/* Numbered attraction list */}
-            {data.attractions?.length > 0 && (
-              <ol className="space-y-8 pt-2">
-                {data.attractions.map((item, i) => (
-                  <li key={i} className="flex gap-5">
-                    {/* Circled number using badgeColor */}
-                    <span
-                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full font-playfair text-base font-bold text-white shadow-md"
-                      style={{ backgroundColor: data.badgeColor }}
-                    >
-                      {i + 1}
-                    </span>
-                    <div className="pt-1">
-                      <h3 className="mb-1.5 font-inter text-[17px] font-bold leading-snug text-[#1E3F20]">
-                        {item.title}
-                      </h3>
-                      <p className="font-inter text-base font-light leading-[1.8] text-[#5A5F5B]">
-                        {item.description}
-                      </p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            )}
-          </div>
-
-          {/* RIGHT — interior image + quote card */}
-          <div className="relative">
-            <div className="overflow-hidden rounded-3xl shadow-2xl aspect-[3/4]">
-              <img
-                src={data.interiorImage}
-                alt={`Interior ${data.name}`}
-                className="h-full w-full object-cover"
-              />
-            </div>
-
-            {/* Absolute quote card at bottom */}
-            {data.architectureQuote && (
-              <div className="absolute bottom-5 left-5 right-5 rounded-2xl bg-white p-5 shadow-2xl">
-                <p className="font-playfair text-sm italic leading-relaxed text-[#1E3F20]">
-                  {data.architectureQuote}
-                </p>
-              </div>
-            )}
+    <section className="bg-[#F5F3EE] py-20 md:py-28 border-t border-zinc-200/50">
+      <div className="max-w-6xl mx-auto px-6 md:px-12">
+        {/* Header tanpa tombol kapsul */}
+        <div className="mb-12">
+          <div>
+            <span className="inline-block bg-[#F4DBA4] text-[#8C6D23] px-4 py-1.5 rounded-full font-inter text-xs font-bold uppercase tracking-wider mb-4">
+              {data.galleryCaption[lang]}
+            </span>
+            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-[#1E3F20] tracking-tight">
+              {data.galleryCaption[lang]} — <span className="text-[#B28A32]">{data.name[lang]}</span>
+            </h2>
+            <p className="font-inter text-[#717973] text-lg mt-3 max-w-xl leading-relaxed">
+              {data.gallerySubtitle[lang]}
+            </p>
           </div>
         </div>
+
+        {/* Grid Asimetris */}
+        <AsymmetricGallery images={images} />
       </div>
     </section>
   );
 }
 
-// ─────────────────────────────────────────────────────────────
-// SECTION 3 — ADAPTIVE GALLERY ("Pesona Warisan")
-// ─────────────────────────────────────────────────────────────
-function GalleryGrid({ images }) {
+function AsymmetricGallery({ images }) {
   const count = images.length;
+
   if (count === 0) return null;
 
-  // ── 1 image ──
+  // 1 gambar
   if (count === 1) {
     return (
-      <div className="overflow-hidden rounded-3xl">
-        <img
-          src={images[0]}
-          alt="Gallery 1"
-          className="h-full w-full object-cover transition-transform duration-700 hover:scale-105 aspect-[16/7]"
-        />
+      <div className="rounded-3xl overflow-hidden aspect-[16/7]">
+        <img src={images[0]} alt="Gallery" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
       </div>
     );
   }
 
-  // ── 2 images — equal side by side ──
+  // 2 gambar
   if (count === 2) {
     return (
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {images.map((img, i) => (
-          <div key={i} className="overflow-hidden rounded-3xl aspect-[4/3]">
-            <img
-              src={img}
-              alt={`Gallery ${i + 1}`}
-              className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
-            />
+          <div key={i} className="rounded-3xl overflow-hidden aspect-[4/3]">
+            <img src={img} alt={`Gallery ${i + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
           </div>
         ))}
       </div>
     );
   }
 
-  // ── 3 images — 1 tall left + 2 stacked right ──
+  // 3 gambar
   if (count === 3) {
     return (
-      <div className="grid h-[540px] grid-cols-2 gap-4">
-        <div className="overflow-hidden rounded-3xl">
-          <img
-            src={images[0]}
-            alt="Gallery 1"
-            className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
-          />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="rounded-3xl overflow-hidden md:h-[520px]">
+          <img src={images[0]} alt="Gallery 1" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
         </div>
         <div className="flex flex-col gap-4">
           {images.slice(1).map((img, i) => (
-            <div key={i} className="flex-1 overflow-hidden rounded-3xl">
-              <img
-                src={img}
-                alt={`Gallery ${i + 2}`}
-                className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
-              />
+            <div key={i} className="rounded-3xl overflow-hidden flex-1 min-h-[200px]">
+              <img src={img} alt={`Gallery ${i + 2}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
             </div>
           ))}
         </div>
@@ -263,40 +187,24 @@ function GalleryGrid({ images }) {
     );
   }
 
-  // ── 4+ images — editorial asymmetric:
-  //    LEFT: 1 tall vertical card
-  //    RIGHT: 1 wide top + 2 small bottom
-  // ──
+  // 4+ gambar — asimetris: 1 vertikal besar kiri + kolom kanan (1 atas memanjang + 2 bawah berdampingan)
   return (
-    <div className="grid h-[540px] grid-cols-1 gap-4 md:grid-cols-2">
-      {/* Left: tall vertical */}
-      <div className="overflow-hidden rounded-3xl">
-        <img
-          src={images[0]}
-          alt="Gallery 1"
-          className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
-        />
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {/* Gambar vertikal besar kiri */}
+      <div className="rounded-3xl overflow-hidden md:h-[520px]">
+        <img src={images[0]} alt="Gallery 1" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
       </div>
-
-      {/* Right: top-wide + 2 bottom */}
-      <div className="flex flex-col gap-4">
-        {/* Top: wide landscape */}
-        <div className="h-[280px] overflow-hidden rounded-3xl">
-          <img
-            src={images[1]}
-            alt="Gallery 2"
-            className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
-          />
+      {/* Kolom kanan */}
+      <div className="flex flex-col gap-4 md:h-[520px]">
+        {/* Gambar atas memanjang */}
+        <div className="rounded-3xl overflow-hidden flex-[1.2]">
+          <img src={images[1]} alt="Gallery 2" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
         </div>
-        {/* Bottom: 2 square thumbnails */}
-        <div className="grid flex-1 grid-cols-2 gap-4">
+        {/* 2 gambar bawah berdampingan */}
+        <div className="grid grid-cols-2 gap-4 flex-1">
           {images.slice(2, 4).map((img, i) => (
-            <div key={i} className="overflow-hidden rounded-3xl">
-              <img
-                src={img}
-                alt={`Gallery ${i + 3}`}
-                className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
-              />
+            <div key={i} className="rounded-3xl overflow-hidden">
+              <img src={img} alt={`Gallery ${i + 3}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
             </div>
           ))}
         </div>
@@ -305,95 +213,53 @@ function GalleryGrid({ images }) {
   );
 }
 
-function GallerySection({ data }) {
-  if (!data.gallery?.length) return null;
-
+// ── 4. SECTION PETA + PETUNJUK ARAH ──────────────────────────
+function PetaSection({ data, lang }) {
   return (
-    <section className="border-t border-zinc-200/50 bg-[#F5F3EE] py-20 md:py-28">
-      <div className="mx-auto max-w-6xl px-6 md:px-12">
-        {/* Header */}
-        <div className="mb-12">
-          <span className="mb-4 inline-block rounded-full bg-[#F4DBA4] px-4 py-1.5 font-inter text-xs font-bold uppercase tracking-wider text-[#8C6D23]">
-            {data.galleryCaption}
+    <section className="py-20 md:py-28 border-t border-zinc-200/50">
+      <div className="max-w-6xl mx-auto px-6 md:px-12">
+        <div className="mb-10">
+          <span className="inline-block bg-[#F4DBA4] text-[#8C6D23] px-4 py-1.5 rounded-full font-inter text-xs font-bold uppercase tracking-wider mb-4">
+            {lang === 'id' ? 'NAVIGASI' : 'NAVIGATION'}
           </span>
-          <h2 className="font-playfair text-4xl font-bold tracking-tight text-[#1E3F20] md:text-5xl">
-            {data.galleryCaption}{' '}
-            <span style={{ color: data.badgeColor }}>— {data.name}</span>
-          </h2>
-          <p className="mt-3 max-w-xl font-inter text-lg leading-relaxed text-[#717973]">
-            {data.gallerySubtitle}
-          </p>
-        </div>
-
-        <GalleryGrid images={data.gallery} />
-      </div>
-    </section>
-  );
-}
-
-// ─────────────────────────────────────────────────────────────
-// SECTION 4 — MAP & DIRECTIONS
-// ─────────────────────────────────────────────────────────────
-function MapSection({ data }) {
-  return (
-    <section className="border-t border-zinc-200/50 bg-[#FAF9F5] py-20 md:py-28">
-      <div className="mx-auto max-w-6xl px-6 md:px-12">
-        <div className="mb-12">
-          <span className="mb-4 inline-block rounded-full bg-[#F4DBA4] px-4 py-1.5 font-inter text-xs font-bold uppercase tracking-wider text-[#8C6D23]">
-            NAVIGASI
-          </span>
-          <h2 className="font-playfair text-4xl font-bold tracking-tight text-[#1E3F20]">
-            Cara Menuju ke Sana
+          <h2 className="font-playfair text-4xl font-bold text-[#1E3F20] tracking-tight">
+            {lang === 'id' ? 'Cara Menuju ke Sana' : 'How to Get There'}
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-3">
-          {/* LEFT — numbered directions + CTA */}
-          <div className="space-y-6">
-            <h3 className="font-inter text-lg font-bold text-[#1E3F20]">Petunjuk Arah</h3>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
+          {/* Sisi Kiri — Petunjuk teks + tombol */}
+          <div className="space-y-5">
+            <h3 className="font-inter text-[#1E3F20] font-bold text-lg">
+              {lang === 'id' ? 'Petunjuk Arah' : 'Directions'}
+            </h3>
             <ol className="space-y-4">
-              {(data.directionsSteps ?? []).map((step, i) => (
+              {(data.directionsSteps[lang] || []).map((step, i) => (
                 <li key={i} className="flex gap-3">
-                  <span
-                    className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full font-inter text-xs font-bold text-white"
-                    style={{ backgroundColor: data.badgeColor }}
-                  >
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#1E3F20] text-white text-xs font-bold flex items-center justify-center mt-0.5">
                     {i + 1}
                   </span>
-                  <p className="font-inter text-sm leading-relaxed text-[#5A5F5B]">{step}</p>
+                  <p className="font-inter text-[#5A5F5B] text-sm leading-relaxed">{step}</p>
                 </li>
               ))}
             </ol>
-
             <a
               href={data.mapsLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center gap-2 rounded-xl border-2 font-inter text-sm font-semibold px-5 py-2.5 transition-colors hover:text-white"
-              style={{
-                borderColor: data.badgeColor,
-                color: data.badgeColor,
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = data.badgeColor;
-                e.currentTarget.style.color = '#fff';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'transparent';
-                e.currentTarget.style.color = data.badgeColor;
-              }}
+              className="inline-flex items-center gap-2 mt-4 bg-white border border-[#1E3F20] text-[#1E3F20] hover:bg-[#1E3F20] hover:text-white font-inter text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors duration-200"
             >
-              <Navigation className="h-4 w-4" />
-              Buka Google Maps
+              <Navigation className="w-4 h-4" />
+              {lang === 'id' ? 'Order Google Maps' : 'Open Google Maps'}
             </a>
           </div>
 
-          {/* RIGHT — iframe map (2-col span) */}
-          <div className="overflow-hidden rounded-3xl border border-zinc-200 shadow-xl lg:col-span-2 aspect-[16/9]">
+          {/* Sisi Kanan — Embed peta (2 kolom span) */}
+          <div className="lg:col-span-2 rounded-3xl overflow-hidden shadow-xl border border-zinc-100 aspect-[16/9]">
             <iframe
-              title={`Peta ${data.name}`}
+              title={`Peta ${data.name[lang]}`}
               src={data.mapUrl}
-              className="h-full w-full"
+              className="w-full h-full"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
@@ -406,69 +272,67 @@ function MapSection({ data }) {
   );
 }
 
-// ─────────────────────────────────────────────────────────────
-// SECTION 5 — NEARBY DESTINATIONS
-// ─────────────────────────────────────────────────────────────
-function NearbySection({ currentSlug, nearbyDestinations }) {
-  if (!nearbyDestinations?.length) return null;
+// ── 5. DESTINASI TERDEKAT ─────────────────────────────────────
+function DestinasiterdekatSection({ currentSlug, nearbyDestinations, lang }) {
+  if (!nearbyDestinations || nearbyDestinations.length === 0) return null;
 
-  const nearby = nearbyDestinations
+  const nearbyItems = nearbyDestinations
     .filter((slug) => slug !== currentSlug)
     .slice(0, 3)
     .map((slug) => wisataDetailData[slug])
     .filter(Boolean);
 
-  if (!nearby.length) return null;
+  if (nearbyItems.length === 0) return null;
 
   return (
-    <section className="border-t border-zinc-200/50 bg-[#F5F3EE] py-20 md:py-28">
-      <div className="mx-auto max-w-6xl px-6 md:px-12">
+    <section className="bg-[#F5F3EE] py-20 md:py-28 border-t border-zinc-200/50">
+      <div className="max-w-6xl mx-auto px-6 md:px-12">
         <div className="mb-12">
-          <span className="mb-4 inline-block rounded-full bg-[#F4DBA4] px-4 py-1.5 font-inter text-xs font-bold uppercase tracking-wider text-[#8C6D23]">
-            REKOMENDASI
+          <span className="inline-block bg-[#F4DBA4] text-[#8C6D23] px-4 py-1.5 rounded-full font-inter text-xs font-bold uppercase tracking-wider mb-4">
+            {lang === 'id' ? 'REKOMENDASI' : 'RECOMMENDATIONS'}
           </span>
-          <h2 className="font-playfair text-4xl font-bold tracking-tight text-[#1E3F20] md:text-5xl">
-            Destinasi Bersejarah Terdekat
+          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-[#1E3F20] tracking-tight">
+            {lang === 'id' ? 'Destinasi Bersejarah Terdekat' : 'Nearby Historic Destinations'}
           </h2>
-          <p className="mt-3 max-w-xl font-inter text-lg leading-relaxed text-[#717973]">
-            Lengkapi perjalanan Anda dengan destinasi ikonik lainnya di Kota Medan.
+          <p className="font-inter text-[#717973] text-lg mt-3 max-w-xl leading-relaxed">
+            {lang === 'id' 
+              ? 'Lengkapi perjalanan Anda dengan mengunjungi destinasi-destinasi ikonik lainnya di Kota Medan.' 
+              : 'Complete your journey by visiting other iconic destinations in Medan City.'}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {nearby.map((dest) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {nearbyItems.map((item) => (
             <Link
-              key={dest.slug}
-              to={`/wisata/${dest.slug}`}
-              className="group block overflow-hidden rounded-3xl border border-zinc-100 bg-white shadow-sm transition-shadow duration-300 hover:shadow-xl"
+              key={item.slug}
+              to={`/wisata/${item.slug}`}
+              className="group block bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 border border-zinc-100"
             >
-              {/* Thumbnail */}
+              {/* Gambar */}
               <div className="aspect-[4/3] overflow-hidden">
                 <img
-                  src={dest.heroImage}
-                  alt={dest.name}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  src={item.heroImage}
+                  alt={item.name[lang]}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
-
-              {/* Body */}
+              {/* Konten */}
               <div className="p-6">
                 <span
-                  className="mb-3 inline-block rounded-full px-3 py-1 font-inter text-xs font-bold uppercase tracking-wider text-white"
-                  style={{ backgroundColor: dest.badgeColor }}
+                  className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-white mb-3"
+                  style={{ backgroundColor: item.badgeColor }}
                 >
-                  {dest.badge}
+                  {item.badge[lang]}
                 </span>
-                <h3 className="font-playfair text-xl font-bold leading-snug text-[#1E3F20] transition-colors group-hover:text-[#B28A32]">
-                  {dest.name}
+                <h3 className="font-playfair text-xl font-bold text-[#1E3F20] leading-snug mb-2 group-hover:text-[#B28A32] transition-colors">
+                  {item.name[lang]}
                 </h3>
-                <div className="mt-2 flex items-center gap-1.5 text-[#717973]">
-                  <MapPin className="h-3.5 w-3.5 shrink-0" />
-                  <p className="font-inter text-sm leading-relaxed">{dest.shortAddress}</p>
-                </div>
-                <div className="mt-4 flex items-center gap-1.5 font-inter text-sm font-semibold text-[#1E3F20] transition-all duration-200 group-hover:gap-2.5">
-                  <span>Lihat Detail</span>
-                  <ArrowLeft className="h-4 w-4 rotate-180" />
+                <p className="font-inter text-[#717973] text-sm leading-relaxed line-clamp-2">
+                  {item.subtitle[lang]}
+                </p>
+                <div className="mt-4 flex items-center gap-1.5 text-[#1E3F20] font-inter text-sm font-semibold group-hover:gap-2.5 transition-all duration-200">
+                  <span>{lang === 'id' ? 'Lihat Detail' : 'See Details'}</span>
+                  <ArrowLeft className="w-4 h-4 rotate-180" />
                 </div>
               </div>
             </Link>
@@ -479,73 +343,90 @@ function NearbySection({ currentSlug, nearbyDestinations }) {
   );
 }
 
-// ─────────────────────────────────────────────────────────────
-// NOT FOUND FALLBACK
-// ─────────────────────────────────────────────────────────────
-function DestinationNotFound() {
-  return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-6 bg-[#FAF9F5] px-6 text-center">
-      <span className="text-7xl">🗺️</span>
-      <h1 className="font-playfair text-4xl font-bold text-[#1E3F20]">
-        Destinasi Tidak Ditemukan
-      </h1>
-      <p className="max-w-md font-inter text-lg text-[#717973]">
-        Halaman yang Anda cari tidak tersedia atau slug URL tidak valid.
-      </p>
-      <Link
-        to="/wisata"
-        className="rounded-full bg-[#1E3F20] px-8 py-3 font-inter font-semibold text-white transition-colors hover:bg-[#152c16]"
-      >
-        ← Kembali ke Wisata
-      </Link>
-    </div>
-  );
-}
-
-// ─────────────────────────────────────────────────────────────
-// MAIN PAGE COMPONENT
-// ─────────────────────────────────────────────────────────────
-export default function DetailWisata({ lang, setLang }) {
+// ── MAIN PAGE ─────────────────────────────────────────────────
+export default function DetailWisata() {
   const { slug } = useParams();
   const data = wisataDetailData[slug];
+  const { lang } = useLanguage();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [slug]);
+  useEffect(() => { window.scrollTo(0, 0); }, [slug]);
 
-  if (!data) {
-    return (
-      <div className="min-h-screen bg-[#FAF9F5] font-inter text-[#1b1c1c]">
-        <Navbar lang={lang} setLang={setLang} />
-        <DestinationNotFound />
-        <Footer />
-      </div>
-    );
-  }
+  if (!data) return <Navigate to="/wisata" replace />;
 
   return (
-    <div className="min-h-screen bg-[#FAF9F5] font-inter text-[#1b1c1c]">
-      <Navbar lang={lang} setLang={setLang} />
+    <div className="bg-[#FAF9F5] font-inter text-[#1b1c1c] min-h-screen">
+      <Navbar />
 
-      <main>
-        {/* 1. Hero + floating info bar */}
-        <HeroSection data={data} />
-
-        {/* 2. Description + numbered attractions + interior photo */}
-        <AttractionSection data={data} />
-
-        {/* 3. Adaptive gallery grid */}
-        <GallerySection data={data} />
-
-        {/* 4. Map & directions */}
-        <MapSection data={data} />
-
-        {/* 5. Nearby destinations */}
-        <NearbySection
-          currentSlug={slug}
-          nearbyDestinations={data.nearbyDestinations}
+      {/* ── 1. HERO FULL SCREEN ── */}
+      <section className="relative h-screen w-full overflow-hidden flex items-end">
+        <img
+          src={data.heroImage}
+          alt={data.name[lang]}
+          className="absolute inset-0 w-full h-full object-cover"
         />
-      </main>
+        {/* Gradient: gelap di bawah untuk readability info box */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/10" />
+
+        {/* Tombol kembali */}
+        <Link
+          to="/wisata"
+          className="absolute top-24 left-6 md:left-12 z-20 flex items-center gap-2 text-white/80 hover:text-white text-sm font-medium transition-colors bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          {lang === 'id' ? 'Wisata' : 'Tourism'}
+        </Link>
+
+        {/* Hero Text — di atas info boxes */}
+        <div className="relative z-10 w-full max-w-5xl mx-auto px-6 md:px-12 pb-36 md:pb-40">
+          <span
+            className="inline-block mb-4 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-white"
+            style={{ backgroundColor: data.badgeColor }}
+          >
+            {data.badge[lang]}
+          </span>
+          <h1 className="font-playfair text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.05] tracking-tight mb-3 drop-shadow-md">
+            {data.name[lang]}
+          </h1>
+          <p className="font-inter text-white/75 text-lg md:text-xl font-light max-w-2xl">
+            {data.subtitle[lang]}
+          </p>
+        </div>
+
+        {/* Info boxes melayang di bawah */}
+        <HeroInfoBoxes data={data} lang={lang} />
+      </section>
+
+      {/* ── 2. SECTION DESKRIPSI ── */}
+      <section className="max-w-6xl mx-auto px-6 md:px-12 py-20 md:py-28">
+        <div className="max-w-3xl">
+          <span className="inline-block bg-[#F4DBA4] text-[#8C6D23] px-4 py-1.5 rounded-full font-inter text-xs font-bold uppercase tracking-wider mb-6">
+            {lang === 'id' ? 'TENTANG DESTINASI' : 'ABOUT THE DESTINATION'}
+          </span>
+          {data.description[lang].map((para, i) => (
+            <p key={i} className="font-inter text-[#414844] text-base md:text-lg leading-[1.9] font-light mb-5 last:mb-0">
+              {para}
+            </p>
+          ))}
+        </div>
+      </section>
+
+      {/* ── 3. SECTION ATTRACTIONS ── */}
+      <div className="border-t border-zinc-200/50 bg-white">
+        <AttractionSection data={data} lang={lang} />
+      </div>
+
+      {/* ── 4. GALERI ASIMETRIS ── */}
+      <GallerySection data={data} lang={lang} />
+
+      {/* ── 5. PETA & PETUNJUK ARAH ── */}
+      <PetaSection data={data} lang={lang} />
+
+      {/* ── 6. DESTINASI TERDEKAT ── */}
+      <DestinasiterdekatSection
+        currentSlug={slug}
+        nearbyDestinations={data.nearbyDestinations}
+        lang={lang}
+      />
 
       <Footer />
     </div>

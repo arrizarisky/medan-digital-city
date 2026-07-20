@@ -7,6 +7,7 @@ import {
   KategoriWisata,
   PetaWisata,
 } from '@/components/sections/wisata';
+import { useLanguage } from '@/context/LanguageContext';
 
 // ── Scroll Reveal Hook (sama dengan pattern di Budaya.jsx) ────
 function useScrollReveal(options = {}) {
@@ -30,7 +31,8 @@ function useScrollReveal(options = {}) {
 }
 
 // ── Page Component ────────────────────────────────────────────
-export default function Wisata({ lang = 'id', setLang }) {
+export default function Wisata() {
+  const { lang } = useLanguage();
   const heroRef       = useScrollReveal({ threshold: 0.15 });
   const destinasiRef  = useScrollReveal();
   const kategoriRef   = useScrollReveal();
@@ -52,11 +54,10 @@ export default function Wisata({ lang = 'id', setLang }) {
         }
       `}</style>
 
-      {/* ── Navbar ── */}
-      <Navbar lang={lang} setLang={setLang} />
+      <Navbar />
 
-      {/* ── Page Sections ── */}
-      <main className="overflow-hidden">
+      {/* Main — notranslate karena data sudah bilingual manual */}
+      <main className="overflow-hidden" translate="no">
         <WisataHero       lang={lang} sectionRef={heroRef} />
         <DestinasiPopuler lang={lang} sectionRef={destinasiRef} />
         <KategoriWisata   lang={lang} sectionRef={kategoriRef} />

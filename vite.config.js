@@ -14,4 +14,32 @@ export default defineConfig({
       "@lib": path.resolve(__dirname, "./src/lib"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'animation-vendor': ['framer-motion', 'gsap', '@gsap/react'],
+          'map-vendor': ['leaflet', 'react-leaflet'],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1000,
+    sourcemap: false,
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
+  },
+  server: {
+    port: 5173,
+    open: true,
+  },
+  preview: {
+    port: 4173,
+    open: true,
+  },
 });
